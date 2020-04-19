@@ -1,0 +1,34 @@
+﻿<section class="mainbar" data-ng-controller="messageLogDetail as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div ng-if="!vm.public" data-ng-include="'app/templates/nav-email.html'" />
+            <div class="widget wgreen">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info"
+                       data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i> Back
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content" data-ng-if="vm.entity">
+                    <dl class="dl-horizontal">
+                        <dt>Time Stamp</dt>
+                        <dd>{{vm.entity.timeStamp | date:'dd MMM yyyy - h:mm a'}}</dd>
+                        <dt>Type</dt>
+                        <dd>{{vm.entity.type}}</dd>
+                        <dt>Group</dt>
+                        <dd>{{vm.entity.group}}</dd>
+                        <dt>Subject</dt>
+                        <dd>{{vm.entity.subject}}</dd>
+                        <dt>Members</dt>
+                        <dd>{{vm.entity.members}}</dd>
+                        <dt>Delivery Status</dt>
+                        <dd>{{vm.entity.deliveryStatus}}</dd>        
+                        <dt>Message</dt>
+                        <dd data-ng-bind-html="vm.entity.message"></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

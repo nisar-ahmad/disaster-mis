@@ -1,0 +1,22 @@
+﻿<div class="btn-group pull-right">
+    <a class="btn btn-info"
+            data-ng-if="!vm.public"
+            data-ng-click="vm.goBack()"
+            data-ng-disabled="vm.isSaving">
+        <i class="fa fa-hand-o-left"></i> Back
+    </a>
+    <a class="btn btn-info"
+            data-ng-click="vm.cancel()"
+            data-ng-disabled="!vm.canSave">
+        <i class="fa fa-undo"></i> Cancel
+    </a>
+    <a class="btn btn-info"
+            data-ng-click="vm.save()"
+            data-ng-disabled="!vm.canSave">
+        <i class="fa fa-save"></i> Save
+    </a>
+    <span data-ng-show="vm.hasChanges"
+          class="dissolve-animation ng-hide">
+        <i class="fa fa-asterisk fa-asterisk-large"></i>
+    </span>
+</div>

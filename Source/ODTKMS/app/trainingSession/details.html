@@ -1,0 +1,45 @@
+﻿<section class="mainbar" data-ng-controller="trainingSessionDetail as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div ng-if="!vm.public" data-ng-include="'app/templates/nav-training.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-logos.html'" />
+            <div class="widget wgreen">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info" href="javascript:window.print();">
+                        <i class="fa fa-print"></i> Print
+                    </a>&nbsp; &nbsp;
+
+                    <a class="btn btn-info"
+                       data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i> Back
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content" data-ng-if="vm.entity">
+                    <br />
+                    <dl class="dl-horizontal">
+                        <dt>Training</dt>
+                        <dd>{{vm.entity.training.name}}</dd>
+                        <dt>Name</dt>
+                        <dd>{{vm.entity.name}}</dd>
+                        <dt>Module</dt>
+                        <dd>{{vm.entity.module}}</dd>
+                        <dt>Date Of Session</dt>
+                        <dd>{{vm.entity.dateOfSession | date: 'dd MMM yyyy'}}</dd>
+                        <dt>Start Time</dt>
+                        <dd>{{vm.entity.startTime | date: 'h:mm a'}}</dd>
+                        <dt>End Time</dt>
+                        <dd>{{vm.entity.endTime | date: 'h:mm a'}}</dd>
+                        <dt>Agenda</dt>
+                        <dd>{{vm.entity.agenda}}</dd>
+                        <dt>Logistic Note</dt>
+                        <dd>{{vm.entity.logisticNote}}</dd>
+                    </dl>
+                </div>
+               
+            </div>
+            <div data-ng-include="'app/templates/reports-training.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-signature.html'" />
+        </div>
+    </section>
+</section>

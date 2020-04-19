@@ -1,0 +1,189 @@
+﻿<section class="mainbar" data-ng-controller="training as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-include="'app/templates/nav-training.html'" />
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+            <div class="widget wgreen">
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="Status" class="col-md-5 control-label">Status</label>
+                                    <div class="col-md-7">
+                                        <select id="Status" data-ng-options="i for i in vm.trainingStatuses"
+                                                data-ng-model="vm.entity.status"
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Name" class="col-md-5 control-label">Title</label>
+                                    <div class="col-md-7">
+                                        <input id="Name" data-ng-model="vm.entity.name"
+                                               placeholder="Name" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Objective" class="col-md-5 control-label">Objective</label>
+                                    <div class="col-md-7">
+                                        <input id="Objective" data-ng-model="vm.entity.objective"
+                                               placeholder="Objective of Training" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <!--<div class="form-group">
+                                    <label for="Description" class="col-md-5 control-label">Description</label>
+                                    <div class="col-md-7">
+                                        <textarea id="Description" class="form-control"
+                                                  data-ng-model="vm.entity.description"
+                                                  placeholder="Description of Training"></textarea>
+                                    </div>
+                                </div>-->
+
+                                <div class="form-group">
+                                    <label for="TrainingType" class="col-md-5 control-label">Training Type</label>
+                                    <div class="col-md-7">
+                                        <select id="TrainingType" data-ng-options="i for i in vm.trainingTypes"
+                                                data-ng-model="vm.entity.trainingType"
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="TrainingLevel" class="col-md-5 control-label">Training Level</label>
+                                    <div class="col-md-7">
+                                        <select id="TrainingLevel" data-ng-options="i for i in vm.trainingLevels"
+                                                data-ng-model="vm.entity.trainingLevel"
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="BroaderTrainingArea" class="col-md-5 control-label">Broader Training Area</label>
+                                    <div class="col-md-7">
+                                        <select id="Broader Training Area" data-ng-options="i.name for i in vm.broaderTrainingAreas"
+                                                data-ng-model="vm.entity.broaderTrainingArea"
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Start" class="col-md-5 control-label">Start Date</label>
+                                    <div class="col-md-7">
+                                        <input id="Start" type="text" data-ng-model="vm.entity.startDate"
+                                               class="form-control" datepicker-popup="dd MMM yyyy"
+                                               close-text="Close" ng-focus="opened=true" is-open="opened"
+                                               placeholder="Start Date" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="End=" class="col-md-5 control-label">End Date</label>
+                                    <div class="col-md-7">
+                                        <input id="End" type="text" data-ng-model="vm.entity.endDate"
+                                               class="form-control" datepicker-popup="dd MMM yyyy"
+                                               close-text="Close" ng-focus="opened2=true" is-open="opened2"
+                                               placeholder="End Date" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Fee" class="col-md-5 control-label">Fee</label>
+                                    <div class="col-md-7">
+                                        <input id="Fee" data-ng-model="vm.entity.fee"
+                                               placeholder="Fee" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Province" class="col-md-5 control-label">Province</label>
+                                    <div class="col-md-7">
+                                        <select id="Province" data-ng-options="i.name for i in vm.provinces"
+                                                data-ng-model="vm.entity.province" data-ng-change="vm.provinceChanged()"
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="District" class="col-md-5 control-label">District</label>
+                                    <div class="col-md-7">
+                                        <select id="District" data-ng-options="i.name for i in vm.districts"
+                                                data-ng-model="vm.entity.district" data-ng-change="vm.districtChanged()"
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="City" class="col-md-5 control-label">City</label>
+                                    <div class="col-md-7">
+                                        <select id="City" data-ng-options="i.name for i in vm.cities"
+                                                data-ng-model="vm.entity.city"
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="LogisticNote" class="col-md-5 control-label">Logistic Note</label>
+                                    <div class="col-md-7">
+                                        <textarea id="LogisticNote" data-ng-model="vm.entity.logisticNote"
+                                                  class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ReferenceMaterial" class="col-md-5 control-label">Reference Material</label>
+                                    <div class="col-md-7">
+                                        <textarea id="ReferenceMaterial" data-ng-model="vm.entity.referenceMaterial"
+                                                  placeholder="Reference Material" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Survey" class="col-md-5 control-label">Evaluation Survey</label>
+                                    <div class="col-md-7">
+                                        <select id="Survey" data-ng-options="i.name for i in vm.surveys"
+                                                data-ng-model="vm.entity.survey"
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <br />
+                            <label class="control-label">Location : </label>  Click on map to change training location
+                            <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom' events='vm.map.events'
+                                                pan="true" control="vm.map.control">
+                                <!--marker for clicked position can not put google.map.animations.BOUNCE , since it is not initiaized yet-->
+                                <!--DISABLED ANIMATION on MarkerLABEL due to Google SDK V3 bug, see MarkerLabelChildModel.setOption -->
+                                <!--<div ng-init="opts = {animation:1}">-->
+                                <!--<ui-gmap-markers models="vm.map.markers" coords="'self'" >
+                                </ui-gmap-markers>-->
+                                <!--</div>-->
+                            </ui-gmap-google-map>
+                            <br />
+                            <div class="container-fluid" data-ng-if="vm.id!='new'">
+                                <label>Donors & Collaborating Agencies :</label>
+                                <div data-ng-include="'app/templates/grid-selection.html'" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="container-fluid">
+                            <label for="Description"> Description : </label>
+                            <wysiwyg textarea-id="Description" textarea-class="form-control"
+                                        textarea-height="200px" data-ng-model="vm.entity.description"
+                                        enable-bootstrap-title="true"></wysiwyg>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+            <div data-ng-include="'app/templates/reports-training.html'" />
+        </div>
+    </section>
+</section>

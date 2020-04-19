@@ -1,0 +1,37 @@
+﻿<section class="mainbar" data-ng-controller="resourcePersonTrainingDetail as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div ng-if="!vm.public" data-ng-include="'app/templates/nav-resource-person.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-logos.html'" />
+            <div class="widget wgreen">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info" href="javascript:window.print();">
+                        <i class="fa fa-print"></i> Print
+                    </a>&nbsp; &nbsp;
+                    <a class="btn btn-info"
+                       data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i> Back
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content" data-ng-if="vm.entity">
+                    <br />
+                    <dl class="dl-horizontal">
+                        <dt>Resource Person</dt>
+                        <dd>{{vm.entity.resourcePerson.name}}</dd>
+                        <dt>Training Session</dt>
+                        <dd>{{vm.entity.trainingSession.name}}</dd>
+                        <dt>Is Paid?</dt>
+                        <dd>{{vm.entity.isPaid}}</dd>
+                        <dt>Amount Paid</dt>
+                        <dd>{{vm.entity.amountPaid}}</dd>
+                    </dl>
+                </div>
+                
+            </div>
+            <div data-ng-include="'app/templates/reports-resource-person.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-signature.html'" />
+
+        </div>
+    </section>
+</section>

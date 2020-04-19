@@ -1,0 +1,237 @@
+﻿<section class="mainbar" data-ng-controller="organizationDetail as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/nav-donor.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-logos.html'" />
+            <div class="widget wgreen">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info" href="javascript:window.print();">
+                        <i class="fa fa-print"></i> Print
+                    </a>&nbsp; &nbsp;
+                    <a class="btn btn-info" 
+                       data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i> Back
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content" data-ng-if="vm.entity">
+                    <div class="container-fluid content-padding">
+                        <div class="row margin-details">
+
+                            <div class="col-md-6 col-sm-6">
+                                <table class="table table-responsive table-hover table-bordered">
+                                    <tr>
+                                        <th>Name </th>
+                                        <td>{{vm.entity.name}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Organization Type </th>
+                                        <td>{{vm.entity.organizationType.name}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Relationship Type </th>
+                                        <td>{{vm.entity.relationshipType}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Geographical Area </th>
+                                        <td>{{vm.entity.geographicalArea}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Date Established </th>
+                                        <td>{{vm.entity.dateEstablished | date: 'dd MMM yyyy'}} </td>
+                                    </tr>
+                                </table>
+
+                                <br />
+                                <h3>Head of Organization</h3>
+                                <br />
+
+                                <table class="table table-responsive table-hover table-bordered">
+                                    <tr>
+                                        <th>Head Name </th>
+                                        <td>{{vm.entity.headName}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Head Designation </th>
+                                        <td>{{vm.entity.headDesignation}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Head Landline </th>
+                                        <td>{{vm.entity.headLandline}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Head Fax </th>
+                                        <td>{{vm.entity.headFax}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Head Mobile </th>
+                                        <td>{{vm.entity.headMobile}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Head Email </th>
+                                        <td>{{vm.entity.headEmail}} </td>
+                                    </tr>
+                                </table>
+
+
+
+
+                                <div data-ng-if="vm.category==='4w'">
+
+                                    <br />
+                                    <h3>Registration Details</h3>
+                                    <br />
+
+                                    <table class="table table-responsive table-hover table-bordered">
+                                        <tr>
+                                            <th>Registering Authority </th>
+                                            <td>{{vm.entity.registeringAuthority}} </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Registration Number </th>
+                                            <td>{{vm.entity.registrationNumber}} </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Registration Certificate </th>
+                                            <td>
+                                                <a data-ng-if="vm.entity.registrationCertificate" target="_blank" data-ng-href="{{vm.registrationCertificateUrl}}{{vm.entity.registrationCertificate}}">
+                                                    <img data-ng-src="{{vm.getFileIcon(vm.entity.registrationCertificate)}}" title="Registration Certificate" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                                    {{vm.entity.registrationCertificate}}
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+
+                                <div data-ng-if="vm.category==='4w'">
+                                    <br />
+                                    <h3>Head Office Details</h3>
+                                    <br />
+
+                                    <table class="table table-responsive table-hover table-bordered">
+                                        <tr>
+                                            <th>Address </th>
+                                            <td>{{vm.entity.address}} </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Landline </th>
+                                            <td>{{vm.entity.landline}} </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Fax </th>
+                                            <td>{{vm.entity.fax}} </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Website </th>
+                                            <td>{{vm.entity.website}} </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Skype </th>
+                                            <td>{{vm.entity.skype}} </td>
+                                        </tr>
+
+                                    </table>
+
+                                    <br />
+
+                                    <table class="table table-responsive table-hover table-bordered">
+                                        <tr>
+                                            <th>Profile </th>
+                                            <td>
+                                                <a data-ng-if="vm.entity.profile" target="_blank" data-ng-href="{{vm.profileUrl}}{{vm.entity.profile}}">
+                                                    <img data-ng-src="{{vm.getFileIcon(vm.entity.profile)}}" title="Profile" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                                    {{vm.entity.profile}}
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <!--<table class="table table-responsive table-hover table-bordered">
+                    <tr>
+                        <th> </th>
+                        <td> </td>
+                    </tr>
+                </table>-->
+                                <!--<br />
+                <h3>Contact Person</h3>
+                <br />
+
+                <dt>Contact Person Name</dt>
+                <dd>{{vm.entity.contactPersonName}}</dd>
+                <dt>Contact Person Designation</dt>
+                <dd>{{vm.entity.contactPersonDesignation}}</dd>
+                <dt>Contact Person Landline</dt>
+                <dd>{{vm.entity.contactPersonLandline}}</dd>
+                <dt>Contact Person Fax</dt>
+                <dd>{{vm.entity.contactPersonFax}}</dd>
+                <dt>Contact Person Mobile</dt>
+                <dd>{{vm.entity.contactPersonMobile}}</dd>
+                <dt>Contact Person Email</dt>
+                <dd>{{vm.entity.contactPersonEmail}}</dd>
+                <dt>Approval Status</dt>
+                <dd>{{vm.entity.approvalType}}</dd>
+                <dt>User Name</dt>
+                <dd>{{vm.entity.userName}}</dd>
+                </dl>-->
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="hide-me">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-4">
+                                        <strong>Head Photo </strong><br />
+                                        <img class="dca-logo img-responsive" data-ng-if="vm.entity.headPhoto" data-ng-src="{{vm.headPhotoUrl}}{{vm.entity.headPhoto}}"
+                                             title="Photo of {{vm.entity.headName}}" onerror="if (this.src != 'Content/img/unknown_person.jpg') this.src = 'Content/img/unknown_person.jpg'"
+                                             class="img-autosize" />
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <strong>
+                                            Logo
+                                        </strong> <br /><img class="dca-logo img-responsive" data-ng-if="vm.entity.logo" class="img-autosize"
+                                                             data-ng-src="{{vm.logoUrl}}{{vm.entity.logo}}"
+                                                             title="Logo of {{vm.entity.name}}"
+                                                             onerror="if (this.src != '') this.src = ''" />
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div data-ng-if="vm.category != '4w'" class="row">
+                            <div class="container-fluid">
+                                <h3>Project Briefs, Fundings and Costs</h3>
+                                <table class="table table-responsive table-hover table-striped table-bordered">
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Project Title</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Total Funding</th>
+                                        <th>Balance</th>
+                                    </tr>
+                                    <tr data-ng-repeat="i in vm.projects">
+                                        <td>{{$index+1}}</td>
+                                        <td>{{i.Project}}</td>
+                                        <td>{{i.StartDate | date:'dd MMM yyyy'}}</td>
+                                        <td>{{i.EndDate | date:'dd MMM yyyy'}}</td>
+                                        <td>{{i.TotalFunding | number}}</td>
+                                        <td>{{i.Balance | number}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info" href="#/organization/new/">
+                        <i class="fa fa-plus"></i> Add New
+                    </a>
+                </div>
+                <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-signature.html'" />
+            </div>
+        </div>
+    </section>
+</section>

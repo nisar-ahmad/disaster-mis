@@ -1,0 +1,18 @@
+<section class="mainbar" data-ng-controller="messageLogs as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-include="'app/templates/nav-email.html'" />
+            <div class="widget wblue">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info" ng-click="vm.refresh()">
+                        <i class="fa fa-refresh"></i> Refresh
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <div data-ng-include="'app/templates/grid-index.html'" />
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

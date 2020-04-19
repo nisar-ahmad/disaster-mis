@@ -1,0 +1,26 @@
+﻿<section class="mainbar" data-ng-controller="galleryDetails as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/nav-gallery.html'" />
+            <div class="widget wblue">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info"
+                       data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i> Back
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <div data-ng-repeat="items in vm.albums" class="row">
+                        <div data-ng-repeat="item in items" class="col-md-2 col-sm-2 text-center">
+                            <a data-ng-href="#/album/{{item.albumId}}/details/{{vm.public}}" title="{{item.description}}">
+                                <img src="Content/img/icon-album.png" class="img-autosize" />
+                                <p>{{item.name}}</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

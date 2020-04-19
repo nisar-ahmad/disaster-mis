@@ -1,0 +1,19 @@
+﻿<section class="mainbar" data-ng-controller="thanks as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div class="widget wblue">
+                <div class="btn-group pull-right">
+
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <br />
+                    <p>{{vm.thanksMessage}}</p>
+                    <a data-ng-if="vm.thanksUrl" class="btn btn-info" data-ng-href="#{{vm.thanksUrl}}">
+                        <i class="fa fa-forward"></i> Continue
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

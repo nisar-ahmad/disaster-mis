@@ -1,0 +1,347 @@
+﻿<section class="mainbar" data-ng-controller="organization as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-if="!vm.public">
+                <div data-ng-if="vm.category==='4w'" data-ng-include="'app/templates/nav-4w.html'" />
+                <div data-ng-if="vm.category!='4w'" data-ng-include="'app/templates/nav-donor.html'" />
+            </div>
+            <div data-ng-if="vm.public" data-ng-include="'app/templates/form-buttons-submit-4w.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/form-buttons.html'" />
+            <div class="widget wgreen">
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <div class="container" data-ng-if="vm.public"> To register your organisation, please fill in the following form. We will then get back to you after we have reviewed the form. </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <form class="form-horizontal" role="form">
+
+                                <div class="form-group" data-ng-if="vm.category==='4w' && vm.id!='new'">
+                                    <label for="ApprovalStatus" class="col-md-4 control-label">Approval Status</label>
+                                    <div class="col-md-8">
+                                        <select id="ApprovalStatus" data-ng-options="i for i in vm.approvalTypes"
+                                                data-ng-model="vm.entity.approvalStatus"
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Name" class="col-md-4 control-label">Name</label>
+                                    <div class="col-md-8">
+                                        <input id="Name" data-ng-model="vm.entity.name"
+                                               placeholder="Name" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="OrganizationType" class="col-md-4 control-label">Organization Type</label>
+                                    <div class="col-md-8">
+                                        <select id="OrganizationType" data-ng-options="i.name for i in vm.organizationTypes"
+                                                data-ng-model="vm.entity.organizationType"
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" data-ng-if="vm.category!='4w'">
+                                    <label for="Relationship" class="col-md-4 control-label">Relationship Type</label>
+                                    <div class="col-md-8">
+                                        <select id="Relationship" data-ng-options="i for i in vm.relationshipTypes"
+                                                data-ng-model="vm.entity.relationshipType"
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Geographical" class="col-md-4 control-label">Geographical Area</label>
+                                    <div class="col-md-8">
+                                        <select id="Geographical" data-ng-options="i for i in vm.geographicalAreas"
+                                                data-ng-model="vm.entity.geographicalArea"
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Date" class="col-md-4 control-label">Date Established</label>
+                                    <div class="col-md-8">
+                                        <input id="Date" type="text" data-ng-model="vm.entity.dateEstablished"
+                                               class="form-control" datepicker-popup="dd MMM yyyy"
+                                               close-text="Close" ng-focus="opened=true" is-open="opened"
+                                               placeholder="Date Established" />
+                                    </div>
+                                </div>
+
+                                <div data-ng-if="vm.category==='4w'">
+                                    <div class="form-group">
+                                        <label for="RegisteringAuthority" class="col-md-4 control-label">Registering Authority</label>
+                                        <div class="col-md-8">
+                                            <input id="RegisteringAuthority" data-ng-model="vm.entity.registeringAuthority"
+                                                   placeholder="Registering Authority" class="form-control" data-z-validate />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="RegistrationNumber" class="col-md-4 control-label">Registration Number</label>
+                                        <div class="col-md-8">
+                                            <input id="RegistrationNumber" data-ng-model="vm.entity.registrationNumber"
+                                                   placeholder="Registration Number" class="form-control" data-z-validate />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="RegistrationCertificate" class="col-md-4 control-label">Registration Certificate</label>
+                                        <div class="col-md-8">
+                                            <a data-ng-if="vm.entity.registrationCertificate" target="_blank" data-ng-href="{{vm.registrationCertificateUrl}}{{vm.entity.registrationCertificate}}">
+                                                <img data-ng-src="{{vm.getFileIcon(vm.entity.registrationCertificate)}}" title="Registration Certificate" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                                {{vm.entity.registrationCertificate}}
+                                            </a>
+                                            <input id="RegistrationCertificate" data-ng-model="vm.entity.registrationCertificate"
+                                                   data-file-model="vm.registrationCertificate"
+                                                   onchange="angular.element(this).scope().vm.fileNameChanged()"
+                                                   placeholder="Name" class="form-control" type="file" data-z-validate />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="District" class="col-md-4 control-label">Head Office District</label>
+                                    <div class="col-md-8">
+                                        <select id="District" data-ng-options="i.name for i in vm.districts"
+                                                data-ng-model="vm.entity.district"
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                                <div data-ng-if="vm.category==='4w'">
+                                    <h3>Head Office Details</h3>
+                                    <br />
+
+                                    <div class="form-group">
+                                        <label for="Address" class="col-md-4 control-label">Address</label>
+                                        <div class="col-md-8">
+                                            <input id="Address" data-ng-model="vm.entity.address"
+                                                   placeholder="Address" class="form-control" data-z-validate />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Landline" class="col-md-4 control-label">Landline</label>
+                                        <div class="col-md-8">
+                                            <input id="Landline" data-ng-model="vm.entity.landline"
+                                                   placeholder="Landline" class="form-control" data-z-validate />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Fax" class="col-md-4 control-label">Fax</label>
+                                        <div class="col-md-8">
+                                            <input id="Fax" data-ng-model="vm.entity.fax"
+                                                   placeholder="Fax" class="form-control" data-z-validate />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Website" class="col-md-4 control-label">Website</label>
+                                        <div class="col-md-8">
+                                            <input id="Website" data-ng-model="vm.entity.website"
+                                                   placeholder="Fax" class="form-control" data-z-validate />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Skype" class="col-md-4 control-label">Skype</label>
+                                        <div class="col-md-8">
+                                            <input id="Skype" data-ng-model="vm.entity.skype"
+                                                   placeholder="Skype" class="form-control" data-z-validate />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3>Contact Person</h3>
+                                <br />
+
+                                <div class="form-group">
+                                    <label for="ContactPersonName" class="col-md-4 control-label">Contact Person Name</label>
+                                    <div class="col-md-8">
+                                        <input id="ContactPersonName" data-ng-model="vm.entity.contactPersonName"
+                                               placeholder="Contact Person Name" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ContactPersonDesignation" class="col-md-4 control-label">Contact Person Designation</label>
+                                    <div class="col-md-8">
+                                        <input id="ContactPersonDesignation" data-ng-model="vm.entity.contactPersonDesignation"
+                                               placeholder="Contact Person Designation" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ContactPersonLandline" class="col-md-4 control-label">Contact Person Landline</label>
+                                    <div class="col-md-8">
+                                        <input id="ContactPersonLandline" data-ng-model="vm.entity.contactPersonLandline"
+                                               placeholder="Contact Person Landline" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ContactPersonFax" class="col-md-4 control-label">Contact Person Fax</label>
+                                    <div class="col-md-8">
+                                        <input id="ContactPersonFax" data-ng-model="vm.entity.contactPersonFax"
+                                               placeholder="Contact Person Fax" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ContactPersonMobile" class="col-md-4 control-label">Contact Person Mobile</label>
+                                    <div class="col-md-8">
+                                        <input id="ContactPersonMobile" data-ng-model="vm.entity.contactPersonMobile"
+                                               placeholder="Contact Person Mobile" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ContactPersonEmail" class="col-md-4 control-label">Contact Person Email</label>
+                                    <div class="col-md-8">
+                                        <input id="ContactPersonEmail" data-ng-model="vm.entity.contactPersonEmail"
+                                               placeholder="Contact Person Email" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <dl class="dl-horizontal">
+                                <dt>Logo</dt>
+                                <dd class="dca-logo">
+                                    <img data-ng-if="vm.entity.logo" class="img-autosize"
+                                         data-ng-src="{{vm.logoUrl}}{{vm.entity.logo}}"
+                                         title="Logo of {{vm.entity.name}}"
+                                         onerror="if (this.src != '') this.src = ''" />
+                                </dd>
+                                <dt>Profile</dt>
+                                <dd>
+                                    <a data-ng-if="vm.entity.profile" target="_blank" data-ng-href="{{vm.profileUrl}}{{vm.entity.profile}}">
+                                        <img data-ng-src="{{vm.getFileIcon(vm.entity.profile)}}" title="Profile" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                        {{vm.entity.profile}}
+                                    </a>
+                                </dd>
+                                <dt>Head Photo</dt>
+                                <dd class="dca-logo">
+                                    <img data-ng-if="vm.entity.headPhoto" data-ng-src="{{vm.headPhotoUrl}}{{vm.entity.headPhoto}}"
+                                         title="Photo of {{vm.entity.headName}}" onerror="if (this.src != 'Content/img/unknown_person.jpg') this.src = 'Content/img/unknown_person.jpg'"
+                                         class="img-autosize" />
+                                </dd>
+                            </dl>
+
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="Logo" class="col-md-4 control-label">Logo</label>
+                                    <div class="col-md-8">
+                                        <input id="Logo" data-ng-model="vm.entity.logo" accept="image/*" data-file-model="vm.logo"
+                                               onchange="angular.element(this).scope().vm.fileNameChanged()"
+                                               placeholder="Logo" class="form-control" type="file" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Profile" class="col-md-4 control-label">Profile</label>
+                                    <div class="col-md-8">
+                                        <a data-ng-if="vm.entity.profile" target="_blank" data-ng-href="{{vm.profileUrl}}{{vm.entity.profile}}">
+                                            <img data-ng-src="{{vm.getFileIcon(vm.entity.profile)}}" class="img-autosize"
+                                                 title="Profile" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                            {{vm.entity.profile}}
+                                        </a>
+                                        <input id="Profile" data-ng-model="vm.entity.profile" data-file-model="vm.profile"
+                                               onchange="angular.element(this).scope().vm.fileNameChanged()"
+                                               placeholder="Profile" class="form-control" type="file" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group" data-ng-if="vm.category==='4w'">
+                                    <label for="UserName" class="col-md-4 control-label">User Name</label>
+                                    <div class="col-md-8">
+                                        <input id="UserName" data-ng-model="vm.entity.username"
+                                               placeholder="User Name" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+                                <div class="form-group" data-ng-if="vm.category==='4w'">
+                                    <label for="Password" class="col-md-4 control-label">Password</label>
+                                    <div class="col-md-8">
+                                        <input id="Password" type="password" data-ng-model="vm.entity.passwordHash"
+                                               placeholder="Password" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+                                <div class="form-group" data-ng-if="vm.category==='4w'">
+                                    <label for="ConfirmPassword" class="col-md-4 control-label">Confirm Password</label>
+                                    <div class="col-md-8">
+                                        <input id="ConfirmPassword" type="password" data-ng-model="vm.confirmPassword"
+                                               placeholder="Confirm Password" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+                                <h3>Head of Organization</h3>
+                                <br />
+
+                                <div class="form-group">
+                                    <label for="HeadName" class="col-md-4 control-label">Head Name</label>
+                                    <div class="col-md-8">
+                                        <input id="HeadName" data-ng-model="vm.entity.headName"
+                                               placeholder="Head Name" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="HeadDesignation" class="col-md-4 control-label">Head Designation</label>
+                                    <div class="col-md-8">
+                                        <input id="HeadDesignation" data-ng-model="vm.entity.headDesignation"
+                                               placeholder="Head Designation" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="HeadLandline" class="col-md-4 control-label">Head Landline</label>
+                                    <div class="col-md-8">
+                                        <input id="HeadLandline" data-ng-model="vm.entity.headLandline"
+                                               placeholder="Head Landline" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="HeadFax" class="col-md-4 control-label">Head Fax</label>
+                                    <div class="col-md-8">
+                                        <input id="HeadFax" data-ng-model="vm.entity.headFax"
+                                               placeholder="Head Fax" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="HeadMobile" class="col-md-4 control-label">Head Mobile</label>
+                                    <div class="col-md-8">
+                                        <input id="HeadMobile" data-ng-model="vm.entity.headMobile"
+                                               placeholder="Head Mobile" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="HeadEmail" class="col-md-4 control-label">Head Email</label>
+                                    <div class="col-md-8">
+                                        <input id="HeadEmail" data-ng-model="vm.entity.headEmail"
+                                               placeholder="Head Email" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Photo" class="col-md-4 control-label">Head Photo</label>
+                                    <div class="col-md-8">
+                                        <input id="Photo" data-ng-model="vm.entity.headPhoto" accept="image/*" data-file-model="vm.headPhoto"
+                                               onchange="angular.element(this).scope().vm.fileNameChanged()"
+                                               placeholder="Photo of Head" class="form-control" type="file" data-z-validate />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-ng-if="vm.public" data-ng-include="'app/templates/form-buttons-submit-4w.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/form-buttons.html'" />
+        </div>
+    </section>
+</section>

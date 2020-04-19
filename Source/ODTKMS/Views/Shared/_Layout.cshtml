@@ -1,0 +1,570 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        .ng-hide {
+            display: none !important;
+        }
+    </style>
+    <title data-ng-bind="title">Disaster Training & Knowledge Management System</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <!--<base href="/ODTKMS/index.html">-->
+    <script>
+        // Must be first. IE10 mobile viewport fix
+        if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement("style");
+            var mq = "@@-ms-viewport{width:auto!important}";
+            msViewportStyle.appendChild(document.createTextNode(mq));
+            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+        }
+    </script>
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <link href="~/Content/font.css" rel="stylesheet" />
+
+    <link href="~/Content/ie10mobile.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/Site.css" rel="stylesheet" />
+    <link href="~/Content/css/datepicker3.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap-timepicker.css" rel="stylesheet" />
+    <link href="~/Content/css/blueimp-gallery.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap-image-gallery.min.css" rel="stylesheet" />
+
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/breeze.directives.css" rel="stylesheet" />
+    <link href="~/Content/css/fullcalendar.min.css" rel="stylesheet" />
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400' rel='stylesheet' type='text/css'>
+
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <link href="~/Content/ui-grid.css" rel="stylesheet" />
+    <link href="~/Content/custom.css" rel="stylesheet" />
+    <link href="~/Content/print.css" rel="stylesheet" media="print" />
+    <link href="~/Content/css/angular-chart.min.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <a class="navbar-brand" href="~/Admin#/"><img src="~/Content/img/nidm-logo.png" width="40" height="40" class="logotop img-thumbnail img-circle"></a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-calendar-o"></i> Trainings </a>
+                        <ul class="dropdown-menu dropdown-menu2">
+                            <li><a href="~/Admin#/trainings">Main Trainings Report</a></li>
+                            <li><a href="~/Admin#/trainings/calendar">Training Calendar</a></li>
+                            <li><a href="~/Admin#/trainings/map">Training Map</a></li>
+                            <li><a href="~/Admin#/trainingCosts">Training Costs</a></li>
+
+                            <li><a href="~/Admin#/training/new">Add Training</a></li>
+                            <li><a href="~/Admin#/trainingSession/new">Add Training Session</a></li>
+                            <li><a href="~/Admin#/trainingCost/new">Add Training Cost</a></li>
+                            <li><a href="~/Admin#/trainingSessions">List of Training Sessions</a></li>
+                            <li><a href="~/Admin#/training/attendance">Attendance</a></li>
+                            <li><a href="~/Admin#/training/evaluation">Evaluation</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users"></i> Participants</a>
+                        <ul class="dropdown-menu dropdown-menu2">
+                            <li><a href="~/Admin#/participants">Main Participants Report</a></li>
+                            <li><a href="~/Admin#/participant/new">Register Participant</a></li>
+                            <li><a href="~/Admin#/participant/email">Email Participants</a></li>
+                            <li><a href="~/Admin#/participant/sms">SMS Participants</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-female"></i><i class="fa fa-male"></i> Resource</a>
+                        <ul class="dropdown-menu dropdown-menu2">
+                            <li><a href="~/Admin#/resourcePersons">Main Resource Persons Report</a></li>
+                            <li><a href="~/Admin#/resourcePerson/new">Add Resource Persons</a></li>
+                            <li><a href="~/Admin#/resourcePersonTrainings">Trainings Conducted Report</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-briefcase"></i> Donors</a>
+                        <ul class="dropdown-menu dropdown-menu2">
+                            <li><a href="~/Admin#/organizations">Main Donors & Collaborating Agencies Report</a></li>
+                            <li><a href="~/Admin#/projects">Main Donor Projects Report</a></li>
+                            <li><a href="~/Admin#/fundings">Main Project Fundings Report</a></li>
+                            <li><a href="~/Admin#/activities">Main Activities Report</a></li>
+                            <li><a href="~/Admin#/activityCosts">Main Activity Costs Report</a></li>
+                            <li><a href="~/Admin#/organization/new">Register Donor / Collaborating Agency</a></li>
+                            <li><a href="~/Admin#/project/new">Add Donor Project</a></li>
+                            <li><a href="~/Admin#/funding/new">Add Project Funding</a></li>
+                            <li><a href="~/Admin#/activity/new">Add Activity</a></li>
+                            <li><a href="~/Admin#/activityCost/new">Add Activity Cost</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-calendar-o"></i> 4W</a>
+                        <ul class="dropdown-menu dropdown-menu2">
+                            <li><a href="~/Admin#/4wTrainings">Main 4W Trainings Report</a></li>
+                            <li><a href="~/Admin#/organizations/4w">Main 4W Organizations Report</a></li>
+                            <li><a href="~/Admin#/organization/new/4w">Register 4W Organization</a></li>
+                            <li><a href="~/Admin#/4wTraining/new">Add 4W Training</a></li>
+                            <li><a href="~/Admin#/4wTrainings/map">Mapping DRM Trainings</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book"></i> Library</a>
+                        <ul class="dropdown-menu dropdown-menu2">
+                            <li><a href="~/Admin#/document/new">Add Document</a></li>
+                            <li><a href="~/Admin#/documents">View Library</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-clipboard"></i> TNA</a>
+                        <ul class="dropdown-menu dropdown-menu2">
+                            <li><a href="~/Admin#/surveys">Main Surveys Report</a></li>
+                            <li><a href="~/Admin#/respondents">Main Respondents Report</a></li>
+                            <li><a href="~/Admin#/questions">Main Questions Report</a></li>
+                            <li><a href="~/Admin#/survey/new">Add Survey</a></li>
+                            <li><a href="~/Admin#/respondent/new/public">Register Respondent</a></li>
+                            <li><a href="~/Admin#/question/new">Add Question</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bar-chart"></i> Reports</a>
+                        <ul class="dropdown-menu dropdown-menu2">
+                            <li><a href="~/Admin#/reportsDashboard">All Reports</a></li>
+                            <li><a href="~/Admin#/trainingDashboard">Training Reports</a></li>
+                            <li><a href="~/Admin#/participantDashboard">Participant Reports</a></li>
+                            <li><a href="~/Admin#/resourceDashboard">Resource Person Reports</a></li>
+                            <li><a href="~/Admin#/dcaDashboard">Donors & Collaborating Agencies Reports</a></li>
+                            <li><a href="~/Admin#/drmDashboard">4Ws Reports</a></li>
+                            <li><a href="~/Admin#/tnaDashboard">TNA Reports</a></li>
+                            <li><a href="~/Admin#/smsemailDashboard">SMS & Email Reports</a></li>
+                            <li><a href="~/Admin#/documents">Documents Report</a></li>
+                            <li><a href="~/Admin#/albums">Galleries Report</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-image"></i> Gallery</a>
+                        <ul class="dropdown-menu dropdown-menu2">
+                            <li><a href="~/Admin#/galleries">Galleries</a></li>
+                            <li><a href="~/Admin#/albums">Albums</a></li>
+                            <li><a href="~/Admin#/album/new">Add Album</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-envelope-o"></i> Email</a>
+                        <ul class="dropdown-menu dropdown-menu2">
+                            <li><a href="~/Admin#/participant/email">Email Participants</a></li>
+                            <li><a href="~/Admin#/participant/sms">SMS Participants</a></li>
+                            <li><a href="~/Admin#/groups">Groups</a></li>
+                            <li><a href="~/Admin#/group/new">Add Group</a></li>
+                            <li><a href="~/Admin#/messageLogs">Logs</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i></a>
+                        <ul class="dropdown-menu dropdown-menu2 pull-right">
+                            <li><a href="~/Admin#/contents">Website Content</a></li>
+                            <li><a href="Account/Register">User Management</a></li>
+                            <li><a href="~/Admin#/organizationTypes">Organization Types</a></li>
+                            <li><a href="~/Admin#/disabilityTypes">Special Abilities</a></li>
+                            <li><a href="~/Admin#/activityTypes">Activity Types</a></li>
+                            <li><a href="~/Admin#/approvedHeads">Approved Heads</a></li>
+                            <li><a href="~/Admin#/areas">Areas of Specialty / Intervention</a></li>
+                            <li><a href="~/Admin#/academicQualifications">Academic Qualifications</a></li>
+                            <li><a href="~/Admin#/thematicAreas">Thematic Areas</a></li>
+                            <li><a href="~/Admin#/documentCategories">Document Categories</a></li>
+                            <li><a href="~/Admin#/provinces">Provinces</a></li>
+                            <li><a href="~/Admin#/districts">Districts</a></li>
+                            <li><a href="~/Admin#/cities">Cities</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i></a>
+                        <ul class="dropdown-menu dropdown-menu2 pull-right">
+                            <li><a href="~/Manage/ChangePassword">My Account</a></li>
+                            <li><a href="~/Account/SignOut">Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <div class="container">
+        @RenderBody()
+    </div>
+    <br />
+    <br />
+
+    <hr />
+    <footer class="footer-main">
+        <div class="container font-roboto copyright">
+            <div class="row">
+                <div class="col-md-6"> &copy; 2016 Onwards. NIDM. All Rights Reserved. </div>
+                <div class="col-md-6 text-right"> Built by <a href="http://nrtdcorp.com/" target="_blank">NRTD Corporation</a> </div>
+            </div>
+        </div>
+    </footer>
+    <!-- <span data-cc-scroll-to-top></span>-->
+    <!-- #region Vendor Scripts -->
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/pdfmake/pdfmake.min.js"></script>
+    <script src="~/Scripts/pdfmake/vfs_fonts.js"></script>
+
+    <!-- #region Angular -->
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-animate.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="~/Scripts/angular-sanitize.min.js"></script>
+    <script src="~/Scripts/tv4.min.js"></script>
+    <script src="~/Scripts/ObjectPath.js"></script>
+    <script src="~/Scripts/schema-form.min.js"></script>
+    <script src="~/Scripts/bootstrap-decorator.min.js"></script>
+
+    <script src="~/Scripts/lodash.min.js"></script>
+    <script src="~/Scripts/angular-google-maps.min.js"></script>
+
+    <script src="~/Scripts/moment.js"></script>
+    <script src="~/Scripts/angular-ui/calendar.js"></script>
+    <script src="~/Scripts/fullcalendar.min.js"></script>
+    <script src="~/Scripts/gcal.js"></script>
+
+    <script src="~/Scripts/Chart.min.js"></script>
+    <script src="~/Scripts/angular-chart.min.js"></script>
+    <!-- #endregion -->
+
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/bootstrap-timepicker.js"></script>
+
+    <script src="~/Scripts/jquery.blueimp-gallery.min.js"></script>
+    <script src="~/Scripts/bootstrap-image-gallery.min.js"></script>
+
+    <script src="~/Scripts/viewportchecker.js"></script>
+    <script src="~/Scripts/animate.js"></script>
+    <script src="~/Scripts/respond.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
+
+
+    <script src="~/Scripts/angular-ui/ui-bootstrap.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="~/Scripts/spin.js"></script>
+
+    <script src="~/Scripts/ui-grid.min.js"></script>
+    <script src="~/Scripts/bootstrap-colorpicker-module.js"></script>
+    <script src="~/Scripts/angular-wysiwyg.min.js"></script>
+
+    <!-- #region Breeze -->
+    <script src="~/Scripts/breeze.debug.js"></script>
+    <script src="~/Scripts/breeze.bridge.angular.js"></script>
+    <script src="~/Scripts/breeze.directives.js"></script>
+    <script src="~/Scripts/breeze.saveErrorExtensions.js"></script>
+    <!-- #endregion -->
+    <!-- #endregion -->
+    <!-- #region Work In Progress -->
+    <!--<script src="~/Scripts/angular.breeze.storagewip.js"></script>-->
+    <!-- #endregion -->
+    <!-- #region Bootstrapping -->
+    <script src="~/app/app.js"></script>
+    <script src="~/app/config.js"></script>
+    <script src="~/app/config.exceptionHandler.js"></script>
+    <script src="~/app/config.route.js"></script>
+    <!-- #endregion -->
+    <!-- #region common Modules -->
+    <script src="~/app/common/common.js"></script>
+    <script src="~/app/common/logger.js"></script>
+    <script src="~/app/common/spinner.js"></script>
+    <!-- #endregion -->
+    <!-- #region common.bootstrap Modules -->
+    <script src="~/app/common/bootstrap/bootstrap.dialog.js"></script>
+    <!-- #endregion -->
+    <!-- #region app -->
+    <script src="~/app/layout/shell.js"></script>
+
+    <script src="~/app/academicQualification/edit.js"></script>
+    <script src="~/app/academicQualification/index.js"></script>
+
+    <script src="~/app/activity/details.js"></script>
+    <script src="~/app/activity/edit.js"></script>
+    <script src="~/app/activity/index.js"></script>
+
+    <script src="~/app/activityCost/details.js"></script>
+    <script src="~/app/activityCost/edit.js"></script>
+    <script src="~/app/activityCost/index.js"></script>
+
+    <script src="~/app/activityType/edit.js"></script>
+    <script src="~/app/activityType/index.js"></script>
+
+    <script src="~/app/album/details.js"></script>
+    <script src="~/app/album/edit.js"></script>
+    <script src="~/app/album/index.js"></script>
+
+    <script src="~/app/approvedActivity/edit.js"></script>
+    <script src="~/app/approvedActivity/index.js"></script>
+
+    <script src="~/app/area/edit.js"></script>
+    <script src="~/app/area/index.js"></script>
+
+    <script src="~/app/city/edit.js"></script>
+    <script src="~/app/city/index.js"></script>
+
+    <script src="~/app/common/thanks.js"></script>
+
+    <script src="~/app/content/edit.js"></script>
+    <script src="~/app/content/index.js"></script>
+
+    <script src="~/app/disabilityType/edit.js"></script>
+    <script src="~/app/disabilityType/index.js"></script>
+
+    <script src="~/app/district/edit.js"></script>
+    <script src="~/app/district/index.js"></script>
+
+    <script src="~/app/document/details.js"></script>
+    <script src="~/app/document/index.js"></script>
+    <script src="~/app/document/edit.js"></script>
+
+    <script src="~/app/documentCategory/edit.js"></script>
+    <script src="~/app/documentCategory/index.js"></script>
+
+    <script src="~/app/funding/details.js"></script>
+    <script src="~/app/funding/edit.js"></script>
+    <script src="~/app/funding/index.js"></script>
+
+    <script src="~/app/gallery/details.js"></script>
+    <script src="~/app/gallery/index.js"></script>
+
+    <script src="~/app/group/edit.js"></script>
+    <script src="~/app/group/index.js"></script>
+
+    <script src="~/app/home/home.js"></script>
+
+    <script src="~/app/messageLog/details.js"></script>
+    <script src="~/app/messageLog/index.js"></script>
+
+    <script src="~/app/organization/details.js"></script>
+    <script src="~/app/organization/edit.js"></script>
+    <script src="~/app/organization/index.js"></script>
+
+    <script src="~/app/organizationType/edit.js"></script>
+    <script src="~/app/organizationType/index.js"></script>
+
+    <script src="~/app/participant/details.js"></script>
+    <script src="~/app/participant/edit.js"></script>
+    <script src="~/app/participant/email.js"></script>
+    <script src="~/app/participant/index.js"></script>
+    <script src="~/app/participant/sms.js"></script>
+
+    <script src="~/app/project/details.js"></script>
+    <script src="~/app/project/edit.js"></script>
+    <script src="~/app/project/index.js"></script>
+
+    <script src="~/app/province/edit.js"></script>
+    <script src="~/app/province/index.js"></script>
+
+    <script src="~/app/question/details.js"></script>
+    <script src="~/app/question/edit.js"></script>
+    <script src="~/app/question/index.js"></script>
+
+    <script src="~/app/reports/report.js"></script>
+
+    <script src="~/app/resourcePerson/details.js"></script>
+    <script src="~/app/resourcePerson/edit.js"></script>
+    <script src="~/app/resourcePerson/index.js"></script>
+
+    <script src="~/app/resourcePersonTraining/details.js"></script>
+    <script src="~/app/resourcePersonTraining/edit.js"></script>
+    <script src="~/app/resourcePersonTraining/index.js"></script>
+
+    <script src="~/app/respondent/details.js"></script>
+    <script src="~/app/respondent/edit.js"></script>
+    <script src="~/app/respondent/index.js"></script>
+
+    <script src="~/app/survey/details.js"></script>
+    <script src="~/app/survey/edit.js"></script>
+    <script src="~/app/survey/index.js"></script>
+    <script src="~/app/survey/response.js"></script>
+
+    <script src="~/app/thematicArea/edit.js"></script>
+    <script src="~/app/thematicArea/index.js"></script>
+
+    <script src="~/app/training/attendance.js"></script>
+    <script src="~/app/training/calendar.js"></script>
+    <script src="~/app/training/details.js"></script>
+    <script src="~/app/training/edit.js"></script>
+    <script src="~/app/training/index.js"></script>
+    <script src="~/app/training/map.js"></script>
+    <script src="~/app/training/schedule.js"></script>
+
+    <script src="~/app/trainingActivity/details.js"></script>
+    <script src="~/app/trainingActivity/edit.js"></script>
+    <script src="~/app/trainingActivity/index.js"></script>
+    <script src="~/app/trainingActivity/map.js"></script>
+
+    <script src="~/app/trainingCost/details.js"></script>
+    <script src="~/app/trainingCost/edit.js"></script>
+    <script src="~/app/trainingCost/index.js"></script>
+
+    <script src="~/app/training/evaluation.js"></script>
+
+    <script src="~/app/trainingSession/details.js"></script>
+    <script src="~/app/trainingSession/edit.js"></script>
+    <script src="~/app/trainingSession/index.js"></script>
+
+    <script src="~/app/reportsDashboard/dashboard.js"></script>
+    <script src="~/app/reportsDashboard/training.js"></script>
+    <script src="~/app/reportsDashboard/participant.js"></script>
+    <script src="~/app/reportsDashboard/drm.js"></script>
+    <script src="~/app/reportsDashboard/dca.js"></script>
+    <script src="~/app/reportsDashboard/resource.js"></script>
+    <script src="~/app/reportsDashboard/smsemail.js"></script>
+    <script src="~/app/reportsDashboard/tna.js"></script>
+
+    <!-- #endregion -->
+    <!-- #region app Services -->
+    <script src="~/app/services/checklist-model.js"></script>
+    <script src="~/app/services/datacontext.js"></script>
+    <script src="~/app/services/directives.js"></script>
+    <script src="~/app/services/notify.js"></script>
+    <script src="~/app/services/entityManagerFactory.js"></script>
+    <script src="~/app/services/fileUpload.js"></script>
+    <script src="~/app/services/helper.js"></script>
+    <script src="~/app/services/model.js"></script>
+    <script src="~/app/services/model.validation.js"></script>
+    <script src="~/app/services/routeMediator.js"></script>
+
+    <!-- #region Repositories -->
+    <script src="~/app/services/repositories.js"></script>
+    <script src="~/app/services/repository.academicqualification.js"></script>
+    <script src="~/app/services/repository.abstract.js"></script>
+    <script src="~/app/services/repository.activity.js"></script>
+    <script src="~/app/services/repository.activityCost.js"></script>
+    <script src="~/app/services/repository.activitytype.js"></script>
+    <script src="~/app/services/repository.approvedactivity.js"></script>
+    <script src="~/app/services/repository.album.js"></script>
+    <script src="~/app/services/repository.area.js"></script>
+    <script src="~/app/services/repository.broadertrainingarea.js"></script>
+    <script src="~/app/services/repository.city.js"></script>
+    <script src="~/app/services/repository.content.js"></script>
+    <script src="~/app/services/repository.disabilitytype.js"></script>
+    <script src="~/app/services/repository.district.js"></script>
+    <script src="~/app/services/repository.document.js"></script>
+    <script src="~/app/services/repository.documentCategory.js"></script>
+    <script src="~/app/services/repository.enum.js"></script>
+    <script src="~/app/services/repository.funding.js"></script>
+
+    <script src="~/app/services/repository.group.js"></script>
+    <script src="~/app/services/repository.gallery.js"></script>
+
+    <script src="~/app/services/repository.mediafile.js"></script>
+    <script src="~/app/services/repository.messagelog.js"></script>
+
+    <script src="~/app/services/repository.organization.js"></script>
+    <script src="~/app/services/repository.organizationtype.js"></script>
+
+    <script src="~/app/services/repository.participant.js"></script>
+    <script src="~/app/services/repository.participantdisabilitytype.js"></script>
+    <script src="~/app/services/repository.potentialresourceperson.js"></script>
+    <script src="~/app/services/repository.project.js"></script>
+    <script src="~/app/services/repository.province.js"></script>
+
+    <script src="~/app/services/repository.question.js"></script>
+    <script src="~/app/services/repository.resourceperson.js"></script>
+    <script src="~/app/services/repository.resourcepersonarea.js"></script>
+    <script src="~/app/services/repository.resourcepersondisabilitytype.js"></script>
+    <script src="~/app/services/repository.resourcepersontraining.js"></script>
+
+    <script src="~/app/services/repository.respondent.js"></script>
+    <script src="~/app/services/repository.respondentdisabilitytype.js"></script>
+    <script src="~/app/services/repository.survey.js"></script>
+    <script src="~/app/services/repository.surveyquestion.js"></script>
+    <script src="~/app/services/repository.surveyquestionresponse.js"></script>
+
+    <script src="~/app/services/repository.thematicarea.js"></script>
+    <script src="~/app/services/repository.training.js"></script>
+    <script src="~/app/services/repository.trainingactivity.js"></script>
+    <script src="~/app/services/repository.trainingcost.js"></script>
+    <script src="~/app/services/repository.trainingevaluation.js"></script>
+    <script src="~/app/services/repository.trainingorganization.js"></script>
+    <script src="~/app/services/repository.trainingsession.js"></script>
+    <script src="~/app/services/repository.trainingsessionparticipant.js"></script>
+
+
+    <!-- #endregion -->
+    <!-- #endregion -->
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.datepicker').datepicker({ autoclose: true, format: 'dd M yyyy' });
+            $(".timepicker").timepicker();
+        });
+
+        $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+            $(".alert").alert('close');
+        });
+    </script>
+    <script type="text/javascript">
+    // Fix to top navbar on scroll
+    $(function () {
+        $('#nav-wrapper').height($("#nav").height());
+        //$('#nav').affix({
+        //    offset: { top: $('#nav').offset().top }
+        //});
+    });
+    </script>
+    <script type="text/javascript">
+        // Fix to top subnav on scroll
+        $(function () {
+            $('#nav-wrapper').height($("#nav2").height());
+
+            //$('#nav2').affix({
+            //    offset: { top: $('#nav').offset().top }
+            //});
+        });
+    </script>
+    <script type="text/javascript">
+        // Add slideDown animation to dropdown
+        $('.dropdown').on('show.bs.dropdown', function (e) {
+            $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+        });
+
+        // Add slideUp animation to dropdown
+        $('.dropdown').on('hide.bs.dropdown', function (e) {
+            $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+        });
+    </script>
+    <script type="text/javascript">
+        /* smooth scrolling for scroll to top */
+        $('.scroll-top').click(function () {
+            $('body,html').animate({ scrollTop: 0 }, 1000);
+        })
+    </script>
+    <script>
+        $(function () {
+            setNavigation();
+        });
+
+        function setNavigation() {
+            var path = window.location.pathname;
+            path = path.replace(/\/$/, "");
+            path = decodeURIComponent(path);
+
+            $(".nav a").each(function () {
+                var href = $(this).attr('href');
+                if (path == href) {
+                    $(this).closest('li').addClass('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

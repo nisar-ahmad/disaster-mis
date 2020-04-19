@@ -1,0 +1,72 @@
+﻿<section class="mainbar" data-ng-controller="documentDetail as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/nav-library.html'" />   
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-logos.html'" />
+            <div class="widget wgreen">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info" href="javascript:window.print();">
+                        <i class="fa fa-print"></i> Print
+                    </a>&nbsp; &nbsp;
+                    <a class="btn btn-info"
+                       data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i> Back
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>                
+                <div class="widget-content" data-ng-if="vm.entity">
+                    <br />
+                    <dl class="dl-horizontal">
+                        <dt>Name</dt>
+                        <dd>{{vm.entity.name}}</dd>
+                        <dt>Category 1</dt>
+                        <dd>{{vm.entity.documentCategory1.name}}</dd>
+                        <dt>Category 2</dt>
+                        <dd>{{vm.entity.documentCategory2.name}}</dd>
+                        <dt>Category 3</dt>
+                        <dd>{{vm.entity.documentCategory3.name}}</dd>
+                        <dt>Thematic Area</dt>
+                        <dd>{{vm.entity.thematicArea.name}}</dd>
+                        <dt>Training</dt>
+                        <dd>{{vm.entity.training.name}}</dd>
+                        <dt>Edition</dt>
+                        <dd>{{vm.entity.edition}}</dd>
+                        <dt>Year of Publication</dt>
+                        <dd>{{vm.entity.yearOfPublication | date: 'dd MMM yyyy'}}</dd>
+                        <dt>Authors</dt>
+                        <dd>{{vm.entity.authors}}</dd>
+                        <dt>Compiling Agency</dt>
+                        <dd>{{vm.entity.compilingAgency}}</dd>
+                        <dt>Publisher Name</dt>
+                        <dd>{{vm.entity.publisherName}}</dd>
+                        <dt>Publisher Address</dt>
+                        <dd>{{vm.entity.publisherAddress}}</dd>
+                        <dt>Publisher Email</dt>
+                        <dd>{{vm.entity.publisherEmail}}</dd>
+                        <dt>Publisher Phone</dt>
+                        <dd>{{vm.entity.publisherPhone}}</dd>
+                        <dt>Price</dt>
+                        <dd>{{vm.entity.price}}</dd>
+                        <dt>Physical Location</dt>
+                        <dd>{{vm.entity.physicalLocation}}</dd>
+                        <dt>Visibility</dt>
+                        <dd>{{vm.entity.accessTypes.name}}</dd>
+                        <dt>File</dt>
+                        <dd>
+                            <a data-ng-if="vm.entity.fileName" target="_blank" data-ng-href="{{vm.fileNameUrl}}{{vm.entity.fileName}}">
+                                <img data-ng-src="{{vm.getFileIcon(vm.entity.fileName)}}" title="{{vm.entity.fileName}}" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                {{vm.entity.fileName}}
+                            </a>
+                        </dd>
+                    </dl>
+                <div data-ng-if="!vm.public" class="btn-group pull-right">
+                    <a class="btn btn-info" href="#/document/new/">
+                        <i class="fa fa-plus"></i> Add New
+                    </a>
+                </div>
+            </div>
+        </div>
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-signature.html'" />
+        </div>
+    </section>
+</section>

@@ -1,0 +1,24 @@
+﻿<section class="mainbar" data-ng-controller="trainingActivities as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-if="!vm.orgId" data-ng-include="'app/templates/nav-4w.html'" />
+            <div class="widget wblue">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info" ng-click="vm.refresh()">
+                        <i class="fa fa-refresh"></i> Refresh
+                    </a>
+                    <a class="btn btn-info" href="{{vm.addLink}}">
+                        <i class="fa fa-plus"></i> Add Training Activity
+                    </a>
+                    <a data-ng-if="vm.public" class="btn btn-info" ng-click="vm.logOut()">
+                        <i class="fa fa-sign-out"></i> Log Out
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <div data-ng-include="'app/templates/grid-index.html'" />
+                </div>
+            </div>
+            <div data-ng-if="!vm.orgId" data-ng-include="'app/templates/reports-4w.html'" /></div>
+    </section>
+</section>

@@ -1,0 +1,55 @@
+﻿<section class="mainbar" data-ng-controller="report as vm">
+    <section class="matter">
+        <div class="widget wblue">
+            <div class="btn-group pull-right">
+                <a class="btn btn-info" ng-click="vm.refresh()">
+                    <i class="fa fa-refresh"></i> Refresh
+                </a>
+            </div>
+            <div data-cc-widget-header title="{{vm.title}}"></div>
+            <div class="widget-content">
+                <div ng-if="!vm.isRefreshing" ui-grid="vm.gridOptions" class="ui-grid"
+                     ui-grid-resize-columns
+                     ui-grid-move-columns
+                     ui-grid-selection
+                     ui-grid-exporter>
+                </div>
+
+                <div data-ng-if="vm.isChartVisible">
+
+                    <p data-ng-if="vm.selectedRows.length == 0" style="color:red;">Select rows above to see in chart below.</p>
+
+                    <div data-ng-if="vm.selectedRows.length">
+
+                        <label><input type="radio" data-ng-model="vm.chartType" data-ng-value="0"> Bar Chart</label>&nbsp;&nbsp;&nbsp;
+                        <label><input type="radio" data-ng-model="vm.chartType" data-ng-value="1"> Pie Chart</label>&nbsp;&nbsp;&nbsp;
+                        <label><input type="radio" data-ng-model="vm.chartType" data-ng-value="2"> Line Chart</label>&nbsp;&nbsp;&nbsp;
+
+                        <canvas data-ng-if="vm.chartType==0" class="chart chart-bar"
+                                chart-legend="true"
+                                chart-labels="vm.chart.labels"
+                                chart-series="vm.chart.series"
+                                chart-data="vm.chart.data"></canvas>
+
+                        <canvas data-ng-if="vm.chartType==1" class="chart chart-pie"
+                                chart-legend="true"
+                                chart-labels="vm.chart.labels"
+                                chart-data="vm.chart.data"></canvas>
+
+                        <canvas data-ng-if="vm.chartType==2" class="chart chart-line"
+                                chart-legend="true"
+                                chart-labels="vm.chart.labels"
+                                chart-series="vm.chart.series"
+                                chart-data="vm.chart.data"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <hr />
+            <br />
+
+            <div data-ng-include="'app/templates/nav-reports.html'" />
+
+    </section>
+</section>

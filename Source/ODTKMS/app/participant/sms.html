@@ -1,0 +1,55 @@
+﻿<section class="mainbar" data-ng-controller="participantSms as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-include="'app/templates/nav-email.html'" />
+            <div class="widget wgreen">
+                <div data-ng-include="'app/templates/form-buttons-email.html'" />
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="Training" class="col-md-2 control-label">Training</label>
+                            <div class="col-md-10">
+                                <select id="Training" data-ng-options="i.name for i in vm.trainings"
+                                        data-ng-model="vm.training" data-ng-change="vm.trainingChanged()"
+                                        class="form-control" data-z-validate></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Group" class="col-md-2 control-label">Category</label>
+                            <div class="col-md-10">
+                                <select id="Group" data-ng-options="i for i in vm.groups"
+                                        data-ng-model="vm.group"
+                                        class="form-control" data-z-validate></select>
+                            </div>
+                        </div>
+
+                        <div data-ng-if="vm.showUserGroup" class="form-group">
+                            <label for="Group" class="col-md-2 control-label">Group</label>
+                            <div class="col-md-10">
+                                <select id="Group" data-ng-options="i.name for i in vm.userGroups"
+                                        data-ng-model="vm.userGroup" data-ng-change="vm.userGroupChanged()"
+                                        class="form-control" data-z-validate></select>
+                            </div>
+                        </div>
+
+                        <div data-ng-if="vm.showTo" class="form-group">
+                            <label for="Specific" class="col-md-2 control-label">To</label>
+                            <div class="col-md-10">
+                                <textarea id="Specific" data-ng-model="vm.specific" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Message" class="col-md-2 control-label">Message (140 Characters)</label>
+                            <div class="col-md-10">
+                                <textarea id="Message" data-ng-model="vm.message" maxlength="140" class="form-control" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div data-ng-include="'app/templates/form-buttons-email.html'" />
+            </div>
+            <div data-ng-include="'app/templates/reports-participant.html'" />
+        </div>
+    </section>
+</section>

@@ -1,0 +1,84 @@
+@model IEnumerable<ODTKMS.Models.Content>
+@{
+    ViewBag.Title = "Guest Book";
+}
+<div class="row font-open para">
+
+    @foreach (var item in Model)
+    {
+        <div class="container">
+            <div class="col-md-2 text-center guest-book">
+                <img src="~/Files/Website/@item.File" width="100" height="100" class="img-circle"><br />
+                <br />
+                @Html.Raw(item.Title)
+                <br />
+                @Html.DisplayFor(o => item.Date)
+                </div>
+            <div class="col-md-10">@Html.Raw(item.Description)
+        </div>
+    </div>
+
+        @*<div class="media">
+                <span class="header-offset" id="@item.ContentId"> &nbsp; </span>
+                <div class="media-left">
+                    <img class="media-object" src="~/Files/Website/@item.File" width="300">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">@item.Title</h4>
+                    <span class="news-date">@Html.DisplayFor(o => item.Date)</span> <br />
+                    <span class="news-descr">@Html.Raw(item.Description)</span>
+                </div>
+            </div>*@
+        <br />
+    }
+</div>
+
+
+@*@{
+        ViewBag.Title = "Guest Book";
+    }
+
+    <div class="row font-open para">
+        <div class="container">
+            <div class="col-md-2 text-center guest-book">
+                <img src="assets/img/waseem_ahmed.jpg" width="100" height="101" class="img-circle"><br />
+                <br />
+                Waseem Ahmad<br />
+                CBS, NIDM
+            </div>
+            <div class="col-md-10">I was very pleased to attend your Disaster Risk Reduction training workshop that was held at the Marriot Hotel in Islamabad and which was attend by many government officials, representatives from INGOs and NGOs, members of academia, students and even businessmen. It was one of the most unique experiences I have ever had in Pakistan. I look forward to attending further trainings. </div>
+        </div>
+    </div>
+    <br />
+    <div class="container">
+        <div class="col-md-2 text-center guest-book">
+            <img src="assets/img/waseem_ahmed.jpg" width="100" height="101" class="img-circle"><br />
+            <br />
+            Waseem Ahmad<br />
+            CBS, NIDM
+        </div>
+        <div class="col-md-10">I was very pleased to attend your Disaster Risk Reduction training workshop that was held at the Marriot Hotel in Islamabad and which was attend by many government officials, representatives from INGOs and NGOs, members of academia, students and even businessmen. It was one of the most unique experiences I have ever had in Pakistan. I look forward to attending further trainings. </div>
+    </div>
+            </div>
+    <br />
+    <div class="container">
+        <div class="col-md-2 text-center guest-book">
+            <img src="assets/img/waseem_ahmed.jpg" width="100" height="101" class="img-circle"><br />
+            <br />
+            Waseem Ahmad<br />
+            CBS, NIDM
+        </div>
+        <div class="col-md-10">I was very pleased to attend your Disaster Risk Reduction training workshop that was held at the Marriot Hotel in Islamabad and which was attend by many government officials, representatives from INGOs and NGOs, members of academia, students and even businessmen. It was one of the most unique experiences I have ever had in Pakistan. I look forward to attending further trainings. </div>
+    </div>
+        </div>
+    <br />
+    <div class="container">
+        <div class="col-md-2 text-center guest-book">
+            <img src="assets/img/waseem_ahmed.jpg" width="100" height="101" class="img-circle"><br />
+            <br />
+            Waseem Ahmad<br />
+            CBS, NIDM
+        </div>
+        <div class="col-md-10">I was very pleased to attend your Disaster Risk Reduction training workshop that was held at the Marriot Hotel in Islamabad and which was attend by many government officials, representatives from INGOs and NGOs, members of academia, students and even businessmen. It was one of the most unique experiences I have ever had in Pakistan. I look forward to attending further trainings. </div>
+    </div>*@
+

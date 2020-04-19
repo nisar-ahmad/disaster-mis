@@ -1,0 +1,401 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body, html {padding:0px; margin:0px; width:100%;  }
+body img {-o-transition:.5s ease-in, .5s ease-out; -ms-transition:.5s ease-in, .5s ease-out; -moz-transition:.5s ease-in, .5s ease-out; -webkit-transition:.5s ease-in, .5s ease-out; /* ...and now for the proper property */ transition:.5s ease-in, .5s ease-out; border:none;}
+body img:hover {opacity:0.6; filter:alpha(opacity=60); /* For IE8 and earlier */}
+
+/* Logo */
+.logotop {margin-top:25px;}
+
+/* Navbar/menu */
+.nav2 {margin-top:0px; border:none;}
+.nav {background:#fff; font-family:'nexa_boldregular', Helvetica, Arial, sans-serif; font-size:14px; }
+.navbar-wrapper {background:#fff; padding:0px; margin:0px; width:100%; border-bottom:none;}
+.navbar-inverse {background-color:#fff; }
+.navbar .brand {background-color:#fff; }
+.navbg {background-color:#fff;}
+.navbar .navbar-inner {-webkit-box-shadow:none; -moz-box-shadow:none; box-shadow:none;}
+.navcol {background:#fff; background-image: none; background-repeat: repeat-x; border-color: none;
+filter: none; border:none;}
+.navbar .brand {color:#f5f5f5; text-shadow:none; text-decoration:none;}
+.brand {margin-top:;}
+.navbar .nav {margin-top:50px; text-transform: uppercase;}
+/*85px*/
+.navbar .nav > li > a {color:#00acce; text-shadow:none; text-decoration:none; border:none;  font-weight:300; font-family:'nexa_boldregular', Helvetica, Arial, sans-serif; letter-spacing:0.01em;}
+.navbar .nav > li > a:hover {color:#ef4129; /*background:#F4E80B;*/}
+.navbar {z-index:1;}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form .nav {
+border-color: none; border:none;
+}
+.navbar {
+border-color: none; border:none;
+}
+.navbar-inverse {
+background-color: none;
+border-color: none;
+border:none;
+}
+
+.navshiftdown {margin-top:35px;}
+.navbar-brand {margin-bottom:15px;}
+
+.navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+color: #ef4129;
+background-color: #fff;
+}
+.dropdown-menu {font-size:14px; border:none; background:#fff;}
+.dropdown-menu > li {margin-left:10px; margin-right:10px; margin-top:3px; margin-bottom:3px;}
+.dropdown-menu > li > a:hover {background:#fff; color:#ef4129;  /*background:#F4E80B;*/ }
+
+/* Navbar/offcanvas */
+.navbar-header {margin-top:70px; font-family:'nexa_boldregular', Helvetica, Arial, sans-serif; font-size:14px; text-transform:uppercase; letter-spacing:0.01em;}
+.navbar-header:hover {cursor:pointer;}
+.main-menu {font-size: 14px; text-transform:uppercase; font-family:'nexa_boldregular', Helvetica, Arial, sans-serif; letter-spacing:0.01em;}
+.main-menu li {font-size: 14px; border-bottom:none;}
+nav {background: #00acce;}
+
+/* Carousel */
+.carousel {
+  height: 500px;
+  margin-bottom: 0px;
+}
+.carousel .item {
+background-color: #00acce;
+}
+.slide1 {background:url(../img/acute-patient-care-slide1.jpg);}
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+.carousel-caption {
+background:none;
+color: #fff;
+text-shadow: none;
+top: 10%;
+}
+.slide-slogan {font-size: 40px; text-transform:uppercase; font-family:'nexa_boldregular', Helvetica, Arial, sans-serif; letter-spacing:0.01em; line-height:110%; text-align:left;}
+.slide-slogan-line2 {font-size:30px; text-align:left;}
+.slide-small {font-size: 40px;}
+.slide-small2 {font-size:40px; text-align:left;}
+
+
+
+/* Triad */
+
+.triad {height:100%; width:100%; background:#00acce;}
+.triad h1 {font-size: 40px; text-transform:uppercase; font-family:'nexa_boldregular', Helvetica, Arial, sans-serif; letter-spacing:0.01em; color:#fff;}
+.triad-headline2 {font-size:60px;}
+.triad-insider {margin-top:100px; margin-bottom:100px;}
+
+/* Midriff */
+.midriff {margin-top:50px; text-align:center;}
+.midriff h1 {font-size: 30px; text-transform:uppercase; font-family:'nexa_boldregular', Helvetica, Arial, sans-serif; letter-spacing:0.05em; color:#333; margin-bottom:30px;}
+.midriff p {font-size: 18px; text-transform:; font-family:'Lato', Helvetica, Arial, sans-serif; letter-spacing:; color:#333; line-height:160%}
+.midriff ul {list-style-type:none;}
+.midriff li {font-size: 18px; text-transform:; font-family:'Lato', Helvetica, Arial, sans-serif; letter-spacing:; color:#333; line-height:160%}
+
+.midriff2 h2 {font-size: 20px; text-transform:uppercase; font-family:'nexa_boldregular', Helvetica, Arial, sans-serif; letter-spacing:0.05em; color:#333; margin-bottom:30px;}
+.midriff2 p {font-size: 16px; text-transform:; font-family:'Lato', Helvetica, Arial, sans-serif; letter-spacing:; color:#333; line-height:160%}
+
+/* Gallery */
+
+#links img {margin-bottom:12px; margin-right:10px;}
+
+/* Norm Banners */
+
+.bannerout {width:100%; border:none; height:300px; max-width:100%;}
+.bannerin {
+}
+.b1 {background:url(img/banner11.jpg) no-repeat center center;}
+.b2 {background:url(img/banner12.jpg) no-repeat center center;}
+.b3 {background:url(img/banner11.jpg) no-repeat center center;}
+.b4 {background:url(img/banner12.jpg) no-repeat center center;}
+
+/* Triad2 */
+
+.triad2 {background:#eee;}
+.triad2 h1 {color:#00acce;}
+
+/* TriadN */
+
+.triadn {background: url(img/acute-patient-care-slide2.jpg) no-repeat;}
+.triadn h1 {color:#fff; font-size:75px;}
+
+/* Triad3 */
+.triad3 {background:#8fcff6;}
+.triad3 h1{font-size:40px;}
+.triad-insider3 {margin-top:50px; margin-bottom:50px;}
+.triad3 a {color:#fff;}
+.triad3 a:link {color:#fff;}
+.triad3 a:hover {color:#eee;}
+.triad3 a:visited {color:#fff;}
+.triad3 a:active {color:#00acce;}
+
+/* Triad5 */
+.triad5 {background:#8fcff6 url(../img/acute-patient-care-banner10.jpg) no-repeat;}
+.triad5 h1 {font-size:30px; letter-spacing:0.1em;}
+.triad5 h2 {font-size:22px; text-transform:uppercase; font-family:'nexa_boldregular', Helvetica, Arial, sans-serif; letter-spacing:0.2em; color:#fff;}
+.triad-insider5 {margin-top:50px; margin-bottom:50px;}
+
+/* Contact form */
+.contactform {font-size: 16px; text-transform:uppercase; font-family:'nexa_boldregular', Helvetica, Arial, sans-serif; letter-spacing:0.05em;}
+
+/* Footer */
+.footercss {}
+.footerbg {width:100%; border-top:none; background-color:#00acce; font-family:'nexa_boldregular', Helvetica, Arial, sans-serif; font-size:14px; text-transform:uppercase; letter-spacing:0.05em;}
+.footerin {margin-top:20px; margin-bottom:20px;}
+.footerin ul {margin:0px; padding:0px; list-style-type:none;}
+.footerin li {margin:0px; padding:0px; margin-bottom:15px;}
+.footertop {color:#fff; font-weight:300;}
+.footerin p {margin-top:25px;}
+.fontfooter {font-size:14px; text-align:left; color:#fff; text-transform:;}
+.footerlogo {margin-top:50px;}
+.footerlogo2 {text-align:right; margin-top:30px;}
+
+.footerin a {-o-transition:.5s ease-in, .5s ease-out; -ms-transition:.5s ease-in, .5s ease-out; -moz-transition:.5s ease-in, .5s ease-out; -webkit-transition:.5s ease-in, .5s ease-out; /* ...and now for the proper property */ transition:.5s ease-in, .5s ease-out; text-decoration:none; color:#fff; letter-spacing:0.05em;}
+.footerin a:visited {text-decoration:none; color:#fff;}
+.footerin a:hover {color:#ef4129; text-decoration:none;}
+.footerin a:active {color:#f2f2f2; text-decoration:none;}
+
+.footer-copyright {color:#1f2126; text-shadow:none; text-decoration:none; border:none;  font-weight:300; font-family:'nexa_boldregular', Helvetica, Arial, sans-serif; letter-spacing:0.05em; text-transform:uppercase; margin-top:25px; margin-bottom:25px;}
+
+
+/* Links */
+
+a {-o-transition:.5s ease-in, .5s ease-out; -ms-transition:.5s ease-in, .5s ease-out; -moz-transition:.5s ease-in, .5s ease-out; -webkit-transition:.5s ease-in, .5s ease-out; /* ...and now for the proper property */ transition:.5s ease-in, .5s ease-out; text-decoration:none; color:#666;}
+a:visited {text-decoration:none; color:#666;}
+a:hover {color:#00acce; text-decoration:none;}
+a:active {color:#00acce; text-decoration:none;}
+
+.carousel-control a {text-decoration:none; color:none; -o-transition:none; -ms-transition:none; -moz-transition:none; -webkit-transition:none; /* ...and now for the proper property */ transition:none;}
+.carousel-control a:link {text-decoration:none; color:none;}
+.carousel-control a:visited {text-decoration:none; color:none;}
+.carousel-control a:hover {text-decoration:none; color:none;}
+.carousel-control a:active {text-decoration:none; color:none;}
+
+/* Animate.css custom */
+
+.animated {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.animatehidden{
+     opacity:0;
+}
+.animatevisible{
+     opacity:1;
+}
+
+@media (max-width: 580px) {
+.slide-slogan {font-size: 40px;}
+.slide-slogan-line2 {font-size:50px;}
+.slide-small {font-size: 40px;}
+.slide-small2 {font-size:60px;}
+.carousel {height: 300px;}
+      }
+
+/* Site.css customised */
+.title {
+    background-color: #00acce;
+    font-size: 14pt;
+    font-weight: bold;
+    color: white;
+    width: 100%;
+    vertical-align: middle;
+    line-height: 35px;
+    padding: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight:300; font-family:'nexa_boldregular', Helvetica, Arial, sans-serif; letter-spacing:0.05em; text-transform:uppercase; margin-top:25px; margin-bottom:25px;
+}
+.table-wrapper {overflow:auto;
+}
+
+.btn-success {text-decoration: none; color: #fff;}
+
+/* menu 2 */
+
+.offcanvas.in {
+  display: block;
+  background-color: #00acce;
+  font-family:'Roboto', Helvetica, Arial, sans-serif;
+}
+
+.nav {
+    background: #00acce;
+}
+
+.navmenu-default .navmenu-nav>li>a, .navbar-default .navbar-offcanvas .navmenu-nav>li>a {
+  color: #fff;
+}
+
+.navmenu-default .navmenu-nav.dropdown-menu, .navbar-default .navbar-offcanvas .navmenu-nav.dropdown-menu {
+  background-color: #0192ae;
+}
+
+.navmenu-default .navmenu-nav>.open>a, .navbar-default .navbar-offcanvas .navmenu-nav>.open>a, .navmenu-default .navmenu-nav>.open>a:hover, .navbar-default .navbar-offcanvas .navmenu-nav>.open>a:hover, .navmenu-default .navmenu-nav>.open>a:focus, .navbar-default .navbar-offcanvas .navmenu-nav>.open>a:focus {
+  background-color: #0192ae;
+  color: #fff;
+}
+
+.navmenu-default, .navbar-default .navbar-offcanvas {
+  border-color: #00acce;
+}
+
+.navmenu-default .navmenu-brand, .navbar-default .navbar-offcanvas .navmenu-brand {
+  color: #fff;
+}
+
+.nav {
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+    .nav .fa {margin-right:5px;
+    }
+
+.navmenu-default .navmenu-nav.dropdown-menu {
+    margin-top:-5px;
+
+}
+
+.dropdown-menu > li > a {
+  display: block;
+  padding: 3px 30px;
+  }
+
+.navtop {padding:0px; margin:0px; width:100%; background:#f8f8f8; position:fixed; height:115px; z-index:1000; margin-top:-15px; }
+.page-content {padding-top:100px;}
+.navbar-inverse {
+    background-color: #f8f8f8;
+}
+.navbar-header {
+    margin-top: 50px;
+    font-family: 'nexa_boldregular', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+}
+
+.navbar .brand {background-color:#8f8f8; }
+
+/* Left menu */
+.list-group.panel > .list-group-item {
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px
+}
+.list-group-submenu {
+  margin-left:20px;
+}
+
+.left-menu {background:#00acce;
+            height:100%;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #00acce;
+    border: none;
+}
+
+.left-menu .panel {
+    margin-bottom: 20px;
+    background-color: #00acce;
+    border: none;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.list-group-item:last-child {
+    margin-bottom: 0;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.list-group-item:first-child {
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.list-group.panel > .list-group-item {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+a.list-group-item {
+    color: #fff;
+}
+
+.list-group-item a:hover {background:#428bca;}
+
+list-group-item:hover {
+  background: #428bca;
+}
+
+.navmenu-default .navmenu-nav>li>a:hover, .navbar-default .navbar-offcanvas .navmenu-nav>li>a:hover, .navmenu-default .navmenu-nav>li>a:focus, .navbar-default .navbar-offcanvas .navmenu-nav>li>a:focus {
+    color: #fff;
+    background-color: transparent;
+}
+
+.navmenu-nav li:hover {background:#037d94;
+}
+
+.navmenu-default, .navbar-default .navbar-offcanvas {
+    background-color: #00acce;
+    border-color: #00acce;
+}
+
+.logoff {margin-top:-10px;
+}
+
+.app-title {margin-left:20px; padding-top:50px;
+}
+
+.carousel .item {
+    background-color: #fff;
+}
+
+.navmenu, .navbar-offcanvas {
+    width: 200px;
+    height: auto;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+}
+
+.user-menu {list-style-type:none;}
+
+.user-menu .dropdown-menu > li > a {
+    display: block;
+    padding: 3px 2px;}
+
+.app-title2 {
+    position:relative;
+    top: 15px;
+    margin-left: 10px; 
+    font-family: 'nexa_boldregular', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+}
+
+a.btn-info:visited {
+    text-decoration: none;
+    color: #fff;
+}
+
+a.btn-info {
+    text-decoration: none;
+    color: #fff;
+}
+
+btn-info {
+    background:#1affc7;
+}

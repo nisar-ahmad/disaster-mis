@@ -1,0 +1,178 @@
+﻿<section class="mainbar" data-ng-controller="document as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-include="'app/templates/nav-library.html'" />
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+            <div class="widget wgreen">
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content user">
+                    <form class="form-horizontal" role="form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="Name" class="col-md-2 control-label">Name</label>
+                            <div class="col-md-10">
+                                <input id="Name" data-ng-model="vm.entity.name"
+                                       data-z-validate placeholder="Name" class="form-control"  />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Category1" class="col-md-2 control-label">Category Level 1</label>
+                            <div class="col-md-10">
+                                <select id="Category1" data-ng-options="i.name for i in vm.documentCategories1"
+                                        data-ng-model="vm.entity.documentCategory1" data-ng-change="vm.categoryChanged(1)"
+                                        data-z-validate class="form-control"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Category2" class="col-md-2 control-label">Category Level 2</label>
+                            <div class="col-md-10">
+                                <select id="Category2" data-ng-options="i.name for i in vm.documentCategories2"
+                                        data-ng-model="vm.entity.documentCategory2" data-ng-change="vm.categoryChanged(2)"
+                                        data-z-validate class="form-control"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Category3" class="col-md-2 control-label">Category Level 3</label>
+                            <div class="col-md-10">
+                                <select id="Category3" data-ng-options="i.name for i in vm.documentCategories3"
+                                        data-ng-model="vm.entity.documentCategory3"
+                                        data-z-validate class="form-control"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ThematicArea" class="col-md-2 control-label">Thematic Area</label>
+                            <div class="col-md-10">
+                                <select id="ThematicArea" data-ng-options="i.name for i in vm.thematicAreas"
+                                        data-ng-model="vm.entity.thematicArea"
+                                        data-z-validate class="form-control"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Training" class="col-md-2 control-label">Training</label>
+                            <div class="col-md-10">
+                                <select id="Training" data-ng-options="i.name for i in vm.trainings"
+                                        data-ng-model="vm.entity.training"
+                                        data-z-validate class="form-control"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Edition" class="col-md-2 control-label">Edition</label>
+                            <div class="col-md-10">
+                                <input id="Edition" data-ng-model="vm.entity.edition"
+                                       placeholder="Edition" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Year" class="col-md-2 control-label">Year of Publication</label>
+                            <div class="col-md-10">
+                                <!--<p class="input-group">-->
+                                <input id="Year" type="text" data-ng-model="vm.entity.yearOfPublication"
+                                       class="form-control" datepicker-popup="dd MMM yyyy"
+                                       close-text="Close" ng-focus="opened=true" is-open="opened"
+                                       placeholder="Year of Publication" />
+                                <!--<span class="input-group-btn">
+                                    <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                                </p>-->
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Authors" class="col-md-2 control-label">Authors</label>
+                            <div class="col-md-10">
+                                <input id="Authors" data-ng-model="vm.entity.authors"
+                                       placeholder="Authors" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="CompilingAgency" class="col-md-2 control-label">Compiling Agency</label>
+                            <div class="col-md-10">
+                                <input id="CompilingAgency" data-ng-model="vm.entity.compilingAgency"
+                                       placeholder="Compiling Agency" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="PublisherName" class="col-md-2 control-label">Publisher Name</label>
+                            <div class="col-md-10">
+                                <input id="PublisherName" data-ng-model="vm.entity.publisherName"
+                                       placeholder="Publisher Name" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="PublisherAddress" class="col-md-2 control-label">Publisher Address</label>
+                            <div class="col-md-10">
+                                <input id="PublisherAddress" data-ng-model="vm.entity.publisherAddress"
+                                       placeholder="Publisher Address" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="PublisherEmail" class="col-md-2 control-label">Publisher Email</label>
+                            <div class="col-md-10">
+                                <input id="PublisherEmail" data-ng-model="vm.entity.publisherEmail"
+                                       placeholder="Publisher Email" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="PublisherPhone" class="col-md-2 control-label">Publisher Phone</label>
+                            <div class="col-md-10">
+                                <input id="PublisherPhone" data-ng-model="vm.entity.publisherPhone"
+                                       placeholder="Publisher Phone" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Price" class="col-md-2 control-label">Price</label>
+                            <div class="col-md-10">
+                                <input id="Price" data-ng-model="vm.entity.price"
+                                       placeholder="Price" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="PhysicalLocation" class="col-md-2 control-label">Physical Location</label>
+                            <div class="col-md-10">
+                                <input id="PhysicalLocation" data-ng-model="vm.entity.physicalLocation"
+                                       placeholder="Physical Location" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="AccessType" class="col-md-2 control-label">Visibility</label>
+                            <div class="col-md-10">
+                                <select id="AccessType" data-ng-options="i for i in vm.accessTypes"
+                                        data-ng-model="vm.entity.accessType"
+                                        class="form-control"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="File" class="col-md-2 control-label">File</label>
+                            <div class="col-md-10">
+                                <a data-ng-if="vm.entity.fileName" target="_blank" data-ng-href="{{vm.fileNameUrl}}{{vm.entity.fileName}}">
+                                    <img data-ng-src="{{vm.getFileIcon(vm.entity.fileName)}}" title="{{vm.entity.fileName}}" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                    {{vm.entity.fileName}}
+                                </a>
+                                <input type="file" data-file-model="vm.file"
+                                       onchange="angular.element(this).scope().vm.fileNameChanged()" />
+                            </div>
+                        </div>
+
+                    </form>
+                    
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+        </div>
+    </section>
+</section>

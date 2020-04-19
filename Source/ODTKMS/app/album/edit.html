@@ -1,0 +1,143 @@
+﻿<section class="mainbar" data-ng-controller="album as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-include="'app/templates/nav-gallery.html'" />
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+            <div class="widget wgreen">
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="Name" class="col-md-2 control-label">Name</label>
+                                    <div class="col-md-10">
+                                        <input id="Name" data-ng-model="vm.entity.name"
+                                               placeholder="Name" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Description" class="col-md-2 control-label">Description</label>
+                                    <div class="col-md-10">
+                                        <textarea id="Description" data-ng-model="vm.entity.description"
+                                                  placeholder="Description" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="AlbumType" class="col-md-2 control-label">Gallery</label>
+                                    <div class="col-md-10">
+                                        <select id="AlbumType" data-ng-options="i for i in vm.albumTypes"
+                                                data-ng-model="vm.entity.albumType"
+                                                data-ng-disabled="vm.mediaFiles.length > 0"
+                                                data-ng-change="vm.albumTypeChanged()"
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" data-ng-if="vm.items.length">
+                                    <label for="Category" class="col-md-2 control-label">{{vm.entity.albumType}}</label>
+                                    <div class="col-md-10">
+                                        <select id="Category" data-ng-options="i.name for i in vm.items"
+                                                data-ng-disabled="vm.mediaFiles.length > 0"
+                                                data-ng-model="vm.item" data-ng-change="vm.setRelativeUrl()"
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="AccessType" class="col-md-2 control-label">Access Type</label>
+                                    <div class="col-md-10">
+                                        <select id="AccessType" data-ng-options="i for i in vm.accessTypes"
+                                                data-ng-model="vm.entity.accessType"
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <form class="form-horizontal" role="form" data-ng-if="vm.id!='new'">
+                                <label>Upload Image/Video File</label>
+                                <div class="form-group">
+                                    <label for="Caption" class="col-md-2 control-label">Caption</label>
+                                    <div class="col-md-10">
+                                        <input id="Caption" data-ng-model="vm.mediaFile.description"
+                                               placeholder="Caption" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="File" class="col-md-2 control-label">File</label>
+                                    <div class="col-md-10">
+                                        <input type="file" data-file-model="vm.file" accept=".jpg, .png, .jpeg, .mp4, .ogg, .webm" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Upload" class="col-md-2 control-label"></label>
+                                    <div class="col-md-10">
+                                        <button class="btn btn-success" data-ng-click="vm.uploadMediaFile()">Upload</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+        </div>
+    </section>
+    <br />
+    <section>
+        <div data-ng-repeat="items in vm.mediaFiles" class="row">
+            <div data-ng-repeat="item in items" class="col-md-3 col-sm-3 text-center">
+                
+                <a data-ng-if="item.fileType==='Image'" data-ng-href="{{vm.albumUrl}}{{item.name}}" title="{{item.description}}" data-gallery>
+                    <img data-ng-src="{{vm.albumUrl}}thumbnails/{{item.name}}" class="img-autosize" />
+                    <p>{{item.description}}</p>
+                </a>
+
+                <a data-ng-if="item.fileType==='Video'" data-ng-href="{{vm.albumUrl}}{{item.name}}" title="{{item.description}}" target="_blank">
+                    <img data-ng-if="item.fileType==='Video'" src="Content/img/icon-video.png" class="img-autosize" />
+                    <p>{{item.description}}</p>
+                </a>
+
+            </div>
+        </div>
+        <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+        <div id="blueimp-gallery" class="blueimp-gallery" data-use-bootstrap-modal="false">
+            <!-- The container for the modal slides -->
+            <div class="slides"></div>
+            <!-- Controls for the borderless lightbox -->
+            <h3 class="title" style="background-color:transparent;"></h3>
+            <a class="prev">‹</a>
+            <a class="next">›</a>
+            <a class="close">×</a>
+            <a class="play-pause"></a>
+            <ol class="indicator"></ol>
+            <!-- The modal dialog, which will be used to wrap the lightbox content -->
+            <div class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body next"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left prev">
+                                <i class="glyphicon glyphicon-chevron-left"></i>
+                                Previous
+                            </button>
+                            <button type="button" class="btn btn-primary next">
+                                Next
+                                <i class="glyphicon glyphicon-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

@@ -1,0 +1,152 @@
+﻿<section class="mainbar" data-ng-controller="project as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-include="'app/templates/nav-donor.html'" />
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+            <div class="widget wgreen">
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <form class="form-horizontal" role="form">
+
+                                <div class="form-group">
+                                    <label for="OrganizationType" class="col-md-2 control-label">Organization Type</label>
+                                    <div class="col-md-10">
+                                        <select id="OrganizationType" data-ng-options="i.name for i in vm.organizationTypes"
+                                                data-ng-model="vm.organizationType" data-ng-change="vm.orgTypeChanged()"
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Organization" class="col-md-2 control-label">Donor</label>
+                                    <div class="col-md-10">
+                                        <select id="Organization" data-ng-options="i.name for i in vm.organizations"
+                                                data-ng-model="vm.entity.organization" 
+                                                class="form-control" data-z-validate></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Name" class="col-md-2 control-label">Name</label>
+                                    <div class="col-md-10">
+                                        <input id="Name" data-ng-model="vm.entity.name"
+                                               placeholder="Name" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Description" class="col-md-2 control-label">Description</label>
+                                    <div class="col-md-10">
+                                        <textarea id="Description" data-ng-model="vm.entity.description"
+                                                  placeholder="Description" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ProjectNumber" class="col-md-2 control-label">Project Number</label>
+                                    <div class="col-md-10">
+                                        <input id="ProjectNumber" data-ng-model="vm.entity.projectNumber"
+                                               placeholder="Project Number" class="form-control" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Start" class="col-md-2 control-label">Start Date</label>
+                                    <div class="col-md-10">
+                                        <input id="Start" type="text" data-ng-model="vm.entity.startDate"
+                                               class="form-control" datepicker-popup="dd MMM yyyy"
+                                               close-text="Close" ng-focus="opened=true" is-open="opened"
+                                               placeholder="Start Date" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="End=" class="col-md-2 control-label">End Date</label>
+                                    <div class="col-md-10">
+                                        <input id="End" type="text" data-ng-model="vm.entity.endDate"
+                                               class="form-control" datepicker-popup="dd MMM yyyy"
+                                               close-text="Close" ng-focus="opened2=true" is-open="opened2"
+                                               placeholder="End Date" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Duration=" class="col-md-2 control-label">Duration</label>
+                                    <div class="col-md-10">
+                                        {{vm.entity.duration}}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Proposal" class="col-md-2 control-label">Proposal</label>
+                                    <div class="col-md-10">
+                                        <a data-ng-if="vm.entity.proposal" target="_blank" data-ng-href="{{vm.proposalUrl}}{{vm.entity.proposal}}">
+                                            <img data-ng-src="{{vm.getFileIcon(vm.entity.proposal)}}" title="Proposal" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                            {{vm.entity.proposal}}
+                                        </a>
+                                        <input id="Proposal" data-ng-model="vm.entity.proposal"
+                                               onchange="angular.element(this).scope().vm.fileNameChanged()"
+                                               data-file-model="vm.proposal"
+                                               placeholder="Proposal" class="form-control" type="file" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Workplan" class="col-md-2 control-label">Workplan</label>
+                                    <div class="col-md-10">
+                                        <a data-ng-if="vm.entity.workplan" target="_blank" data-ng-href="{{vm.workplanUrl}}{{vm.entity.workplan}}">
+                                            <img data-ng-src="{{vm.getFileIcon(vm.entity.workplan)}}" title="Workplan" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                            {{vm.entity.workplan}}
+                                        </a>
+                                        <input id="Workplan" data-ng-model="vm.entity.workplan"
+                                               onchange="angular.element(this).scope().vm.fileNameChanged()"
+                                               data-file-model="vm.workplan"
+                                               placeholder="Workplan" class="form-control" type="file" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="LOA" class="col-md-2 control-label">LOA</label>
+                                    <div class="col-md-10">
+                                        <a data-ng-if="vm.entity.lOA" target="_blank" data-ng-href="{{vm.loaUrl}}{{vm.entity.lOA}}">
+                                            <img data-ng-src="{{vm.getFileIcon(vm.entity.lOA)}}" title="LOA" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                            {{vm.entity.lOA}}
+                                        </a>
+                                        <input id="LOA" data-ng-model="vm.entity.lOA" data-file-model="vm.loa"
+                                               onchange="angular.element(this).scope().vm.fileNameChanged()"
+                                               placeholder="LOA" class="form-control" type="file" data-z-validate />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="OtherDocuments" class="col-md-2 control-label">Other Documents</label>
+                                    <div class="col-md-10">
+                                        <a data-ng-if="vm.entity.otherDocuments" target="_blank" data-ng-href="{{vm.otherDocumentsUrl}}{{vm.entity.otherDocuments}}">
+                                            <img data-ng-src="{{vm.getFileIcon(vm.entity.otherDocuments)}}" title="Other Documents" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                            {{vm.entity.otherDocuments}}
+                                        </a>
+                                        <input id="OtherDocuments" data-ng-model="vm.entity.otherDocuments"
+                                               data-file-model="vm.otherDocuments"
+                                               onchange="angular.element(this).scope().vm.fileNameChanged()"
+                                               placeholder="Other Documents" class="form-control" type="file" data-z-validate />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                              <img data-ng-if="vm.entity.organization.logo" class="img-autosize"
+                                   data-ng-src="{{vm.logoUrl}}{{vm.entity.organization.logo}}" 
+                                   title="Logo of {{vm.entity.organization.name}}" 
+                                   onerror="if (this.src != '') this.src = ''" />
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+            <div data-ng-include="'app/templates/reports-donor.html'" />
+        </div>
+    </section>
+</section>

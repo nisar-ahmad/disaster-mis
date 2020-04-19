@@ -1,0 +1,33 @@
+﻿<section class="mainbar" data-ng-controller="trainingActivityMap as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/nav-4w.html'" />
+            <div class="widget wblue">
+                <div data-ng-if="!vm.public" class="btn-group pull-right" >
+                    <a class="btn btn-info" 
+                            data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i> Back
+                    </a>
+                    <a class="btn btn-info" ng-click="vm.refresh()">
+                        <i class="fa fa-refresh"></i> Refresh
+                    </a>
+                </div>
+                <div data-ng-if="!vm.public" data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom' events='vm.map.events'
+                                        pan="true" control="vm.map.control">
+                        <!--<ui-gmap-markers models="vm.map.markers" coords="'self'" modelsbyref="false">
+                            <ui-gmap-windows show="'model.showWindow'" ng-cloak>
+                                <div>
+                                    <p>Training Name</p>
+                                    <p>Agenda</p>
+                                </div>
+                            </ui-gmap-windows>
+                        </ui-gmap-markers>-->
+                    </ui-gmap-google-map>
+                </div>
+            </div>
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/reports-4w.html'" />
+        </div>
+    </section>
+</section>

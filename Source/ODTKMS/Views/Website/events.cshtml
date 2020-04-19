@@ -1,0 +1,20 @@
+@model IEnumerable<ODTKMS.Models.Content>
+@{
+    ViewBag.Title = "Events";
+}
+
+<div class="row font-open para">
+
+    @foreach (var item in Model)
+    {
+        <div class="container">
+            <span class="header-offset" id="@item.ContentId"> &nbsp; </span>
+            <img class="media-object" src="~/Files/Website/@item.File" width="360">
+            <h4><strong>@item.Title</strong></h4>
+            <span class="news-date">@Html.DisplayFor(o => item.Date)</span> <br />
+            @Html.Raw(item.Description)
+        </div>
+        <br />
+        <br />
+    }
+</div>

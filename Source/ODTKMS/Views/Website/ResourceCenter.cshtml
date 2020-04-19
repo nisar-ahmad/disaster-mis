@@ -1,0 +1,116 @@
+@using ODTKMS.Controllers
+@model IEnumerable<ODTKMS.Models.Document>
+@{
+    ViewBag.Title = Request["Title"];
+}
+<div class="row font-open para">
+    @*<div class="col-md-8">*@
+
+    @foreach (var item in Model)
+    {
+        <div class="media">
+            <div class="media-left">
+                <a target="_blank" href="@Url.Content(BaseController.DocumentsPath + item.FileName)">
+                    <img class="media-object" src="~/Content/img/icon-report.png" alt="" height="150" width="150">
+                </a>
+            </div>
+            <div class="media-body">
+                <h3 class="media-heading text-bold">@item.Name</h3>
+                <span class="text-bold">Published on:</span> @Html.DisplayFor(o => item.YearOfPublication)<br />
+                <span class="text-bold">Compiling Agency:</span> @Html.DisplayFor(o => item.CompilingAgency) <br />
+                <span class="text-bold">Category:</span> @Html.DisplayFor(o => item.DocumentCategory1.Name)<br />
+                <span class="text-bold">Thematic Area:</span> @Html.DisplayFor(o => item.ThematicArea.Name) <br />
+                <span class="text-bold">Training:</span> @Html.DisplayFor(o => item.Training.Name) <br />
+                <a target="_blank" href="@Url.Content(BaseController.DocumentsPath + item.FileName)"> @item.FileName </a>
+            </div>
+        </div>
+    }
+
+    @*
+          <div class="media rcitem2">
+              <div class="media-left"> <a href="#"> <img class="media-object" src="assets/img/cover1.jpg" alt="" height="180" width="108"> </a> </div>
+              <div class="media-body">
+                  <h4 class="media-heading text-bold">iPrepare Business Annual Report 2015</h4>
+                  <span class="text-bold">Published on:</span> 12/02/2015<br />
+                  <span class="text-bold">Department:</span> Disaster Risk Management System<br />
+                  <span class="text-bold">Type:</span> Project Reports<br />
+                  <span class="text-bold">Language:</span> English<br />
+              </div>
+          </div>
+          <div class="media rcitem1">
+              <div class="media-left"> <a href="#"> <img class="media-object" src="assets/img/cover1.jpg" alt="" height="180" width="108"> </a> </div>
+              <div class="media-body">
+                  <h4 class="media-heading text-bold">iPrepare Business Annual Report 2015</h4>
+                  <span class="text-bold">Published on:</span> 12/02/2015<br />
+                  <span class="text-bold">Department:</span> Disaster Risk Management System<br />
+                  <span class="text-bold">Type:</span> Project Reports<br />
+                  <span class="text-bold">Language:</span> English<br />
+              </div>
+          </div>
+          <div class="media rcitem2">
+              <div class="media-left"> <a href="#"> <img class="media-object" src="assets/img/cover1.jpg" alt="" height="180" width="108"> </a> </div>
+              <div class="media-body">
+                  <h4 class="media-heading text-bold">iPrepare Business Annual Report 2015</h4>
+                  <span class="text-bold">Published on:</span> 12/02/2015<br />
+                  <span class="text-bold">Department:</span> Disaster Risk Management System<br />
+                  <span class="text-bold">Type:</span> Project Reports<br />
+                  <span class="text-bold">Language:</span> English<br />
+              </div>
+          </div>
+        </div>
+                      <div class="col-md-4">
+                          <div class="row rcsearch">
+                              <form class="form-inline">
+                                  <div class="form-group">
+                                      <label for="exampleInputName2"></label>
+                                      <input type="text" class="form-control" id="exampleInputName2" placeholder="Search">
+                                  </div>
+                                  <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                              </form>
+                          </div>
+                          <br />
+                          <div class="row rclist">
+                              <h4 class="font-open text-bold">Browse by type</h4>
+                              <ul>
+                                  <li><a href="#">Annual Reports</a></li>
+                                  <li><a href="#"> Asian Disaster Management News</a></li>
+                                  <li><a href="#"> Brochures, Factsheets and Posters</a></li>
+                                  <li><a href="#"> Conference and Workshop Proceedings</a></li>
+                                  <li><a href="#"> Governance Impact Stories and Case Studies</a></li>
+                                  <li><a href="#"> Media Releases</a></li>
+                                  <li><a href="#"> Multi-Media Policies, Procedures and Guidelines</a></li>
+                                  <li><a href="#"> Progress and Assessment Reports</a></li>
+                                  <li><a href="#">Project Reports</a></li>
+                                  <li> <a href="#">Strategies</a></li>
+                                  <li><a href="#"> Technical Papers</a></li>
+                                  <li><a href="#"> Training Manuals, Toolkits and Handbooks</a></li>
+                              </ul>
+                          </div>
+                          <br />
+                          <div class="row rclatest">
+                              <div class="media rcitem1">
+                                  <div class="media-left"> <a href="#"> <img class="media-object" src="assets/img/cover1.jpg" alt="" height="90" width="54"> </a> </div>
+                                  <div class="media-body">
+                                      <h4 class="media-heading text-bold">iPrepare Business Annual Report 2015</h4>
+                                      <span class="text-bold">Published on:</span> 12/02/2015<br />
+                                      <span class="text-bold">Department:</span> Disaster Risk Management System<br />
+                                      <span class="text-bold">Type:</span> Project Reports<br />
+                                      <span class="text-bold">Language:</span> English<br />
+                                  </div>
+                              </div>
+                              <div class="media rcitem2">
+                                  <div class="media-left"> <a href="#"> <img class="media-object" src="assets/img/cover1.jpg" alt="" height="90" width="54"> </a> </div>
+                                  <div class="media-body">
+                                      <h4 class="media-heading text-bold">iPrepare Business Annual Report 2015</h4>
+                                      <span class="text-bold">Published on:</span> 12/02/2015<br />
+                                      <span class="text-bold">Department:</span> Disaster Risk Management System<br />
+                                      <span class="text-bold">Type:</span> Project Reports<br />
+                                      <span class="text-bold">Language:</span> English<br />
+                                  </div>
+                              </div>
+                              <br />
+                          </div>
+                          <br />
+                      </div>
+              </div>*@
+</div>

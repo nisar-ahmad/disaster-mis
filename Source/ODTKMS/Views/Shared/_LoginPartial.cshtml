@@ -1,0 +1,12 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    @Html.ActionLink(User.Identity.GetUserName(), "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+}
+else
+{
+    <span>
+        @*@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })*@
+        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn-link"})
+    </span>
+}

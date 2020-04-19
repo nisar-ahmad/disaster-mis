@@ -1,0 +1,35 @@
+﻿<section class="mainbar" data-ng-controller="questionDetail as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div ng-if="!vm.public" data-ng-include="'app/templates/nav-tna.html'" />
+            <div class="widget wgreen">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info"
+                       data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i> Back
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content" data-ng-if="vm.entity">
+                    <dl class="dl-horizontal">
+                        <dt>Question Type</dt>
+                        <dd>{{vm.entity.type}}</dd>
+                        <dt>Broader Training Area</dt>
+                        <dd>{{vm.entity.broaderTrainingArea.name}}</dd>
+                        <dt>Statement</dt>
+                        <dd>{{vm.entity.statement}}</dd>
+                        <dt>Choices</dt>
+                        <dd>{{vm.entity.choices}}</dd>
+                        <dt>Ask Reason</dt>
+                        <dd>{{vm.entity.askReason | yesNo}}</dd>
+                        <dt>Active</dt>
+                        <dd>{{vm.entity.active | yesNo}}</dd>
+                        <dt>Date Created</dt>
+                        <dd>{{vm.entity.dateCreated | date:'dd MMM yyyy'}}</dd>             
+                    </dl>
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/reports-tna.html'" />
+        </div>
+    </section>
+</section>

@@ -1,0 +1,234 @@
+﻿<section class="mainbar" data-ng-controller="respondent as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/nav-tna.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/form-buttons.html'" />
+            <div data-ng-if="vm.public" data-ng-include="'app/templates/form-buttons-survey.html'" />
+            <div class="widget wgreen">
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content user">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="Title" class="col-md-2 control-label">Title</label>
+                            <div class="col-md-10">
+                                <select id="Title" data-ng-options="i for i in vm.salutations"
+                                        data-ng-model="vm.entity.title"
+                                        class="form-control" data-z-validate></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Name" class="col-md-2 control-label">Name</label>
+                            <div class="col-md-10">
+                                <input id="Name" data-ng-model="vm.entity.name"
+                                       placeholder="Name" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="CNIC" class="col-md-2 control-label">CNIC</label>
+                            <div class="col-md-10">
+                                <input id="CNIC" data-ng-model="vm.entity.cNIC"
+                                       placeholder="CNIC" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Gender" class="col-md-2 control-label">Gender</label>
+                            <div class="col-md-10">
+                                <select id="Gender" data-ng-options="i for i in vm.genderTypes"
+                                        data-ng-model="vm.entity.gender"
+                                        class="form-control" data-z-validate></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Date" class="col-md-2 control-label">Date of Birth</label>
+                            <div class="col-md-10">
+                                <input id="Dater" type="text" data-ng-model="vm.entity.dateOfBirth"
+                                       class="form-control" datepicker-popup="dd MMM yyyy"
+                                       close-text="Close" ng-focus="opened=true" is-open="opened"
+                                       placeholder="Date of Birth" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="HasSpecialAbility" class="col-md-2 control-label">Special Ability?</label>
+                            <div class="col-md-10">
+                                <input type="checkbox" id="HasSpecialAbility" data-ng-model="vm.entity.hasSpecialAbility"
+                                       placeholder="Has Special Ability?" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-ng-show="vm.entity.hasSpecialAbility">
+                            <label class="col-md-2 control-label">Special Abilities</label>
+                            <div class="col-md-10">
+                                <label style="display:block" data-ng-repeat="d in vm.disabilityTypes">
+                                    <input type="checkbox" data-checklist-model="vm.disabilityTypesSelected"
+                                           data-checklist-value="d.disabilityTypeId"
+                                           data-ng-change="vm.hasChanges=true">
+                                    {{d.name}}
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="OrganizationType" class="col-md-2 control-label">Organization Type</label>
+                            <div class="col-md-10">
+                                <select id="OrganizationType" data-ng-options="i.name for i in vm.organizationTypes"
+                                        data-ng-model="vm.entity.organizationType" data-ng-change="vm.orgTypeChanged()"
+                                        class="form-control" data-z-validate></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Organization" class="col-md-2 control-label">Organization</label>
+                            <div class="col-md-10">
+                                <select id="Organization" data-ng-options="i.name for i in vm.organizations"
+                                        data-ng-model="vm.entity.organization"
+                                        data-ng-change="vm.entity.otherOrganization=''"
+                                        class="form-control" data-z-validate></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-ng-if="vm.entity.organization.organizationId===0">
+                            <label for="OtherOrganization" class="col-md-2 control-label">Other Organization / Department</label>
+                            <div class="col-md-10">
+                                <input id="OtherOrganization" data-ng-model="vm.entity.otherOrganization"
+                                       placeholder="Other Organization / Department Name" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <br />
+                        <h3>Designation / Position</h3>
+                        <br />
+
+                        <div class="form-group">
+                            <label for="Designation" class="col-md-2 control-label">Designation</label>
+                            <div class="col-md-10">
+                                <input id="Designation" data-ng-model="vm.entity.designation"
+                                       placeholder="Designation" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="BPSNo" class="col-md-2 control-label">BPS Grade</label>
+                            <div class="col-md-10">
+                                <input id="BSPNo" data-ng-model="vm.entity.bPSNo"
+                                       placeholder="Basic Pay Scale (Grade)" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="YearsOfExperience" class="col-md-2 control-label">Years Of Experience</label>
+                            <div class="col-md-10">
+                                <input id="YearsOfExperience" data-ng-model="vm.entity.yearsOfExperience"
+                                       placeholder="Years Of Experience" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="AcademicQualification" class="col-md-2 control-label">Academic Qualification</label>
+                            <div class="col-md-10">
+                                <select id="AcademicQualification" data-ng-options="i.name for i in vm.academicQualifications"
+                                        data-ng-model="vm.entity.academicQualification"
+                                        class="form-control" data-z-validate></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Province" class="col-md-2 control-label">Province</label>
+                            <div class="col-md-10">
+                                <select id="Province" data-ng-options="i.name for i in vm.provinces"
+                                        data-ng-model="vm.province" data-ng-change="vm.provinceChanged()"
+                                        class="form-control" data-z-validate></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="District" class="col-md-2 control-label">District of Posting</label>
+                            <div class="col-md-10">
+                                <select id="District" data-ng-options="i.name for i in vm.districts"
+                                        data-ng-model="vm.entity.district"
+                                        class="form-control" data-z-validate></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="OfficialAddress" class="col-md-2 control-label">Official Address</label>
+                            <div class="col-md-10">
+                                <input id="OfficialAddress" data-ng-model="vm.entity.officialAddress"
+                                       placeholder="Official Address" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ResidentialAddress" class="col-md-2 control-label">Residential Address</label>
+                            <div class="col-md-10">
+                                <input id="ResidentialAddress" data-ng-model="vm.entity.residentialAddress"
+                                       placeholder="Residential Address" class="form-control" data-z-validate />
+                            </div>
+                        </div
+                        
+                        <br />
+                        <h3>Contact Details</h3>
+                        <br />
+
+                        <div class="form-group">
+                            <label for="PhoneWithExt" class="col-md-2 control-label">Phone With Extension</label>
+                            <div class="col-md-10">
+                                <input id="PhoneWithExt" data-ng-model="vm.entity.phoneWithExt"
+                                       placeholder="Phone With Extension" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Fax" class="col-md-2 control-label">Fax</label>
+                            <div class="col-md-10">
+                                <input id="Fax" data-ng-model="vm.entity.fax"
+                                       placeholder="Fax" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Mobile" class="col-md-2 control-label">Mobile</label>
+                            <div class="col-md-10">
+                                <input id="Mobile" data-ng-model="vm.entity.cell"
+                                       placeholder="Mobile" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Email" class="col-md-2 control-label">Email</label>
+                            <div class="col-md-10">
+                                <input id="Email" data-ng-model="vm.entity.email"
+                                       placeholder="Email" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Skype" class="col-md-2 control-label">Skype</label>
+                            <div class="col-md-10">
+                                <input id="Skype" data-ng-model="vm.entity.skype"
+                                       placeholder="Skype" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-ng-if="vm.id!='new'">
+                            <label for="ApprovalStatus" class="col-md-2 control-label">Approval Status</label>
+                            <div class="col-md-10">
+                                <select id="ApprovalStatus" data-ng-options="i for i in vm.approvalTypes"
+                                        data-ng-model="vm.entity.approvalStatus"
+                                        class="form-control" data-z-validate></select>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div data-ng-if="!vm.public"  data-ng-include="'app/templates/form-buttons.html'" />
+            <div data-ng-if="vm.public" data-ng-include="'app/templates/form-buttons-survey.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/reports-tna.html'" />
+        </div>
+    </section>
+</section>

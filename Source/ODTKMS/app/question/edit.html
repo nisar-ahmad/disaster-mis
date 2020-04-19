@@ -1,0 +1,66 @@
+<section class="mainbar" data-ng-controller="question as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-include="'app/templates/nav-tna.html'" />
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+            <div class="widget wgreen">
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="QuestionType" class="col-md-2 control-label">Question Type</label>
+                            <div class="col-md-10">
+                                <select id="QuestionType" data-ng-options="i for i in vm.questionTypes"
+                                        data-ng-model="vm.entity.type"
+                                        data-z-validate class="form-control"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="BroaderTrainingArea" class="col-md-2 control-label">Broader Training Area</label>
+                            <div class="col-md-10">
+                                <select id="BroaderTrainingArea" data-ng-options="i.name for i in vm.broaderTrainingAreas"
+                                        data-ng-model="vm.entity.broaderTrainingArea"
+                                        data-z-validate class="form-control"></select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="Statement" class="col-md-2 control-label">Statement</label>
+                            <div class="col-md-10">
+                                <textarea id="Statement" data-ng-model="vm.entity.statement"
+                                       data-z-validate placeholder="Question Statement" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-ng-if="vm.entity.hasChoices">
+                            <label for="Choices" class="col-md-2 control-label">Choices</label>
+                            <div class="col-md-10">
+                                <input id="Choices" data-ng-model="vm.entity.choices"
+                                        placeholder="Comma separated list of choices" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="AskReason" class="col-md-2 control-label">Ask Reason</label>
+                            <div class="col-md-10">
+                                <input type="checkbox" id="AskReason" data-ng-model="vm.entity.askReason"
+                                       data-z-validate  />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Active" class="col-md-2 control-label">Active</label>
+                            <div class="col-md-10">
+                                <input type="checkbox" id="Active" data-ng-model="vm.entity.active"
+                                       data-z-validate />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+            <div data-ng-include="'app/templates/reports-tna.html'" />
+        </div>
+    </section>
+</section>

@@ -1,0 +1,8 @@
+﻿<div class="btn-group pull-right">
+    <a data-ng-if="!vm.public" class="btn btn-info" data-ng-click="vm.goBack()">
+        <i class="fa fa-hand-o-left"></i> Back
+    </a>
+    <a class="btn btn-info" data-ng-if="vm.allowRegister()" data-ng-click="vm.register()">
+        <i class="fa fa-plus"></i> Register
+    </a>
+</div>

@@ -1,0 +1,47 @@
+﻿<section class="mainbar" data-ng-controller="activityCostDetail as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div ng-if="!vm.public" data-ng-include="'app/templates/nav-donor.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-logos.html'" />
+            <div class="widget wgreen">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info" href="javascript:window.print();">
+                        <i class="fa fa-print"></i> Print
+                    </a>&nbsp; &nbsp;
+                    <a class="btn btn-info"
+                       data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i> Back
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content" data-ng-if="vm.entity">
+                    <br />
+                    <dl class="dl-horizontal">
+                        <dt>Activity</dt>
+                        <dd>{{vm.entity.activity.name}}</dd>
+                        <dt>Cost</dt>
+                        <dd>{{vm.entity.cost}}</dd>
+                        <dt>Description</dt>
+                        <dd>{{vm.entity.description}}</dd>
+                        <dt>Approved Activity</dt>
+                        <dd>{{vm.entity.funding.approvedActivity.name}}</dd>
+                        <dt>Funding Project</dt>
+                        <dd>{{vm.entity.funding.project.name}}</dd>
+                        <dt>Funding Amount</dt>
+                        <dd>{{vm.entity.funding.cashAmount}}</dd>
+                        <dt>Funding Type</dt>
+                        <dd>{{vm.entity.funding.fundingType}}</dd>
+                    </dl>
+                    <div class="btn-group pull-right">
+                        <a class="btn btn-info" href="#/activityCost/new/">
+                            <i class="fa fa-plus"></i> Add New
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/reports-donor.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-signature.html'" />
+
+        </div>
+    </section>
+</section>

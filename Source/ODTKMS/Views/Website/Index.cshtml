@@ -1,0 +1,875 @@
+@using BootstrapSupport
+@model ODTKMS.Models.HomePageViewModel
+@{
+    ViewBag.Title = "NIDM - Home";
+}
+
+<a href="#">
+    <div class="container special-banner-small font-open">
+        <div class="special-banner-in">3rd International Conference 2016</div>
+    </div>
+</a>
+
+<!-- MAIN SLIDER -->
+<div class="container">
+
+    <div id="carousel-example-generic" class="carousel slide carousel-fade" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            @for (int i = 0; i < Model.SliderImages.Count; i++)
+            {
+                <li data-target="#carousel-example-generic" data-slide-to="@i" class="@IsActive(i)"></li>
+            }
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            @for (int i = 0; i < Model.SliderImages.Count; i++)
+            {
+                <div class="item @IsActive(i)">
+                    <img src="~/Files/Website/@Model.SliderImages[i]" width="1400" height="500"> <a href="#">
+                    </a>
+                </div>
+            }
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+<br />
+
+<!-- NIDM AT A GLANCE -->
+<div class="jumbotron j2">
+    <div class="container">
+        <!-- INTRO MESSAGE -->
+        <div class="col-md-12 text-center">
+            <h1 class="font-open atglance">NIDM at a Glance</h1>
+            <p class="font-open atglance">NIDM is a premier institute of training and capacity development programs for managing natural and human-induced disasters occurring in Pakistan. </p>
+        </div>
+    </div>
+    <br />
+    <!-- CHAIRMAN AND HEAD MESSAGES -->
+    <div class="container font-open">
+        <div class="col-md-6">
+            <div class="media">
+                <div class="media-left"> <a href="#"><img class="media-object img-circle" src="~/assets/img/chairman.jpg" width="101" height="101"> </a> </div>
+                <div class="media-body">
+                    <h4 class="media-heading"><strong>Chairman's Message</strong></h4>
+                    I am extremely impressed after attending your Climate Change training workshop that was held at the PC Hotel in Islamabad and which was attended by many government officials, representatives from INGOs and NGOs, members of academia, students and even businessmen. It was one of the most unique experiences I have ever had in Pakistan. I look forward to attending further trainings.
+                    ...<a href="~/website/page/chairman-message">Read More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="media">
+                <div class="media-left"> <a href="#"><img class="media-object img-circle" src="~/assets/img/sajid_naeem.jpg" width="100" height="101"> </a> </div>
+                <div class="media-body">
+                    <h4 class="media-heading"><strong>Head of the Institute's message</strong></h4>
+                    I was very pleased to attend your Disaster Risk Reduction training workshop that was held at the Marriot Hotel in Islamabad and which was attend by many government officials, representatives from INGOs and NGOs, members of academia, students and even businessmen. It was one of the most unique experiences I have ever had in Pakistan. I look forward to attending further trainings.
+                    ...<a href="~/website/page/head-message">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- NIDM STATS, CALENDAR, NEWS, RESOURCE CENTER, EVENTS, STAKEHOLDER STATS, SHARE ACTIVITIES -->
+<div class="jumbotron j2">
+    <br />
+
+    <div class="container triadw">
+        <!-- NIDM STATS -->
+        <div class="col-md-8 tbright">
+            <div class="paraw">
+                <h2 class="font-montserrat headline subh"><img src="~/assets/img/1.png" width="50" height="50"> Mapping NIDM Trainings</h2>
+
+                <div class="roundtab">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs font-open pull-right" role="tablist">
+                        <li role="presentation" class="active"><a href="#singleYear" aria-controls="singleYear" role="tab" data-toggle="tab">Dashboard</a></li>
+                        <li role="presentation"><a href="#rangeYear" aria-controls="rangeYear" role="tab" data-toggle="tab">Training Map</a></li>
+
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content stat-tab container">
+
+                        <div role="tabpanel" class="tab-pane fade in active" id="singleYear">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-3 stat-tile">
+                                        <div class="stat-tile-in stat-tile-in2 text-center">
+                                            <i class="fa fa-calendar stat-icon"></i><br />
+                                            <span class="stat-figure font-mont">@Model.NIDMStats.Trainings</span><br />
+                                            <span class="stat-title font-open">NIDM Trainings</span><br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3 stat-tile">
+                                        <div class="stat-tile-in text-center">
+                                            <i class="fa fa-male stat-icon"></i><i class="fa fa-female stat-icon"></i><br />
+                                            <span class="stat-figure font-mont">@Model.NIDMStats.Participants</span><br />
+                                            <span class="stat-title font-open">Participants</span><br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3 stat-tile">
+                                        <div class="stat-tile-in text-center">
+                                            <i class="fa fa-male stat-icon"></i><br />
+                                            <span class="stat-figure font-mont">@Model.NIDMStats.Male</span><br />
+                                            <span class="stat-title font-open">Male Participants</span><br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3 stat-tile">
+                                        <div class="stat-tile-in text-center">
+                                            <i class="fa fa-female stat-icon"></i><br />
+                                            <span class="stat-figure font-mont">@Model.NIDMStats.Female</span><br />
+                                            <span class="stat-title font-open">Female Participants</span><br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-3 stat-tile">
+                                        <div class="stat-tile-in text-center">
+                                            <i class="fa fa-building stat-icon"></i><br />
+                                            <span class="stat-figure font-mont">@Model.NIDMStats.Govt</span><br />
+                                            <span class="stat-title font-open">Govt. Departments</span><br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3 stat-tile">
+                                        <div class="stat-tile-in text-center">
+                                            <i class="fa fa-flag-checkered stat-icon"></i><br />
+                                            <span class="stat-figure font-mont">@Model.NIDMStats.UN</span><br />
+                                            <span class="stat-title font-open">UN/INGOs</span><br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3 stat-tile">
+                                        <div class="stat-tile-in text-center">
+                                            <i class="fa fa-flag stat-icon"></i><br />
+                                            <span class="stat-figure font-mont">@Model.NIDMStats.NGO</span><br />
+                                            <span class="stat-title font-open">NGOs</span><br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3 stat-tile">
+                                        <div class="stat-tile-in text-center">
+                                            <i class="fa fa-book stat-icon"></i><br />
+                                            <span class="stat-figure font-mont">@Model.NIDMStats.Academia</span><br />
+                                            <span class="stat-title font-open">Academia</span><br />
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <br />
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+
+
+                                    <div class="col-md-3 stat-tile">
+                                        <div class="stat-tile-in text-center">
+                                            <i class="fa fa-tv stat-icon"></i><br />
+                                            <span class="stat-figure font-mont">@Model.NIDMStats.Media</span><br />
+                                            <span class="stat-title font-open">Media</span><br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3 stat-tile">
+                                        <div class="stat-tile-in text-center">
+                                            <i class="fa fa-industry stat-icon"></i><br />
+                                            <span class="stat-figure font-mont">@Model.NIDMStats.Industry</span><br />
+                                            <span class="stat-title font-open">Industry</span><br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3 stat-tile">
+                                        <div class="stat-tile-in text-center">
+                                            <i class="fa fa-users stat-icon"></i><br />
+                                            <span class="stat-figure font-mont">@Model.NIDMStats.PublicReps</span><br />
+                                            <span class="stat-title font-open">Public Reps</span><br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3 stat-tile">
+                                        <div class="stat-tile-in text-center">
+                                            <i class="fa fa-external-link stat-icon"></i><br />
+                                            <span class="stat-figure font-mont">@Model.NIDMStats.Others</span><br />
+                                            <span class="stat-title font-open">Others</span><br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="secrep secrep2 font-open"><strong>Sectoral Representation </strong></div>
+
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="rangeYear">
+                            <iframe src="~/public.html#/trainings/map/public" width="100%" height="390" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- CALENDAR -->
+        <div class="col-md-4 trainingcal">
+            <div class="paraw">
+                <h2 class="font-montserrat headline subh shiftleft"><img src="~/assets/img/2.png" width="50" height="50"> Training Calendar</h2>
+                <div class="row trainingcal-in font-open">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul class="calendar-ticker">
+                                        @foreach (var item in Model.Trainings)
+                                        {
+                                            <li class="news-item">
+                                                <a href="~/Website/Calendar" class="no-decoration">
+                                                    <div class="row tci-wrapper">
+                                                        <div class="col-md-4 tci-date">
+                                                            @Html.Raw(item.Description)
+                                                        </div>
+                                                        <div class="col-md-8 tci-training">
+                                                            <strong>@item.Location</strong><br />
+                                                            @item.Title
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer"> </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <br />
+        <br />
+    </div>
+
+    <br />
+
+    <!-- NEWS, RESOURCE CENTER, EVENTS -->
+    <div class="jumbotron">
+        <div class="container">
+            <!-- NEWS -->
+            <div class="col-md-4">
+                <div class="col-md-12"><h2 class="font-montserrat headline subh shiftleft2"><img src="~/assets/img/3.png" width="50" height="50"> News</h2> </div>
+                <br />
+                <br />
+
+                <div class="row news-box font-open">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul class="news-ticker">
+
+                                        @foreach (var item in Model.News)
+                                        {
+                                            <li class="news-item">
+                                                <div class="row">
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <img class="media-object" src="~/Files/Website/@item.File" width="120" height="79">
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <a href="~/Website/News#@item.ContentId" class="no-decoration">
+                                                                <h4 class="media-heading">@item.Title</h4>
+                                                            </a>
+                                                            <span class="news-date">@Html.DisplayFor(o => item.Date)</span> <br />
+                                                            <span class="news-descr">@Truncate(item.Description, 90)</span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </li>
+                                        }
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <br /><br />
+                        <div class="panel-footer"> </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESOURCE CENTER -->
+            <div class="col-md-4 font-open r-c">
+                <div class="col-md-12"><h2 class="font-montserrat headline subh "><img src="~/assets/img/4.png" width="50" height="50"> Resource Center</h2></div>
+
+
+                <a href="~/Website/ResourceCenter?recent=true?Title=Recent Publications">
+                    <span class="resource-item r-g">
+                        <i class="fa fa-files-o"></i> Recent Publications
+                    </span>
+                </a>
+                <hr />
+                <a href="~/Website/ResourceCenter/9,17,18?Title=Training Materials">
+                    <span class="resource-item r-o">
+                        <i class="fa fa-file-text"></i> Training Materials
+                    </span>
+                </a>
+                <hr />
+                <a href="~/Website/ResourceCenter/19,20?Title=Policies and Plans">
+                    <span class="resource-item r-b">
+                        <i class="fa fa-list-alt"></i> Policies & Plans
+                    </span>
+                </a>
+                <hr />
+                <a href="~/Website/ResourceCenter/21?Title=Disaster Reports/Studies">
+                    <span class="resource-item r-s">
+                        <i class="fa fa-paste"></i> Disaster Reports/Studies
+                    </span>
+                </a>
+                <hr />
+                <a href="~/Website/ResourceCenter/8?Title=Annual Reports">
+                    <span class="resource-item r-o">
+                        <i class="fa fa-file-o"></i> Annual Reports
+                    </span>
+                </a>
+                <hr />
+                <a href="~/Website/ResourceCenter/11,12,13?Title=Thesis/Research Papers">
+                    <span class="resource-item r-b">
+                        <i class="fa fa-edit"></i> Thesis/Research Papers
+                    </span>
+                </a>
+                <hr />
+                <a href="~/Website/ResourceCenter/27?Title=Pakistan Disaster Data">
+                    <span class="resource-item r-s">
+                        <i class="fa fa-file-text-o"></i> Pakistan Disaster Data
+                    </span>
+                </a>
+                <hr />
+                <a href="~/Website/ResourceCenter/26?Title=Global/Regional Frameworks">
+                    <span class="resource-item r-g">
+                        <i class="fa fa-file"></i> Global/Regional Frameworks
+                    </span>
+                </a>
+            </div>
+
+            <!-- EVENTS -->
+            <div class="col-md-4">
+
+                <div class="col-md-12"><h2 class="font-montserrat headline subh shiftleft"><img src="~/assets/img/5.png" width="50" height="50"> Events</h2> </div>
+
+                <div id="carousel-y" class="carousel slide carousel-fade" data-ride="carousel" data-pause="true">
+                    <div class="carousel-inner font-open" role="listbox">
+                        @for (var i = 0; i < Model.Events.Count; i++)
+                        {
+                            var item = Model.Events[i];
+
+                            <div class="item @IsActive(i)">
+                                <a href="~/Website/Events#@item.ContentId"><img class="media-object" src="~/Files/Website/@item.File" width="360" height="239"> </a>
+                                <h4><strong>@item.Title</strong></h4>
+                                <span class="news-date">@Html.DisplayFor(o => item.Date)</span> <br />
+                                @Truncate(@item.Description, 200)
+                                <a href="~/Website/Events#@item.ContentId">Read More</a>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="text-right cy-control"><a href="#carousel-y" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left tcalarrow"></span> </a> <a href="#carousel-y" data-slide="next"> <span class="glyphicon glyphicon-chevron-right tcalarrow"></span> </a></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <!-- STAKEHOLDER STATS, SHARE ACTIVITIES -->
+    <div class="jumbotron">
+        <div class="container">
+            <!-- STAKEHOLDER STATS -->
+            <div class="col-md-8 tbright stakeholder">
+                <div class="paraw">
+                    <h2 class="font-montserrat headline subh "><img src="~/assets/img/6.png" width="50" height="50"> Mapping Stakeholder Trainings</h2>
+
+                    <div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs font-open pull-right" role="tablist">
+                            <li role="presentation" class="active"><a href="#singleYear2" aria-controls="singleYear2" role="tab" data-toggle="tab">Dashboard</a></li>
+                            <li role="presentation"><a href="#rangeYear2" aria-controls="rangeYear2" role="tab" data-toggle="tab">Training Map</a></li>
+
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content stat-tab container">
+                            <div role="tabpanel" class="tab-pane fade in active" id="singleYear2">
+
+                                <div class="row">
+                                    <div class="col-md-12 stakeholder">
+                                        <div class="col-md-3 stat-tile">
+                                            <div class="stat-tile-in stat-tile-in2 text-center">
+                                                <span class="pull-right"><i class="fa fa-calendar stat-icon"></i></span> <br />
+                                                <span class="stat-figure font-mont">@Model.StakeholderStats.Trainings</span><br />
+                                                <span class="stat-title font-open">Trainings</span><br />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 stat-tile">
+                                            <div class="stat-tile-in text-center">
+                                                <span class="pull-right"><i class="fa fa-male stat-icon"></i><i class="fa fa-female stat-icon"></i></span><br />
+                                                <span class="stat-figure font-mont">@Model.StakeholderStats.Participants</span> <br />
+                                                <span class="stat-title font-open">Participants</span><br />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 stat-tile">
+                                            <div class="stat-tile-in text-center">
+                                                <span class="pull-right"><i class="fa fa-male stat-icon"></i></span><br />
+                                                <span class="stat-figure font-mont">@Model.StakeholderStats.Male</span> <br />
+                                                <span class="stat-title font-open">Male Participants</span><br />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 stat-tile">
+                                            <div class="stat-tile-in text-center">
+                                                <span class="pull-right"><i class="fa fa-female stat-icon"></i></span><br />
+                                                <span class="stat-figure font-mont">@Model.StakeholderStats.Female</span> <br />
+                                                <span class="stat-title font-open">Female Participants</span><br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-3 stat-tile">
+                                            <div class="stat-tile-in text-center">
+                                                <span class="pull-right"><i class="fa fa-building stat-icon"></i></span><br />
+                                                <span class="stat-figure font-mont">@Model.StakeholderStats.Govt</span> <br />
+                                                <span class="stat-title font-open">Govt. Departments</span><br />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 stat-tile">
+                                            <div class="stat-tile-in text-center">
+                                                <span class="pull-right"><i class="fa fa-flag-checkered stat-icon"></i></span><br />
+                                                <span class="stat-figure font-mont">@Model.StakeholderStats.UN</span> <br />
+                                                <span class="stat-title font-open">UN/INGOs</span><br />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 stat-tile">
+                                            <div class="stat-tile-in text-center">
+                                                <span class="pull-right"><i class="fa fa-flag stat-icon"></i></span><br />
+                                                <span class="stat-figure font-mont">@Model.StakeholderStats.NGO</span> <br />
+                                                <span class="stat-title font-open">NGOs</span><br />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 stat-tile">
+                                            <div class="stat-tile-in text-center">
+                                                <span class="pull-right"><i class="fa fa-book stat-icon"></i></span><br />
+                                                <span class="stat-figure font-mont">@Model.StakeholderStats.Academia</span> <br />
+                                                <span class="stat-title font-open">Academia</span><br />
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+
+                                <br />
+
+
+                                <div class="row">
+                                    <div class="col-md-12">
+
+
+                                        <div class="col-md-3 stat-tile">
+                                            <div class="stat-tile-in text-center">
+                                                <span class="pull-right"><i class="fa fa-tv stat-icon"></i></span><br />
+                                                <span class="stat-figure font-mont">@Model.StakeholderStats.Media</span> <br />
+                                                <span class="stat-title font-open">Media</span><br />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 stat-tile">
+                                            <div class="stat-tile-in text-center">
+                                                <span class="pull-right"><i class="fa fa-industry stat-icon"></i></span><br />
+                                                <span class="stat-figure font-mont">@Model.StakeholderStats.Industry</span> <br />
+                                                <span class="stat-title font-open">Industry</span><br />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 stat-tile">
+                                            <div class="stat-tile-in text-center">
+                                                <span class="pull-right"><i class="fa fa-users stat-icon"></i></span><br />
+                                                <span class="stat-figure font-mont">@Model.StakeholderStats.PublicReps</span> <br />
+                                                <span class="stat-title font-open">Community</span><br />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 stat-tile">
+                                            <div class="stat-tile-in text-center">
+                                                <span class="pull-right"><i class="fa fa-external-link stat-icon"></i></span><br />
+                                                <span class="stat-figure font-mont">@Model.StakeholderStats.Others</span> <br />
+                                                <span class="stat-title font-open">Others</span><br />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="secrep secrep2 font-open"><strong>Sectoral Representation </strong></div>
+
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane fade" id="rangeYear2">
+                                <iframe src="~/public.html#/4wTrainings/map/public" width="100%" height="390" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- SHARE ACTIVITIES -->
+            <div class="col-md-4">
+                <div class="col-md-12"><h2 class="font-montserrat headline subh shiftleft sharetraining"><img src="~/assets/img/7.png" width="50" height="50"> Share Your Training Activities</h2></div>
+                <div>
+                    <div id="carousel-z" class="carousel slide carousel-fade" data-ride="carousel">
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            @for (var i = 0; i < Model.StakeholderActivities.Count; i++)
+                            {
+                                var item = Model.StakeholderActivities[i];
+
+                                <div class="item @IsActive(i)">
+                                    <img src="~/Files/Website/@item.File" width="900" height="500">
+                                    <div class="carousel-caption font-open">@Truncate(item.Title, 40)</div>
+                                </div>
+                            }
+                        </div>
+
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carousel-z" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-z" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <br />
+                <div class="container">
+                    <div class="row text-center"> <img src="~/Files/Website/@Model.ProminentStakeholder.File" width="91" height="100"></div><br />
+                    <div class="container font-open text-center">
+                        @Model.ProminentStakeholder.Title
+                    </div>
+                </div>
+
+                <br />
+                <a target="_blank" class="no-decoration" href="~/public.html#/organization/new/4w/public">
+                    <div class="bluebtn font-open">
+                        <i class="fa fa-edit"></i> Register Your Organisation
+                    </div>
+                </a>
+                <a target="_blank" class="no-decoration" href="~/public.html">
+                    <div class="orangebtn font-open">
+                        <i class="fa fa-sign-out"></i> Submit Training
+                    </div>
+                </a>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<br />
+
+
+<!-- PUBLIC AWARENESS, GUESTBOOK -->
+<div class="jumbotron">
+    <div class="container">
+        <!-- PUBLIC AWARENESS -->
+        <div class="col-md-4 font-open r-c">
+            <div class="col-md-12"><h2 class="font-montserrat headline subh "><img src="~/assets/img/8.png" width="50" height="50"> Public Awareness</h2></div>
+
+            <a href="~/Website/ResourceCenter/29?Title=Basic Hazard Knowledge">
+                <span class="resource-item r-s">
+                    <i class="fa fa-paste"></i> Basic Hazard Knowledge
+                </span>
+            </a>
+            <hr />
+            <a href="~/Website/ResourceCenter/30?Title=Hazard Maps of Pakistan">
+                <span class="resource-item r-b">
+                    <i class="fa fa-paste"></i> Hazard Maps of Pakistan
+                </span>
+            </a>
+            <hr />
+            <a href="~/Website/ResourceCenter/31?Title=Do's and Don'ts">
+                <span class="resource-item r-o">
+                    <i class="fa fa-file-text"></i> Do's & Don'ts
+                </span>
+            </a>
+            <hr />
+            <a href="~/Website/ResourceCenter/24?Title=Public Service Messages">
+                <span class="resource-item r-g">
+                    <i class="fa fa-files-o"></i> Public Service Messages
+                </span>
+            </a>
+            <hr />
+            <a href="~/Website/ResourceCenter/32?Title=Kids Corner">
+                <span class="resource-item r-b">
+                    <i class="fa fa-puzzle-piece"></i> Kids Corner
+                </span>
+            </a>
+        </div>
+
+        <!-- GUESTBOOK -->
+        <div class="col-md-8 font-open ">
+            <div class="col-md-12">
+                <h2 class="font-montserrat headline subh ">
+                    <img src="~/assets/img/9.png" width="50" height="50"> Guest Book
+                </h2>
+            </div>
+            <div id="carousel-g" class="carousel slide vertical carousel-sync news-slider-carousel" data-ride="carousel" data-pause="true">
+                <div class="carousel-inner font-open" role="listbox">
+                    @for (var i = 0; i < Model.GuestBook.Count; i++)
+                    {
+                        var item = Model.GuestBook[i];
+
+                        <div class="item @IsActive(i)">
+                            <div class="row">
+                                <div class="col-md-2 text-center guest-book">
+                                    <img src="~/Files/Website/@item.File" width="100" height="101" class="img-circle"><br /><br />
+                                    @Html.Raw(item.Title)
+                                </div>
+                                <div class="col-md-10">
+                                    @Html.Raw(item.Description)
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <br />
+                <br />
+                <br />
+                <div class="text-right">
+                    <a href="#carousel-g" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left tcalarrow"></span>
+                    </a>
+                    <a href="#carousel-g" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right tcalarrow"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+
+
+<!-- PICTURE GALLERY, PARTNERS -->
+<div class="jumbotron j4">
+    <div class="container">
+        <div class="container">
+            <!-- PICTURE GALLERY -->
+            <div class="col-md-8">
+                <div class="col-md-12 text-left">
+                    <h2 class="font-montserrat headline subh shiftleft">
+                        <img src="~/assets/img/11.png" width="50" height="50"> PICTURE GALLERY
+                    </h2>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="carousel slide" id="carousel-pg">
+                        <div class="carousel-inner">
+                            @for (var i = 0; i < Model.PictureGallery.Count; i++)
+                            {
+                                var item = Model.PictureGallery[i];
+
+                                <div class="item @IsActive(i)">
+                                    <div class="col-md-4"><a href="~/Website/Gallery"><img src="~/Files/Website/@item.File" class="img-responsive"></a><span class="font-open"><br />@Truncate(item.Title, 30)</span></div>
+                                </div>
+                            }
+                        </div>
+                        <a class="left carousel-control" href="#carousel-pg" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                        <a class="right carousel-control" href="#carousel-pg" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- PARTNERS -->
+            <div class="col-md-4">
+
+                <div class="col-md-12 text-center">
+                    <h2 class="font-montserrat headline subh ">
+                        <img src="~/assets/img/10.png" width="50" height="50"> OUR PARTNERS
+                    </h2>
+                </div>
+                <br />
+                <br />
+                <div class="container">
+
+                    <div id="carousel-pr" class="carousel slide carousel-fade" data-ride="carousel">
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            @for (var i = 0; i < Model.PartnerLogos.Count; i++)
+                            {
+                                var item = Model.PartnerLogos[i];
+
+                                <div class="item @IsActive(i)">
+                                    <img src="~/Files/Website/@item" width="150" height="150">
+                                </div>
+                            }
+                        </div>
+
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carousel-pr" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="right carousel-control" href="#carousel-pr" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+                    </div>
+                    <!-- /.container -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ANNOUNCEMENT (Uncomment to enable sticky home page announcement button)-->
+@*<a href="#">
+        <div class="special-banner font-open">
+            <div class="special-banner-in">3rd International Conference 2016</div>
+        </div>
+    </a>*@
+
+@section Scripts{
+    <script>
+        $('#carousel-pg').carousel({
+            interval: 8000
+        })
+
+        $('#carousel-pg .item').each(function () {
+            var next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+
+            if (next.next().length > 0) {
+                next.next().children(':first-child').clone().appendTo($(this));
+            }
+            else {
+                $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+            }
+        });
+    </script>
+    <script>
+        $('.carousel-sync').on('slide.bs.carousel', function (ev) {
+            var dir = ev.direction == 'right' ? 'prev' : 'next';
+            $('.carousel-sync').not('.sliding').addClass('sliding').carousel(dir);
+        });
+        $('.carousel-sync').on('slid.bs.carousel', function (ev) {
+            $('.carousel-sync').removeClass('sliding');
+        });
+    </script>
+    <script>
+        $('#carousel-b').carousel({
+            interval: 10000
+        });
+    </script>
+    <script>
+        $('#carousel-g').carousel({
+            interval: 10000
+        });
+    </script>
+    <script>
+        $(function () {
+            $(".news-ticker").bootstrapNews({
+                newsPerPage: 3,
+                autoplay: true,
+                pauseOnHover: true,
+                direction: 'up',
+                newsTickerInterval: 4000,
+                onToDo: function () {
+                    //console.log(this);
+                }
+            });
+
+            $(".calendar-ticker").bootstrapNews({
+                newsPerPage: 5,
+                autoplay: true,
+                pauseOnHover: true,
+                direction: 'up',
+                newsTickerInterval: 4000,
+                onToDo: function () {
+                    //console.log(this);
+                }
+            });
+
+            $("#demo3").bootstrapNews({
+                newsPerPage: 3,
+                autoplay: false,
+
+                onToDo: function () {
+                    //console.log(this);
+                }
+            });
+        });
+    </script>
+}
+
+@functions {
+    public static string IsActive(int i)
+    {
+        return i == 0 ? "active" : null;
+    }
+}
+
+@helper Truncate(string input, int length = 100)
+{
+if (input.Length <= length)
+{
+        @Html.Raw(input)
+}
+else
+{
+        @Html.Raw(input.Substring(0, length)) <text>...</text>
+}
+}

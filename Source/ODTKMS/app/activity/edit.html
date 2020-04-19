@@ -1,0 +1,83 @@
+﻿<section class="mainbar" data-ng-controller="activity as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-include="'app/templates/nav-donor.html'" />
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+            <div class="widget wgreen">
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content user row">
+                    <div class="col-md-6">
+                        <form class="form-horizontal" role="form">
+
+                            <div class="form-group">
+                                <label for="Project" class="col-md-2 control-label">Project</label>
+                                <div class="col-md-10">
+                                    <select id="Project" data-ng-options="i.name for i in vm.projects"
+                                            data-ng-model="vm.entity.project"
+                                            class="form-control" data-z-validate></select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ActivityType" class="col-md-2 control-label">Activity Type</label>
+                                <div class="col-md-10">
+                                    <select id="ActivityType" data-ng-options="i.name for i in vm.activityTypes"
+                                            data-ng-model="vm.entity.activityType"
+                                            class="form-control" data-z-validate></select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Name" class="col-md-2 control-label">Activity Title</label>
+                                <div class="col-md-10">
+                                    <input id="Name" data-ng-model="vm.entity.name"
+                                           placeholder="Name" class="form-control" data-z-validate />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Date" class="col-md-2 control-label">Date of Activity</label>
+                                <div class="col-md-10">
+                                    <input id="Date" type="text" data-ng-model="vm.entity.dateOfActivity"
+                                           class="form-control" datepicker-popup="dd MMM yyyy"
+                                           close-text="Close" ng-focus="opened=true" is-open="opened"
+                                           placeholder="Date of Activity" />
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="Description" class="col-md-2 control-label">Activity Description</label>
+                                <div class="col-md-10">
+                                    <textarea id="Description" data-ng-model="vm.entity.description"
+                                           placeholder="Description" class="form-control" data-z-validate />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="City" class="col-md-2 control-label">City</label>
+                                <div class="col-md-10">
+                                    <select id="City" data-ng-options="i.name for i in vm.cities"
+                                            data-ng-model="vm.entity.city"
+                                            class="form-control" data-z-validate></select>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-right">
+                            <button class="btn btn-info"
+                                    data-ng-click="vm.addItem()">
+                                <i class="fa fa-plus"></i> Add Cost
+                            </button>
+                        </div>
+                        <div ui-grid="vm.gridOptions" class="ui-grid" ui-grid-resize-columns></div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+        </div>
+    </section>
+</section>

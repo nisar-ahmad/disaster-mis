@@ -1,0 +1,21 @@
+<section class="mainbar" data-ng-controller="provinces as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-include="'app/templates/nav-setup.html'" />
+            <div class="widget wblue">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info" ng-click="vm.refresh()">
+                        <i class="fa fa-refresh"></i> Refresh
+                    </a>
+                    <a class="btn btn-info" href="#/province/new">
+                        <i class="fa fa-plus"></i> Add Province
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <div data-ng-include="'app/templates/grid-index.html'" />
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

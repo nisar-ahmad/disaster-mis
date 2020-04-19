@@ -1,0 +1,76 @@
+﻿<section class="mainbar" data-ng-controller="content as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-include="'app/templates/nav-setup.html'" />
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+            <div class="widget wgreen">
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <div class="row">
+                        <form class="form-horizontal" role="form">
+
+                            <div class="form-group">
+                                <label for="ContentType" class="col-md-2 control-label">Content Type</label>
+                                <div class="col-md-10">
+                                    <select id="ContentType" data-ng-options="i for i in vm.contentTypes"
+                                            data-ng-model="vm.entity.contentType"
+                                            class="form-control" data-z-validate></select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Title" class="col-md-2 control-label">Title</label>
+                                <div class="col-md-10">
+                                    <input id="Title" data-ng-model="vm.entity.title"
+                                           placeholder="Title" class="form-control" data-z-validate />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Description" class="col-md-2 control-label">Description</label>
+                                <div class="col-md-10">
+                                    <textarea id="Description" data-ng-model="vm.entity.description" rows="10" cols="100"
+                                              placeholder="Description" class="form-control" data-z-validate />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Date" class="col-md-2 control-label">Date</label>
+                                <div class="col-md-10">
+                                    <input id="Date" type="text" data-ng-model="vm.entity.date"
+                                           class="form-control" datepicker-popup="dd MMM yyyy"
+                                           close-text="Close" ng-focus="opened=true" is-open="opened"
+                                           placeholder="Date" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Location" class="col-md-2 control-label">Location</label>
+                                <div class="col-md-10">
+                                    <input id="Location" data-ng-model="vm.entity.location"
+                                           placeholder="Location" class="form-control" data-z-validate />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Image" class="col-md-2 control-label">Image</label>
+                                <div class="col-md-10">
+                                    <img data-ng-if="vm.entity.file" class="img-autosize"
+                                         data-ng-src="{{vm.fileUrl}}{{vm.entity.file}}"
+                                         title="Image"
+                                         onerror="if (this.src != '') this.src = ''" />
+                                    <input id="Image" data-ng-model="vm.entity.file" accept="image/*" data-file-model="vm.file"
+                                           onchange="angular.element(this).scope().vm.fileNameChanged()"
+                                           placeholder="Image" class="form-control" type="file" data-z-validate />
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+        </div>
+    </section>
+</section>

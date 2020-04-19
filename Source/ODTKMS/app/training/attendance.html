@@ -1,0 +1,55 @@
+﻿<section class="mainbar" data-ng-controller="trainingAttendance as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div ng-include="'app/templates/nav-training.html'" />
+            <div data-ng-include="'app/templates/form-buttons-submit.html'" />
+            <div class="widget wgreen">
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <form class="form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <label for="Training" class="col-md-1 control-label">Training</label>
+                            <div class="col-md-3">
+                                <select id="Training" data-ng-options="i.name for i in vm.trainings"
+                                        data-ng-model="vm.training" data-ng-change="vm.trainingChanged()"
+                                        class="form-control"></select>
+                            </div>
+                            <div class="col-md-8 text-left">
+                                <strong> Registered Participants : </strong>{{vm.participants.length}} -
+                                <strong> Total Sessions : </strong>{{vm.sessions.length}}
+                            </div>
+                        </div>
+
+                        <table data-ng-if="vm.items.length" class="table table-striped table-bordered table-hover">
+                            <tr>
+                                <th>No.</th>
+                                <th>Participant</th>
+                                <th class="text-center" data-ng-repeat="s in vm.sessions">
+                                    {{s.name}}
+                                    <input type="button" data-btn-checkbox class="btn btn-{{s.selected | successDanger}}"
+                                           data-ng-model="s.selected" data-ng-click="vm.selectAll($index, !s.selected)"
+                                           value="{{s.selected | yesNo}}">
+
+                                </th>
+                            </tr>
+                            <tbody>
+                                <tr data-ng-repeat="i in vm.items">
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{i.name}}</td>
+                                    <td class="text-center" data-ng-repeat="s in vm.sessions">
+                                        <input type="button" data-btn-checkbox class="btn btn-{{i.sessions[$index] | successDanger}}"
+                                               data-ng-model="i.sessions[$index]" value="{{i.sessions[$index] | yesNo}}">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </form>
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/form-buttons-submit.html'" />
+            <div data-ng-include="'app/templates/reports-training.html'" />
+        </div>
+    </section>
+</section>

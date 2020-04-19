@@ -1,0 +1,166 @@
+﻿<section class="mainbar" data-ng-controller="trainingActivityDetail as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div ng-if="!vm.public" data-ng-include="'app/templates/nav-4w.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-logos.html'" />
+            <div class="widget wgreen">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info" href="javascript:window.print();">
+                        <i class="fa fa-print"></i> Print
+                    </a>&nbsp; &nbsp;
+                    <a class="btn btn-info"
+                       data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i> Back
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content" data-ng-if="vm.entity">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <dl class="dl-horizontal">
+                                <h3>Training Details</h3>
+                                <br />
+                                <dt>Organization Type</dt>
+                                <dd>{{vm.entity.organization.organizationType.name}}</dd>
+                                <dt>Organization</dt>
+                                <dd>{{vm.entity.organization.name}}</dd>
+                                <dt>Collaborating Organization</dt>
+                                <dd>{{vm.entity.collaboratingOrganization}}</dd>
+                                <dt>Title Of Training</dt>
+                                <dd>{{vm.entity.titleOfTraining}}</dd>
+                                <dt>Training Type</dt>
+                                <dd>{{vm.entity.trainingType}}</dd>
+                                <dt>Training Level</dt>
+                                <dd>{{vm.entity.trainingLevel}}</dd>
+                                <dt>Broader Training Area</dt>
+                                <dd>{{vm.entity.broaderTrainingArea.name}}</dd>
+                                <dt>Start Date</dt>
+                                <dd>{{vm.entity.startDate | date: 'dd MMM yyyy'}}</dd>
+                                <dt>End Date</dt>
+                                <dd>{{vm.entity.endDate | date: 'dd MMM yyyy'}}</dd>
+                                <dt>Duration of Training</dt>
+                                <dd>{{vm.entity.durationOfTraining}} days</dd>
+                                <dt>No Of Participants</dt>
+                                <dd>{{vm.entity.noOfParticipants}}</dd>
+                                <dt>Gender Representation Male</dt>
+                                <dd>{{vm.entity.genderRepresentationMale}}</dd>
+                                <dt>Gender Representation Female</dt>
+                                <dd>{{vm.entity.genderRepresentationFemale}}</dd>
+                                <dt>Vulnerable Groups</dt>
+                                <dd>{{vm.entity.vulnerableGroups}}</dd>
+                                <br />
+                                <h3>Sectoral Representation</h3>
+                                <br />
+                                <dt>Own Staff</dt>
+                                <dd>{{vm.entity.ownStaff}}</dd>
+                                <dt>Government</dt>
+                                <dd>{{vm.entity.government}}</dd>
+                                <dt>Armed Forces</dt>
+                                <dd>{{vm.entity.armedForces}}</dd>
+                                <dt>Police</dt>
+                                <dd>{{vm.entity.police}}</dd>
+                                <dt>UN Agencies</dt>
+                                <dd>{{vm.entity.uNAgencies}}</dd>
+                                <dt>INGOs</dt>
+                                <dd>{{vm.entity.iNGOs}}</dd>
+                                <dt>NGOs</dt>
+                                <dd>{{vm.entity.nGOs}}</dd>
+                                <dt>CBOs</dt>
+                                <dd>{{vm.entity.cBOs}}</dd>
+                                <dt>Students</dt>
+                                <dd>{{vm.entity.students}}</dd>
+                                <dt>Teachers</dt>
+                                <dd>{{vm.entity.teachers}}</dd>
+                                <dt>Educational Management</dt>
+                                <dd>{{vm.entity.educationalManagement}}</dd>
+                                <dt>Religious Leader</dt>
+                                <dd>{{vm.entity.religiousLeader}}</dd>
+                                <dt>Private/Commercial Organisation</dt>
+                                <dd>{{vm.entity.privateCommercialOrg}}</dd>
+                                <dt>Community</dt>
+                                <dd>{{vm.entity.community}}</dd>
+                                <dt>Media</dt>
+                                <dd>{{vm.entity.media}}</dd>
+                                <dt>Others Title</dt>
+                                <dd>{{vm.entity.othersTitle}}</dd>
+                                <dt>Others No</dt>
+                                <dd>{{vm.entity.othersNo}}</dd>
+                                <br />
+                                <h3>Provincial/Regional Representation</h3>
+                                <br />
+                                <dt>Punjab</dt>
+                                <dd>{{vm.entity.punjab}}</dd>
+                                <dt>Sindh</dt>
+                                <dd>{{vm.entity.sindh}}</dd>
+                                <dt>Balochistan</dt>
+                                <dd>{{vm.entity.balochistan}}</dd>
+                                <dt>Khyber Pakhtunkhawa</dt>
+                                <dd>{{vm.entity.khyberPakhtunkhawa}}</dd>
+                                <dt>FATA</dt>
+                                <dd>{{vm.entity.fATA}}</dd>
+                                <dt>Gilgit Baltistan</dt>
+                                <dd>{{vm.entity.gilgitBaltistan}}</dd>
+                                <dt>AJK</dt>
+                                <dd>{{vm.entity.aJK}}</dd>
+                                <br />
+                                <h3>Venue/Location Information</h3>
+                                <br />
+                                <dt>Training Location</dt>
+                                <dd>{{vm.entity.trainingLocation}}</dd>
+                                <dt>Province</dt>
+                                <dd>{{vm.entity.province.name}}</dd>
+                                <dt>District</dt>
+                                <dd>{{vm.entity.district.name}}</dd>
+                                <br />
+                                <h3>Training Coordinator/Management</h3>
+                                <br />
+                                <dt>Name</dt>
+                                <dd>{{vm.entity.name}}</dd>
+                                <dt>Contact No. Telephone</dt>
+                                <dd>{{vm.entity.contactNoTel}}</dd>
+                                <dt>Contact No. Mobile</dt>
+                                <dd>{{vm.entity.contactNoMob}}</dd>
+                                <dt>Email Address</dt>
+                                <dd>{{vm.entity.emailAddress}}</dd>
+                                <dt>Guest Of Honour</dt>
+                                <dd>{{vm.entity.guestOfHonour}}</dd>
+                                <dt>Any Additional Information</dt>
+                                <dd>{{vm.entity.anyAdditionalInformation}}</dd>
+                                <dt>Approval Status</dt>
+                                <dd>{{vm.entity.approvalStatus.name}}</dd>
+                                <dt>List Of Participants</dt>
+                                <dd>
+                                    <a data-ng-if="vm.entity.listOfParticipants" target="_blank" data-ng-href="{{vm.listOfParticipantsUrl}}{{vm.entity.listOfParticipants}}">
+                                        <img data-ng-src="{{vm.getFileIcon(vm.entity.listOfParticipants)}}" title="List Of Participants" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                        {{vm.entity.listOfParticipants}}
+                                    </a>
+                                </dd>
+                                <dt>Training Agenda</dt>
+                                <dd>
+                                    <a data-ng-if="vm.entity.trainingAgenda" target="_blank" data-ng-href="{{vm.trainingAgendaUrl}}{{vm.entity.trainingAgenda}}">
+                                        <img data-ng-src="{{vm.getFileIcon(vm.entity.trainingAgenda)}}" title="Training Agenda" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                        {{vm.entity.trainingAgenda}}
+                                    </a>
+                                </dd>
+                                <!-- Unsure of the photos -->
+                                <!-- Map? -->
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Training Location</h4>
+                            <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom' events='vm.map.events'
+                                                pan="true" control="vm.map.control">
+                            </ui-gmap-google-map>
+                            <!--<br />
+                            <h4>Resource Persons</h4>
+                            <div ui-grid="vm.gridOptions" class="ui-grid" ui-grid-resize-columns></div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/reports-4w.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-signature.html'" />
+
+        </div>
+    </section>
+</section>

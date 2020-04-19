@@ -1,0 +1,75 @@
+﻿body {
+}
+.navbar {
+    display: none;
+}
+.subnav {
+    display: none;
+}
+footer {
+    display: none;
+}
+.btn-group {
+    display: none;
+}
+.page-title {
+    text-align: center;
+    font-size: 20px;
+}
+.widget .widget-head {
+    text-align: center;
+}
+.widget.wblue .widget-head {
+    background-color: #fff;
+    border: 1px solid #fff;
+}
+input[type="text"].ui-grid-filter-input {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    width: 100%;
+    border: 1px solid #fff;
+}
+.ui-grid-pager-row-count-picker {
+    display: none;
+}
+.ui-grid-pager-control {
+    display: none;
+}
+.ui-grid-top-panel {
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+    background: #fff;
+}
+.btn-xs {
+    display: none;
+}
+.widget .widget-content {
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+.ui-grid-header-cell {
+    border-color: #000;
+}
+.widget {
+    border: ;
+}
+.ui-grid-cell {
+    border-color: #000;
+}
+.ndma-logo {
+    background: url("img/NDMA-logo.png") no-repeat;
+    position:fixed;
+    top: 20px;
+    left: 20px;
+    display: block;
+}
+.nidm-logo {
+    background: url("img/nidm-logo2.png") no-repeat;
+    position:fixed;
+    top: 20px;
+    right: 20px;
+    display: block;
+}

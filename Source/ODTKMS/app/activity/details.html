@@ -1,0 +1,41 @@
+﻿<section class="mainbar" data-ng-controller="activityDetail as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div ng-if="!vm.public" data-ng-include="'app/templates/nav-donor.html'" />   
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-logos.html'" />
+            <div class="widget wgreen">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info" href="javascript:window.print();">
+                        <i class="fa fa-print"></i> Print
+                    </a>&nbsp; &nbsp;
+                    <a class="btn btn-info"
+                       data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i> Back
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>                
+                <div class="widget-content" data-ng-if="vm.entity">
+                    <br />
+                    <dl class="dl-horizontal details-view">
+                        <dt>Project</dt>
+                        <dd>{{vm.entity.project.name}}</dd>
+                        <dt>Activity Type</dt>
+                        <dd>{{vm.entity.activityType.name}}</dd>
+                        <dt>Activity Title</dt>
+                        <dd>{{vm.entity.name}}</dd>
+                        <dt>Date of Activity</dt>
+                        <dd>{{vm.entity.dateOfActivity | date: 'dd MMM yyyy'}}</dd>
+                        <dt>Province</dt>
+                        <dd>{{vm.entity.city.district.province.name}}</dd>
+                        <dt>District</dt>
+                        <dd>{{vm.entity.city.district.name}}</dd>
+                        <dt>City</dt>
+                        <dd>{{vm.entity.city.name}}</dd>
+                    </dl>
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/reports-donor.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-signature.html'" />
+        </div>
+    </section>
+</section>

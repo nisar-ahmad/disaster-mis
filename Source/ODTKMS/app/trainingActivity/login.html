@@ -1,0 +1,43 @@
+﻿<section class="mainbar" data-ng-controller="drmLogin as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <section id="loginForm">
+                    <form class="form-horizontal" role="form">
+                        <h4>{{vm.title}}</h4>
+                        <hr />
+                        <p>To submit your training, please login below using the credentials you or your organisation have received.</p>
+                        <hr />
+                        <div class="form-group">
+                            <label for="UserName" class="col-md-2 control-label">User Name</label>
+                            <div class="col-md-10">
+                                <input id="UserName" data-ng-model="vm.userName"
+                                       placeholder="User Name" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="UserName" class="col-md-2 control-label">Password</label>
+                            <div class="col-md-10">
+                                <input id="Password" type="password" data-ng-model="vm.password"
+                                       placeholder="Password" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="button" data-ng-click="vm.login()" value="Login" class="btn btn-primary" />
+                                <input type="reset" class="btn btn-warning" value="Reset" />
+                            </div>
+                        </div>
+                    </form>
+                    <hr />
+                    <div class="container font-montserrat copyright">
+                        <div class="row">
+                            <div class="col-md-6"> &copy; 2016 Onwards. <a href="Home">NIDM</a>. All Rights Reserved. </div>
+                            <div class="col-md-6 text-right"> <a href="Admin">Admin Login</a> / <a href="Home">Webmail</a></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</section>

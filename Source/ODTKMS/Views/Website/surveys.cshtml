@@ -1,0 +1,23 @@
+@model IEnumerable<ODTKMS.Models.Survey>
+@{
+    ViewBag.Title = "Training Needs Assessment";
+}
+
+<br />
+@foreach (var item in Model)
+{
+    <div class="media">
+        <div class="media-left">
+            <a target="_blank" href="~/public.html#/respondent/new/@item.SurveyId/public">
+                <img class="media-object" src="~/Content/img/icon-survey.png" alt="Survey" height="128" width="128">
+            </a>
+        </div>
+        <div class="media-body">
+            <br />
+            <h4 class="media-heading text-bold">
+                <a target="_blank" href="~/public.html#/respondent/new/@item.SurveyId/public">@item.Name</a>
+            </h4>
+            @Html.DisplayFor(o => item.Description)
+        </div>
+    </div>
+}

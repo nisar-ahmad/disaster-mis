@@ -1,0 +1,54 @@
+﻿<section class="mainbar" data-ng-controller="trainingSchedule as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div class="widget wblue">
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <br />
+                <div class="form-group">
+                    <label for="Year" class="control-label col-md-1">Year</label>
+                    <div>
+                        <select id="Training" data-ng-options="i for i in vm.years"
+                                data-ng-model="vm.year" data-ng-change="vm.filterChanged()"
+                                class="form-control col-md-2"></select>
+                    </div>
+                    <label for="BroaderTrainingArea" class="control-label col-md-2">Broader Training Area</label>
+                    <div>
+                        <select id="BroaderTrainingArea" data-ng-options="i for i in vm.broaderTrainingAreas"
+                                data-ng-model="vm.broaderTrainingArea" data-ng-change="vm.filterChanged()"
+                                class="form-control col-md-2"></select>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th>No.</th>
+                        <th>Course</th>
+                        <th>Dates</th>
+                        <th>Location</th>
+                        <th>Broader Training Area</th>
+                        <th>Status</th>
+                    </tr>
+                    <tbody data-ng-repeat="(key, value) in vm.trainings">
+                        <tr class="info">
+                            <td colspan="6" class="text-center"><h5>{{key}}</h5></td>
+                        </tr>
+                        <tr data-ng-repeat="t in value" data-ng-click="vm.click(t)" style="cursor:pointer;">
+                            <td>{{t.index}}</td>
+                            <td>{{t.name}}</td>
+                            <td class="text-center text-nowrap">{{t.dates}}</td>
+                            <td class="text-center">{{t.city.name}} ({{t.city.district.province.name}})</td>
+                            <td class="text-center">{{t.broaderTrainingArea.name}}</td>
+                            <td class="text-center">
+                                <p class="{{t.class}}">
+                                    {{t.status}}
+                                </p>
+                                <img data-ng-if="t.isUpdatedRecently" src="Content/img/new-animated.gif" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</section>

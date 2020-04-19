@@ -1,0 +1,71 @@
+﻿<section class="mainbar" data-ng-controller="surveyResponse as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-if="!vm.public" ng-include="'app/templates/nav-tna.html'" />
+            <div data-ng-include="'app/templates/form-buttons-survey.html'" />
+            <div class="widget wgreen">
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="survey" class="col-md-1 control-label">Survey</label>
+                            <div class="col-md-3">
+                                <select id="survey" data-ng-options="i.name for i in vm.surveys"
+                                        data-ng-model="vm.survey" data-ng-change="vm.surveyChanged()"
+                                        data-ng-disabled="vm.public"
+                                        class="form-control"></select>
+                            </div>
+                            <div data-ng-if="vm.surveyId && vm.respondent">
+                                <label for="respondent" class="col-md-1 control-label">Respondent</label>
+                                <div class="col-md-3">
+                                    <select id="respondent" data-ng-options="i.name for i in vm.respondents"
+                                            data-ng-model="vm.respondent" data-ng-change="vm.respondentChanged()"
+                                            data-ng-disabled="vm.public"
+                                            class="form-control"></select>
+                                </div>
+                                <div class="col-md-4" data-ng-if="!vm.public">
+                                    <input type="button" class="btn btn-info" data-ng-click="vm.prev()" value="<< Prev"
+                                           data-ng-disabled="vm.index == 0" />
+                                    <input type="button" class="btn btn-info" data-ng-click="vm.next()" value="Next >>"
+                                           data-ng-disabled="vm.index == vm.respondents.length-1" />
+                                    <strong> {{vm.index + 1}} of {{vm.respondents.length}}</strong>
+                                </div>
+                            </div>
+                            <br />
+
+                        </div>
+                    </form>
+                    <div data-ng-if="vm.surveyId && vm.respondent">
+                        &nbsp;{{vm.survey.welcomeMessage}}
+                        <br /><br />
+                        <table data-ng-if="vm.questions.length" class="table table-bordered table-hover">
+                            <tr>
+                                <th>No.</th>
+                                <th>Question</th>
+                                <th>Response</th>
+                            </tr>
+                            <tr data-ng-repeat="i in vm.questions">
+                                <td>{{$index + 1}}</td>
+                                <td>{{i.question.statement}}</td>
+                                <td class="col-md-8">
+                                    <label style="display:inline" data-ng-repeat="c in i.question.choiceArray">
+                                        <input data-ng-if="!i.question.hasChoices" type="radio" data-ng-model="i.question.response" data-ng-value="$index" data-ng-disabled="!vm.public">
+                                        <input data-ng-if="i.question.type=='CheckBoxes'" type="checkbox" data-ng-model="i.question.responseArray[$index]" ng-true-value="'true'" ng-false-value="'false'" data-ng-disabled="!vm.public">
+                                        <input data-ng-if="i.question.type=='TextBoxes'" type="text" data-ng-model="i.question.responseArray[$index]" data-ng-disabled="!vm.public">
+                                        <input data-ng-if="i.question.type=='Percentages'" type="text" min="0" max="100" data-ng-model="i.question.responseArray[$index]" data-ng-disabled="!vm.public">
+                                        {{c}}&nbsp;&nbsp;
+                                    </label>
+                                    <textarea class="form-control" data-ng-model="i.question.reason"
+                                              data-ng-disabled="!vm.public" placeholder="Reason?"
+                                              data-ng-if="i.question.type == 'Text'||i.question.askReason" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/form-buttons-survey.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/reports-tna.html'" />
+        </div>
+    </section>
+</section>

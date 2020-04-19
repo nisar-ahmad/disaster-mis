@@ -1,0 +1,175 @@
+﻿<section class="mainbar" data-ng-controller="surveyDetail as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div ng-if="!vm.public" data-ng-include="'app/templates/nav-tna.html'" />
+            <div class="widget wgreen">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info"
+                       data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i> Back
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content" data-ng-if="vm.entity">
+                    <br />
+                    <dl class="dl-horizontal">
+                        <dt>Name</dt>
+                        <dd>{{vm.entity.name}}</dd>
+                        <dt>Description</dt>
+                        <dd>{{vm.entity.description}}</dd>
+                        <dt>Welcome Message</dt>
+                        <dd>{{vm.entity.welcomeMessage}}</dd>
+                        <dt>Exit Message</dt>
+                        <dd>{{vm.entity.exitMessage}}</dd>
+                        <dt>Active</dt>
+                        <dd>{{vm.entity.active | yesNo}}</dd>
+                        <dt>Start Date</dt>
+                        <dd>{{vm.entity.startDate | date:'dd MMM yyyy'}}</dd>
+                        <dt>End Date</dt>
+                        <dd>{{vm.entity.endDate | date:'dd MMM yyyy'}}</dd>
+                    </dl>
+                    <div class="container-fluid">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="genderType" class="col-md-1 control-label">Gender</label>
+                                <div class="col-md-3">
+                                    <select id="genderType" data-ng-options="i for i in vm.genderTypes"
+                                            data-ng-model="vm.genderType" data-ng-change="vm.filterChanged()"
+                                            class="form-control">
+                                        <option value="">-- All Genders --</option>
+                                    </select>
+                                </div>
+                                <label for="province" class="col-md-1 control-label">Province</label>
+                                <div class="col-md-3">
+                                    <select id="province" data-ng-options="i.name for i in vm.provinces"
+                                            data-ng-model="vm.province" data-ng-change="vm.filterChanged()"
+                                            class="form-control">
+                                        <option value="">-- All Provinces --</option>
+                                    </select>
+                                </div>
+                                <label for="organizationType" class="col-md-1 control-label">Sector</label>
+                                <div class="col-md-3">
+                                    <select id="organizationType" data-ng-options="i.name for i in vm.organizationTypes"
+                                            data-ng-model="vm.organizationType" data-ng-change="vm.filterChanged()"
+                                            class="form-control">
+                                        <option value="">-- All Sectors --</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                        <div data-ng-if="vm.data.Questions.length" class="container-fluid">
+                            <h4> Demographic Analysis</h4>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h5 class="text-center">By Gender</h5>
+                                    <canvas class="chart chart-pie"
+                                            chart-legend="true"
+                                            chart-labels="vm.charts['gender'].labels"
+                                            chart-data="vm.charts['gender'].data"></canvas>
+                                    <table class="table table-bordered table-hover">
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Gender</th>
+                                            <th>Respondents</th>
+                                        </tr>
+                                        <tbody>
+                                            <tr data-ng-repeat="(key, value) in vm.data.Genders">
+                                                <td>{{$index + 1}}</td>
+                                                <td>{{key}}</td>
+                                                <td>{{value}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="text-center">By Province</h5>
+                                    <canvas data-ng-if="vm.charts['province'].type==0" class="chart chart-pie"
+                                            chart-legend="true"
+                                            chart-labels="vm.charts['province'].labels"
+                                            chart-data="vm.charts['province'].data"></canvas>
+
+                                    <table class="table table-bordered table-hover">
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Province</th>
+                                            <th>Respondents</th>
+                                        </tr>
+                                        <tbody>
+                                            <tr data-ng-repeat="(key, value) in vm.data.Provinces">
+                                                <td>{{$index + 1}}</td>
+                                                <td>{{key}}</td>
+                                                <td>{{value}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="text-center">By Sector</h5>
+                                    <canvas class="chart chart-pie"
+                                            chart-legend="true"
+                                            chart-labels="vm.charts['sector'].labels"
+                                            chart-data="vm.charts['sector'].data"></canvas>
+                                    <table class="table table-bordered table-hover">
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Sector</th>
+                                            <th>Respondents</th>
+                                        </tr>
+                                        <tbody>
+                                            <tr data-ng-repeat="(key, value) in vm.data.Sectors">
+                                                <td>{{$index + 1}}</td>
+                                                <td>{{key}}</td>
+                                                <td>{{value}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <br />
+                            <h4> Question-wise Analysis</h4>
+                            <div class="container-fluid">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Question</th>
+                                        <th>Responses</th>
+                                        <th>Chart</th>
+                                    </tr>
+                                    <tr data-ng-repeat="i in vm.data.Questions">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{i.Question}}</td>
+                                        <td>
+                                            <table class="table table-striped">
+                                                <tr>
+                                                    <th class="text-center choice">{{vm.choiceMap[i.Type][0]}}</th>
+                                                    <th class="text-center choice">{{vm.choiceMap[i.Type][1]}}</th>
+                                                    <th class="text-center choice" data-ng-if="i.Type!='YesNo'">{{vm.choiceMap[i.Type][2]}}</th>
+                                                    <th class="text-center choice" data-ng-if="i.Type!='YesNo'">{{vm.choiceMap[i.Type][3]}}</th>
+                                                    <th class="text-center choice" data-ng-if="i.Type!='YesNo'">{{vm.choiceMap[i.Type][4]}}</th>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center choice">{{i.Choice1}}</td>
+                                                    <td class="text-center choice">{{i.Choice2}}</td>
+                                                    <td class="text-center choice" data-ng-if="i.Type!='YesNo'">{{i.Choice3}}</td>
+                                                    <td class="text-center choice" data-ng-if="i.Type!='YesNo'">{{i.Choice4}}</td>
+                                                    <td class="text-center choice" data-ng-if="i.Type!='YesNo'">{{i.Choice5}}</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <canvas class="chart chart-pie" height="80px"
+                                                    chart-legend="true"
+                                                    chart-labels="vm.charts[$index].labels"
+                                                    chart-data="vm.charts[$index].data"></canvas>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/reports-tna.html'" />
+        </div>
+    </section>
+</section>

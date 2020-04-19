@@ -1,0 +1,60 @@
+﻿<section class="mainbar" data-ng-controller="trainingCostDetail as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div ng-if="!vm.public" data-ng-include="'app/templates/nav-training.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-logos.html'" />
+            <div class="widget wgreen">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info" href="javascript:window.print();">
+                        <i class="fa fa-print"></i> Print
+                    </a>&nbsp; &nbsp;
+                    <a class="btn btn-info"
+                       data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i> Back
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content" data-ng-if="vm.trainingCosts.length">
+                    <br />
+                    <dl class="dl-horizontal">
+                        <dt>Training</dt>
+                        <dd>{{vm.training.name}}</dd>
+                        <dt>Start Date</dt>
+                        <dd>{{vm.training.startDate | date:'dd MMM yyyy'}}</dd>
+                        <dt>End Date</dt>
+                        <dd>{{vm.training.endDate | date:'dd MMM yyyy'}}</dd>
+                        <dt>Total Participants</dt>
+                        <dd>{{vm.totalParticipants | number}}</dd>
+                        <dt>Cost Per Participant</dt>
+                        <dd>{{vm.costPerParticipant | number}}</dd>
+                    </dl>
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-8">
+                            <table class="table">
+                                <tr>
+                                    <th>Project</th>
+                                    <th>Approved Head</th>
+                                    <th class="text-right">Cost</th>
+                                </tr>
+                                <tr data-ng-repeat="i in vm.trainingCosts">
+                                    <td>{{i.funding.project.name}}</td>
+                                    <td>{{i.funding.approvedActivity.name}}</td>
+                                    <td class="text-right">{{i.cost | number}}</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="text-right"><strong>Total Cost</strong></td>
+                                    <td class="text-right"><strong>{{vm.totalCost | number}}</strong></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+
+            </div>
+            <div data-ng-include="'app/templates/reports-training.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-signature.html'" />
+        </div>
+    </section>
+</section>

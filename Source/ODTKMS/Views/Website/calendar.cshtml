@@ -1,0 +1,105 @@
+@model ODTKMS.Models.CalendarViewModel
+@{
+    ViewBag.Title = "Training Calendar";
+    var startYear = DateTime.Now.Year;
+    int year = startYear;
+
+    if (!string.IsNullOrWhiteSpace(Request["year"]))
+    {
+        year = Convert.ToInt32(Request["year"]);
+    }
+}
+
+<br />
+<br />
+<br />
+<div class="row font-open para">
+
+    <!-- Nav tabs -->
+    <ul class="nav tcaltab nav-tabs" role="tablist">
+        <li role="presentation" class="@IsActive(Request["year"], false)"><a href="#upcoming" aria-expanded="@IsExpanded(Request["year"], false)" aria-controls="upcoming" role="tab" data-toggle="tab">UPCOMING</a></li>
+        <li role="presentation" class="@IsActive(Request["year"], true)"><a href="#archived" aria-expanded="@IsExpanded(Request["year"], true)" aria-controls="archived" role="tab" data-toggle="tab">ARCHIVED</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-content">
+            <div id="upcoming" role="tabpanel" class="tab-pane @IsActive(Request["year"], false, "active in", "fade")">
+                <br />
+                <br />
+                <table class="table table-hover tcaltable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Course Title</th>
+                            <th>Venue</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Upcoming)
+                        {
+                            <tr>
+                                <td class="text-nowrap">
+                                    <span class="tcaldatemonth">@item.Description</span>
+                                </td>
+                                <td>@item.Title</td>
+                                <td>@item.Location</td>
+                                <td><a target="_blank" href="~/public.html#/training/@item.ContentId/details/public">Register</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div id="archived" role="tabpanel" class="tab-pane fade @IsActive(Request["year"], true, "active in", "fade")">
+                <br />
+                <p class="text-center">
+                    @for (int y = startYear; y >= 2010; y--)
+                    {
+                        var css = y == year ? "font-bold" : null;
+
+                        @Html.ActionLink(y.ToString(), "Calendar", "Website", new { year = y }, new { @class = css });
+                        @Html.Raw(" &nbsp ");
+                    }
+                </p>
+                <table class="table table-hover tcaltable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Course Title</th>
+                            <th>Venue</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Archived)
+                {
+                            <tr>
+                                <td class="text-nowrap">
+                                    <span class="tcaldatemonth">@item.Description</span>
+                                </td>
+                                <td>@item.Title</td>
+                                <td>@item.Location</td>
+                                <td><a target="_blank" href="~/public.html#/training/@item.ContentId/details/public">Details</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    public static string IsActive(string year, bool isArchived, string whenTrue = "active", string whenFalse = null)
+    {
+        bool isYear = !string.IsNullOrWhiteSpace(year);
+        return (isYear && isArchived) || (!isYear && !isArchived) ? whenTrue : whenFalse;
+    }
+
+    public static string IsExpanded(string year, bool isArchived)
+    {
+        bool isYear = !string.IsNullOrWhiteSpace(year);
+        return (isYear && isArchived) || (!isYear && !isArchived) ? "true" : "false";
+    }
+}

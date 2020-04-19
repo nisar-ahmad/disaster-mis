@@ -1,0 +1,50 @@
+﻿<section class="mainbar" data-ng-controller="trainingCost as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-include="'app/templates/nav-training.html'" />
+            <div data-ng-include="'app/templates/form-buttons-submit.html'" />
+            <div class="widget wgreen">
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content user">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="Training" class="col-md-2 control-label">Training</label>
+                            <div class="col-md-10">
+                                <select id="Training" data-ng-options="i.name for i in vm.trainings"
+                                        data-ng-model="vm.training" data-ng-change="vm.projectChanged()"
+                                        class="form-control" data-z-validate></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Project" class="col-md-2 control-label">Project</label>
+                            <div class="col-md-10">
+                                <select id="Project" data-ng-options="i.name for i in vm.projects"
+                                        data-ng-model="vm.project" data-ng-change="vm.projectChanged()"
+                                        class="form-control" data-z-validate></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-ng-if="vm.fundings.length" data-ng-repeat="i in vm.fundings">
+                            <label for="Cost" class="col-md-2 control-label">{{i.approvedActivity.name}}</label>
+                            <div class="col-md-10">
+                                <input id="Cost" data-ng-model="i.cost"
+                                       placeholder="0" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-ng-if="vm.fundings.length">
+                            <label for="Cost" class="col-md-2 control-label">Total Cost</label>
+                            <div class="col-md-10">
+                                <strong>Rs. {{vm.totalCost | number}}</strong>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/form-buttons-submit.html'" />
+            <div data-ng-include="'app/templates/reports-training.html'" />
+        </div>
+    </section>
+</section>

@@ -1,0 +1,125 @@
+﻿<section class="mainbar" data-ng-controller="resourcePersonDetail as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div ng-if="!vm.public" data-ng-include="'app/templates/nav-resource-person.html'" />   
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-logos.html'" />
+            <div class="widget wgreen">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info" href="javascript:window.print();">
+                        <i class="fa fa-print"></i> Print
+                    </a>&nbsp; &nbsp;
+                    <a class="btn btn-info"
+                       data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i> Back
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>                
+                <div class="widget-content content-padding" data-ng-if="vm.entity">
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>Title</dt>
+                                <dd>{{vm.entity.title}}</dd>
+                                <dt>Name</dt>
+                                <dd>{{vm.entity.name}}</dd>
+                                <dt>Gender</dt>
+                                <dd>{{vm.entity.gender}}</dd>
+                                <dt>Date of Birth</dt>
+                                <dd>{{vm.entity.dateOfBirth | date: 'dd MMM yyyy'}}</dd>
+                                <dt>Special Ability?</dt>
+                                <dd>{{vm.entity.hasSpecialAbility | yesNo}}</dd>
+                                <dt data-ng-if="vm.entity.hasSpecialAbility">Special Abilities</dt>
+                                <dd data-ng-if="vm.entity.hasSpecialAbility">
+                                    <label style="display:block" data-ng-repeat="d in vm.disabilityTypes">
+                                        <input type="checkbox" data-checklist-model="vm.disabilityTypesSelected"
+                                               data-checklist-value="d.disabilityTypeId" disabled>
+                                        {{d.name}}
+                                    </label>
+                                </dd>
+                                <dt>Disability Types</dt>
+                                <dd>{{vm.entity.disabilityType.name}}</dd>
+                                <dt>Organization Type</dt>
+                                <dd>{{vm.entity.organizationType.name}}</dd>
+                                <dt>Organization</dt>
+                                <dd>{{vm.entity.organization.name}}</dd>
+                                <dt>Other Organization / Department</dt>
+                                <dd>{{vm.entity.otherOrganization}}</dd>
+                                <dt>BPS Grade</dt>
+                                <dd>{{vm.entity.bPSNo}}</dd>
+                                <dt>Years Of Experience</dt>
+                                <dd>{{vm.entity.yearsOfExperience}}</dd>
+                                <dt>Academic Qualification</dt>
+                                <dd>{{vm.entity.academicQualification.name}}</dd>
+                                <dt>Areas of Specialty</dt>
+                                <dd>
+                                    <label style="display:block" data-ng-repeat="d in vm.areas">
+                                        <input type="checkbox" data-checklist-model="vm.areasSelected"
+                                               data-checklist-value="d.areaId" disabled>
+                                        {{d.name}}
+                                    </label>
+                                </dd>
+                                <dt>Province</dt>
+                                <dd>{{vm.entity.district.province.name}}</dd>
+                                <dt>District</dt>
+                                <dd>{{vm.entity.district.name}}</dd>
+                                <dt>Official Address</dt>
+                                <dd>{{vm.entity.officialAddress}}</dd>
+                                <dt>Residential Address</dt>
+                                <dd>{{vm.entity.residentialAddress}}</dd>
+                                <dt>Phone With Extension</dt>
+                                <dd>{{vm.entity.phoneWithExt}}</dd>
+                                <dt>Fax</dt>
+                                <dd>{{vm.entity.fax}}</dd>
+                                <dt>Mobile</dt>
+                                <dd>{{vm.entity.mobile}}</dd>
+                                <dt>Email</dt>
+                                <dd>{{vm.entity.email}}</dd>
+                                <dt>Bank Name</dt>
+                                <dd>{{vm.entity.bankName}}</dd>
+                                <dt>Branch Name</dt>
+                                <dd>{{vm.entity.branchName}}</dd>
+                                <dt>Branch Code</dt>
+                                <dd>{{vm.entity.branchCode}}</dd>
+                                <dt>Account Title</dt>
+                                <dd>{{vm.entity.accountTitle}}</dd>
+                                <dt>Account No</dt>
+                                <dd>{{vm.entity.accountNo}}</dd>
+                                <dt>Account Type</dt>
+                                <dd>{{vm.entity.accountType.name}}</dd>
+                                <dt>IBAN</dt>
+                                <dd>{{vm.entity.iBAN}}</dd>
+                                <dt>Resume/CV</dt>
+                                <dd>
+                                    <a data-ng-if="vm.entity.resume" target="_blank" data-ng-href="{{vm.resumeUrl}}{{vm.entity.resume}}">
+                                        <img data-ng-src="{{vm.getFileIcon(vm.entity.resume)}}" title="Proposal" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                        {{vm.entity.resume}}
+                                    </a>
+                                </dd>
+                                <dt>Approval Status</dt>
+                                <dd>{{vm.entity.approvalType.name}}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="text-right">
+                                <img data-ng-if="vm.entity.photo" data-ng-src="{{vm.photoUrl}}{{vm.entity.photo}}"
+                                     title="Photo of {{vm.entity.name}}" class="img-autosize"
+                                     onerror="if (this.src != 'Content/img/unknown_person.jpg') this.src = 'Content/img/unknown_person.jpg'" />
+                            </div>
+                            <br />
+                            <br />
+                            <div data-ng-include="'app/templates/grid-index.html'" />
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info" href="#/resourcePerson/new/">
+                        <i class="fa fa-plus"></i> Add New
+                    </a>
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/reports-resource-person.html'" />
+        </div>
+    </section>
+</section>

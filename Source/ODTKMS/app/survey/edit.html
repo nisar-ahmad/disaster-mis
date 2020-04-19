@@ -1,0 +1,83 @@
+﻿<section class="mainbar" data-ng-controller="survey as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div ng-if="!vm.public" data-ng-include="'app/templates/nav-tna.html'" />
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+            <div class="widget wgreen">
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="Name" class="col-md-2 control-label">Name</label>
+                            <div class="col-md-10">
+                                <input id="Name" data-ng-model="vm.entity.name"
+                                       placeholder="Name" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Description" class="col-md-2 control-label">Description</label>
+                            <div class="col-md-10">
+                                <input id="Description" data-ng-model="vm.entity.description"
+                                       placeholder="Description" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="WelcomeMessage" class="col-md-2 control-label">Welcome Message</label>
+                            <div class="col-md-10">
+                                <textarea id="WelcomeMessage" data-ng-model="vm.entity.welcomeMessage"
+                                       placeholder="WelcomeMessage" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ExitMessage" class="col-md-2 control-label">Exit Message</label>
+                            <div class="col-md-10">
+                                <textarea id="ExitMessage" data-ng-model="vm.entity.exitMessage"
+                                       placeholder="ExitMessage" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Active" class="col-md-2 control-label">Active</label>
+                            <div class="col-md-10">
+                                <input id="Active" type="checkbox" data-ng-model="vm.entity.active"
+                                       placeholder="Active" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="StartDate" class="col-md-2 control-label">Start Date</label>
+                            <div class="col-md-10">
+                                <input id="Dater" type="text" data-ng-model="vm.entity.startDate"
+                                       class="form-control" datepicker-popup="dd MMM yyyy"
+                                       close-text="Close" ng-focus="opened=true" is-open="opened"
+                                       placeholder="Start Date" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="EndDate" class="col-md-2 control-label">End Date</label>
+                            <div class="col-md-10">
+                                <input id="Dater" type="text" data-ng-model="vm.entity.endDate"
+                                       class="form-control" datepicker-popup="dd MMM yyyy"
+                                       close-text="Close" ng-focus="opened2=true" is-open="opened2"
+                                       placeholder="End Date" />
+                            </div>
+                        </div>
+                       
+                    </form>
+
+                    <div class="container-fluid" data-ng-if="vm.id!='new'">
+                        <label>Selected Questions :</label>
+                        <div data-ng-include="'app/templates/grid-selection.html'" />
+                    </div>
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+            <div data-ng-include="'app/templates/reports-tna.html'" />
+        </div>
+    </section>
+</section>

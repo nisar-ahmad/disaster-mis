@@ -1,0 +1,73 @@
+﻿<section class="mainbar" data-ng-controller="funding as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-include="'app/templates/nav-donor.html'" />
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+            <div class="widget wgreen">
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content user">
+                    <form class="form-horizontal" role="form">
+                        
+                        <div class="form-group">
+                            <label for="Project" class="col-md-2 control-label">Project</label>
+                            <div class="col-md-10">
+                                <select id="Project" data-ng-options="i.name for i in vm.projects"
+                                        data-ng-model="vm.entity.project"
+                                        class="form-control" data-z-validate></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Funding" class="col-md-2 control-label">Funding Type</label>
+                            <div class="col-md-10">
+                                <select id="Funding" data-ng-options="i for i in vm.fundingTypes"
+                                        data-ng-model="vm.entity.fundingType"
+                                        class="form-control" data-z-validate></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Cash" class="col-md-2 control-label">Cash Amount</label>
+                            <div class="col-md-10">
+                                <input id="Cash" data-ng-model="vm.entity.cashAmount"
+                                       placeholder="Cash" class="form-control" data-z-validate />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Activity" class="col-md-2 control-label">Approved Head</label>
+                            <div class="col-md-10">
+                                <select id="Activity" data-ng-options="i.name for i in vm.approvedActivities"
+                                        data-ng-model="vm.entity.approvedActivity"
+                                        class="form-control" data-z-validate></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Start" class="col-md-2 control-label">Start Date</label>
+                            <div class="col-md-10">
+                                <input id="Start" type="text" data-ng-model="vm.entity.startDate"
+                                       class="form-control" datepicker-popup="dd MMM yyyy"
+                                       close-text="Close" ng-focus="opened=true" is-open="opened"
+                                       placeholder="Start Date" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="End=" class="col-md-2 control-label">End Date</label>
+                            <div class="col-md-10">
+                                <input id="End" type="text" data-ng-model="vm.entity.endDate"
+                                       class="form-control" datepicker-popup="dd MMM yyyy"
+                                       close-text="Close" ng-focus="opened2=true" is-open="opened2"
+                                       placeholder="End Date" />
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+            <div data-ng-include="'app/templates/reports-donor.html'" />
+        </div>
+    </section>
+</section>

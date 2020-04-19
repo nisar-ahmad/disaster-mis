@@ -1,0 +1,22 @@
+﻿<section class="mainbar" data-ng-controller="trainingCalendar as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div ng-if="!vm.public" data-ng-include="'app/templates/nav-training.html'" />
+            <div class="widget wblue">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info"
+                            data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i> Back
+                    </a>
+                    <a class="btn btn-info" ng-click="vm.refresh()">
+                        <i class="fa fa-refresh"></i> Refresh
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <div ui-calendar="vm.uiConfig.calendar" ng-model="vm.eventSources"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

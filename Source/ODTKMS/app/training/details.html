@@ -1,0 +1,89 @@
+﻿<section class="mainbar" data-ng-controller="trainingDetail as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/nav-training.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-logos.html'" />
+            <div class="widget wgreen">
+                <a class="btn btn-info" href="javascript:window.print();">
+                    <i class="fa fa-print"></i> Print
+                </a>&nbsp; &nbsp;
+                <div data-ng-include="'app/templates/form-buttons-register.html'" />
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content content-padding">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <br />
+                            <dl class="dl-horizontal details-view">
+                                <dt>Status</dt>
+                                <dd>{{vm.entity.status}}</dd>
+                                <dt>Title</dt>
+                                <dd>{{vm.entity.name}}</dd>
+                                <dt>Objective</dt>
+                                <dd>{{vm.entity.objective}}</dd>
+                                <dt>Description</dt>
+                                <dd data-ng-bind-html="vm.entity.description"></dd>
+                                <dt>Training Type</dt>
+                                <dd>{{vm.entity.trainingType}}</dd>
+                                <dt>Training Level</dt>
+                                <dd>{{vm.entity.trainingLevel}}</dd>
+                                <dt>Broader Training Area</dt>
+                                <dd>{{vm.entity.broaderTrainingArea.name}}</dd>
+                                <dt>Start Date</dt>
+                                <dd>{{vm.entity.startDate | date:'dd MMM yyyy'}}</dd>
+                                <dt>End Date</dt>
+                                <dd>{{vm.entity.endDate | date:'dd MMM yyyy'}}</dd>
+                                <dt>Fee</dt>
+                                <dd>Rs. {{vm.entity.fee | number}}</dd>
+                                <dt>Province</dt>
+                                <dd>{{vm.entity.province.name}}</dd>
+                                <dt>District</dt>
+                                <dd>{{vm.entity.district.name}}</dd>
+                                <dt>City</dt>
+                                <dd>{{vm.entity.city.name}}</dd>
+                                <dt data-ng-if="!vm.public">Total Participants</dt>
+                                <dd data-ng-if="!vm.public">{{vm.totalParticipants}}</dd>
+                                <dt data-ng-if="!vm.public">Total Training Cost</dt>
+                                <dd data-ng-if="!vm.public">{{vm.totalCost}}</dd>
+                                <!--<dt>Logistic Note</dt>
+                    <dd>{{vm.entity.logisticNote}}</dd>
+                    <dt>Reference Material</dt>
+                    <dd>{{vm.entity.referenceMaterial}}</dd>-->
+                            </dl>
+                            <br />
+                            <h4>Donors / Collaborating Agencies</h4>
+                            <br />
+                            <div data-ng-repeat="o in vm.organizations" class="row">
+                                <div class="col-md-5">
+                                    <h5>{{$index + 1}}. {{o.name}} ({{o.organizationType.name}})</h5>
+                                </div>
+                                <div class="col-md-3">
+                                    <img data-ng-src="Files/Galleries/Donors/Logos/thumbnails/{{o.logo}}" class="img-autosize" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <br />
+                            <h4>Training Location</h4>
+                            <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom' events='vm.map.events'
+                                                pan="true" control="vm.map.control">
+                                <!--marker for clicked position can not put google.map.animations.BOUNCE , since it is not initiaized yet-->
+                                <!--DISABLED ANIMATION on MarkerLABEL due to Google SDK V3 bug, see MarkerLabelChildModel.setOption -->
+                                <!--<div ng-init="opts = {animation:1}">-->
+                                <!--<ui-gmap-markers models="vm.map.markers" coords="'self'" >
+                    </ui-gmap-markers>-->
+                            </ui-gmap-google-map>
+                            <br />
+                            <h4>Training Sessions</h4>
+                            <div ui-grid="vm.gridOptions" class="ui-grid" ui-grid-resize-columns></div>
+                        </div>
+                    </div>
+                </div>
+                <div data-ng-include="'app/templates/form-buttons-register.html'" />
+            </div>
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/reports-training.html'" />
+            <a class="btn btn-info" href="javascript:window.print();">
+                <i class="fa fa-print"></i> Print
+            </a>&nbsp; &nbsp;
+        </div>
+    </section>
+</section>

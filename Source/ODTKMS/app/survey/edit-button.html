@@ -1,0 +1,18 @@
+﻿<div class="ui-grid-cell-contents">
+    <div data-ng-if="!grid.appScope.public">
+        <a href="#/survey/{{row.entity.surveyId}}/details" title="Details">
+            <i class="fa fa-list"></i>
+        </a>
+        <a href="#/survey/{{row.entity.surveyId}}" title="Edit">
+            <i class="fa fa-edit"></i>
+        </a>
+        <a href="#/survey/response" title="View Responses">
+            <i class="fa fa-registered"></i>
+        </a>
+    </div>
+    <div data-ng-if="grid.appScope.public">
+        <a href="#/respondent/new/{{row.entity.surveyId}}/public" title="Register">
+            <i class="fa fa-registered"></i>
+        </a>
+    </div>
+</div>

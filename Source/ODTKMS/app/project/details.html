@@ -1,0 +1,120 @@
+﻿<section class="mainbar" data-ng-controller="projectDetail as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div ng-if="!vm.public" data-ng-include="'app/templates/nav-donor.html'" />
+            <div data-ng-if="!vm.public" data-ng-include="'app/templates/print-logos.html'" />
+            <div class="widget wgreen">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info" href="javascript:window.print();">
+                        <i class="fa fa-print"></i> Print
+                    </a>&nbsp; &nbsp;
+                    <a class="btn btn-info"
+                       data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i> Back
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content" data-ng-if="vm.entity">
+                    <div class="row">
+                        <br />
+                        <div class="col-md-6 col-sm-6">
+                            <dl class="dl-horizontal">
+                                <dt>Donor</dt>
+                                <dd>{{vm.entity.organization.name}}</dd>
+                                <dt>Project Name</dt>
+                                <dd>{{vm.entity.name}}</dd>
+                                <dt>Project Number</dt>
+                                <dd>{{vm.entity.projectNumber}}</dd>
+                                <dt>Start Date</dt>
+                                <dd>{{vm.entity.startDate | date: 'dd MMM yyyy'}}</dd>
+                                <dt>End Date</dt>
+                                <dd>{{vm.entity.endDate | date: 'dd MMM yyyy'}}</dd>
+                                <dt>Project Description</dt>
+                                <dd>{{vm.entity.description}}</dd>
+                                <br/>
+                                <dt>Total Funding</dt>
+                                <dd>{{vm.totalFunding | number}}</dd>
+                                <dt>Total Training Costs</dt>
+                                <dd>{{vm.totalTrainingCost | number}}</dd>
+                                <dt>Total Activity Costs</dt>
+                                <dd>{{vm.totalActivityCost | number}}</dd>
+                                <dt>Total Costs</dt>
+                                <dd>{{vm.totalTrainingCost + vm.totalActivityCost | number}}</dd>
+                                <dt>Balance</dt>
+                                <dd>{{vm.totalFunding - vm.totalTrainingCost - vm.totalActivityCost | number}}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <dl class="dl-horizontal">
+                                <dt>Donor Logo</dt>
+                                <dd>
+                                    <img data-ng-if="vm.entity.organization.logo" class="img-autosize"
+                                         data-ng-src="{{vm.logoUrl}}{{vm.entity.organization.logo}}"
+                                         title="Logo of {{vm.entity.organization.name}}"
+                                         onerror="if (this.src != '') this.src = ''" />
+                                </dd>
+                                <dt>Proposal</dt>
+                                <dd>
+                                    <a data-ng-if="vm.entity.proposal" target="_blank" data-ng-href="{{vm.proposalUrl}}{{vm.entity.proposal}}">
+                                        <img data-ng-src="{{vm.getFileIcon(vm.entity.proposal)}}" title="Proposal" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                        {{vm.entity.proposal}}
+                                    </a>
+                                </dd>
+                                <dt>Workplan</dt>
+                                <dd>
+                                    <a data-ng-if="vm.entity.workplan" target="_blank" data-ng-href="{{vm.workplanUrl}}{{vm.entity.workplan}}">
+                                        <img data-ng-src="{{vm.getFileIcon(vm.entity.workplan)}}" title="Workplan" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                        {{vm.entity.workplan}}
+                                    </a>
+                                </dd>
+                                <dt>LOA</dt>
+                                <dd>
+                                    <a data-ng-if="vm.entity.lOA" target="_blank" data-ng-href="{{vm.loaUrl}}{{vm.entity.lOA}}">
+                                        <img data-ng-src="{{vm.getFileIcon(vm.entity.lOA)}}" title="LOA" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                        {{vm.entity.lOA}}
+                                    </a>
+                                </dd>
+                                <dt>Other Documents</dt>
+                                <dd>
+                                    <a data-ng-if="vm.entity.otherDocuments" target="_blank" data-ng-href="{{vm.otherDocumentsUrl}}{{vm.entity.otherDocuments}}">
+                                        <img data-ng-src="{{vm.getFileIcon(vm.entity.otherDocuments)}}" title="Other Documents" onerror="if (this.src != 'Content/img/icon-file.png') this.src = 'Content/img/icon-file.png';" />
+                                        {{vm.entity.otherDocuments}}
+                                    </a>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <h3>Fundings</h3>
+                        <div ui-grid="vm.fundingOptions" class="ui-grid height-small"
+                             ui-grid-resize-columns
+                             ui-grid-move-columns
+                             ui-grid-exporter>
+                        </div>
+                        <h3>Training Costs</h3>
+                        <div ui-grid="vm.trainingCostOptions" class="ui-grid height-small"
+                             ui-grid-resize-columns
+                             ui-grid-move-columns
+                             ui-grid-exporter>
+                        </div>
+                        <h3>Activity Costs</h3>
+                        <div ui-grid="vm.activityCostOptions" class="ui-grid height-small"
+                             ui-grid-resize-columns
+                             ui-grid-move-columns
+                             ui-grid-exporter>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info" href="#/participant/new/{{vm.id}}">
+                        <i class="fa fa-plus"></i> Register
+                    </a>
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/reports-donor.html'" />
+            <a class="btn btn-info" href="javascript:window.print();">
+                <i class="fa fa-print"></i> Print
+            </a>&nbsp; &nbsp;
+        </div>
+    </section>
+</section>

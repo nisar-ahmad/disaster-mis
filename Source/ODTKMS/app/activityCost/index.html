@@ -1,0 +1,22 @@
+﻿<section class="mainbar" data-ng-controller="activityCosts as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-include="'app/templates/nav-donor.html'" />
+            <div class="widget wblue">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info" ng-click="vm.refresh()">
+                        <i class="fa fa-refresh"></i> Refresh
+                    </a>
+                    <a class="btn btn-info" href="#/activityCost/new">
+                        <i class="fa fa-plus"></i> Add Activity Cost
+                    </a>
+                </div>
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content">
+                    <div data-ng-include="'app/templates/grid-index.html'" />
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/reports-donor.html'" />
+        </div>
+    </section>
+</section>

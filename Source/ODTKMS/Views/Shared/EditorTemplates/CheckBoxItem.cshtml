@@ -1,0 +1,9 @@
+﻿@model ODTKMS.ViewModels.CheckBoxItem
+
+<p class="checkbox" style="display:block">
+    <span>
+        @Html.HiddenFor(x => x.Value)
+        @Html.CheckBoxFor(x => x.Selected)
+    </span>
+    @Html.LabelFor(x => x.Selected, Model.Text)
+</p>

@@ -1,0 +1,62 @@
+@using BootstrapSupport
+@using System.ComponentModel.DataAnnotations.Schema
+
+@model System.Collections.IEnumerable   
+@{
+    var label = @Model.GetLabel();
+
+    if (label.EndsWith("y", StringComparison.OrdinalIgnoreCase))
+        label = string.Format("{0}ies", label.Remove(label.Length - 1, 1));
+    else if (!label.EndsWith("s", StringComparison.OrdinalIgnoreCase))
+        label += "s";
+
+    ViewBag.Title = label;
+}
+
+<div class="title">
+    @ViewBag.Title
+    <div class="float-right">
+        @Html.ActionLink("Add New", "Create", null, new { @class = "btn btn-success" })
+    </div>
+</div>
+
+<table class="table table-striped">
+    <caption></caption>
+    <thead>
+        <tr>
+            @foreach (var property in Model.VisibleProperties())
+            {
+                <th>
+                    @property.GetLabel().ToSeparatedWords()
+                </th>
+            }
+            <th></th>
+        </tr>
+    </thead>
+    @{ int index = 0; }
+    @foreach (var model in Model)
+    {
+        ViewData[index.ToString()] = model;
+        <tr>
+            @foreach (var property in model.VisibleProperties())
+            {
+                <td>
+                    @if (property.AttributeExists<ForeignKeyAttribute>())
+                    {
+                        var attribute = property.GetAttribute<ForeignKeyAttribute>();
+                        @Html.Display(index + "." + attribute.Name + ".Name")
+                    }
+                    else
+                    {
+                        @Html.Display(index + "." + property.Name)
+                    }
+                </td>                    
+            }
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = model.GetId()})
+            </td>
+        </tr>
+            index++;
+    }
+
+</table>

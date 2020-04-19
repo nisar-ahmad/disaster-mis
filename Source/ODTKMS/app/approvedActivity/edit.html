@@ -1,0 +1,32 @@
+<section class="mainbar" data-ng-controller="approvedActivity as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div data-ng-include="'app/templates/nav-setup.html'" />
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+            <div class="widget wgreen">
+                <div data-cc-widget-header title="{{vm.title}}"></div>
+                <div class="widget-content user">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="Name" class="col-md-2 control-label">Name</label>
+                            <div class="col-md-10">
+                                <input id="Name" data-ng-model="vm.entity.name"
+                                       data-z-validate placeholder="Name" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Description" class="col-md-2 control-label">Description</label>
+                            <div class="col-md-10">
+                                <input id="Description" data-ng-model="vm.entity.description"
+                                       data-z-validate placeholder="Description" class="form-control" />
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div data-ng-include="'app/templates/form-buttons.html'" />
+        </div>
+    </section>
+</section>

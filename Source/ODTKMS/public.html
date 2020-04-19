@@ -1,0 +1,348 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="app">
+<head>
+    <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        .ng-hide {
+            display: none !important;
+        }
+    </style>
+    <title data-ng-bind="title">Disaster Training & Knowledge Management System</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <!--<base href="/ODTKMS/index.html">-->
+    <script>
+        // Must be first. IE10 mobile viewport fix
+        if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement("style");
+            var mq = "@-ms-viewport{width:auto!important}";
+            msViewportStyle.appendChild(document.createTextNode(mq));
+            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+        }
+    </script>
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <link href="Content/font.css" rel="stylesheet" />
+
+    <link href="content/ie10mobile.css" rel="stylesheet" />
+    <link href="content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="content/css/Site.css" rel="stylesheet" />
+    <link href="Content/css/datepicker3.css" rel="stylesheet" />
+    <link href="Content/css/bootstrap-timepicker.css" rel="stylesheet" />
+    <link href="Content/css/blueimp-gallery.css" rel="stylesheet" />
+    <link href="Content/css/bootstrap-image-gallery.min.css" rel="stylesheet" />
+
+    <link href="Content/animate.css" rel="stylesheet" />
+
+    <link href="Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="content/toastr.min.css" rel="stylesheet" />
+
+    <link href="content/breeze.directives.css" rel="stylesheet" />
+    <link href="Content/css/fullcalendar.min.css" rel="stylesheet" />
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400' rel='stylesheet' type='text/css'>
+
+
+    <script src="Scripts/modernizr-2.8.3.js"></script>
+
+    <link href="Content/ui-grid.css" rel="stylesheet" />
+
+    <link href="Content/custom.css" rel="stylesheet" />
+
+    <link href="Content/print.css" rel="stylesheet" media="print" />
+
+    <link href="Content/css/angular-chart.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="container" data-ng-include="'app/layout/shell.html'">
+    </div>
+    <!-- <span data-cc-scroll-to-top></span>-->
+    <!-- #region Vendor Scripts -->
+    <script src="scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/pdfmake/pdfmake.min.js"></script>
+    <script src="Scripts/pdfmake/vfs_fonts.js"></script>
+
+    <!-- #region Angular -->
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-animate.min.js"></script>
+    <script src="scripts/angular-route.min.js"></script>
+    <script src="scripts/angular-sanitize.min.js"></script>
+    <script src="Scripts/tv4.min.js"></script>
+    <script src="Scripts/ObjectPath.js"></script>
+    <script src="Scripts/schema-form.min.js"></script>
+    <script src="Scripts/bootstrap-decorator.min.js"></script>
+
+    <script src="Scripts/lodash.min.js"></script>
+    <script src="Scripts/angular-google-maps.min.js"></script>
+
+    <script src="scripts/moment.js"></script>
+    <script src="Scripts/angular-ui/calendar.js"></script>
+    <script src="Scripts/fullcalendar.min.js"></script>
+    <script src="Scripts/gcal.js"></script>
+
+    <script src="Scripts/Chart.min.js"></script>
+    <script src="Scripts/angular-chart.min.js"></script>
+    <!-- #endregion -->
+
+    <script src="scripts/bootstrap.js"></script>
+    <script src="Scripts/bootstrap-datepicker.js"></script>
+    <script src="Scripts/bootstrap-timepicker.js"></script>
+
+    <script src="Scripts/jquery.blueimp-gallery.min.js"></script>
+    <script src="Scripts/bootstrap-image-gallery.min.js"></script>
+
+    <script src="Scripts/viewportchecker.js"></script>
+    <script src="Scripts/animate.js"></script>
+    <script src="Scripts/respond.js"></script>
+    <script src="Scripts/toastr.js"></script>
+
+
+    <script src="scripts/angular-ui/ui-bootstrap.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="Scripts/spin.js"></script>
+
+    <script src="Scripts/ui-grid.min.js"></script>
+    <script src="Scripts/bootstrap-colorpicker-module.js"></script>
+    <script src="Scripts/angular-wysiwyg.min.js"></script>
+
+    <!-- #region Breeze -->
+    <script src="scripts/breeze.debug.js"></script>
+    <script src="scripts/breeze.bridge.angular.js"></script>
+    <script src="scripts/breeze.directives.js"></script>
+    <script src="scripts/breeze.saveErrorExtensions.js"></script>
+    <!-- #endregion -->
+    <!-- #endregion -->
+    <!-- #region Work In Progress -->
+    <!--<script src="Scripts/angular.breeze.storagewip.js"></script>-->
+    <!-- #endregion -->
+    <!-- #region Bootstrapping -->
+    <script src="app/app.js"></script>
+    <script src="app/config.js"></script>
+    <script src="app/config.exceptionHandler.js"></script>
+    <script src="app/config.route.public.js"></script>
+    <!-- #endregion -->
+    <!-- #region common Modules -->
+    <script src="app/common/common.js"></script>
+    <script src="app/common/logger.js"></script>
+    <script src="app/common/spinner.js"></script>
+    <!-- #endregion -->
+    <!-- #region common.bootstrap Modules -->
+    <script src="app/common/bootstrap/bootstrap.dialog.js"></script>
+    <!-- #endregion -->
+    <!-- #region app -->
+    <script src="app/layout/shell.js"></script>
+
+    <script src="app/academicQualification/edit.js"></script>
+    <script src="app/academicQualification/index.js"></script>
+
+    <script src="app/activity/details.js"></script>
+    <script src="app/activity/edit.js"></script>
+    <script src="app/activity/index.js"></script>
+
+    <script src="app/activityCost/details.js"></script>
+    <script src="app/activityCost/edit.js"></script>
+    <script src="app/activityCost/index.js"></script>
+
+    <script src="app/activityType/edit.js"></script>
+    <script src="app/activityType/index.js"></script>
+
+    <script src="app/album/details.js"></script>
+    <script src="app/album/edit.js"></script>
+    <script src="app/album/index.js"></script>
+
+    <script src="app/approvedActivity/edit.js"></script>
+    <script src="app/approvedActivity/index.js"></script>
+
+    <script src="app/area/edit.js"></script>
+    <script src="app/area/index.js"></script>
+
+    <script src="app/city/edit.js"></script>
+    <script src="app/city/index.js"></script>
+
+    <script src="app/common/thanks.js"></script>
+
+    <script src="app/disabilityType/edit.js"></script>
+    <script src="app/disabilityType/index.js"></script>
+
+    <script src="app/district/edit.js"></script>
+    <script src="app/district/index.js"></script>
+
+    <script src="app/document/details.js"></script>
+    <script src="app/document/index.js"></script>
+    <script src="app/document/edit.js"></script>
+
+    <script src="app/documentCategory/edit.js"></script>
+    <script src="app/documentCategory/index.js"></script>
+
+    <script src="app/funding/details.js"></script>
+    <script src="app/funding/edit.js"></script>
+    <script src="app/funding/index.js"></script>
+
+    <script src="app/gallery/details.js"></script>
+    <script src="app/gallery/index.js"></script>
+
+    <script src="app/group/edit.js"></script>
+    <script src="app/group/index.js"></script>
+
+    <script src="app/home/home.js"></script>
+
+    <script src="app/messageLog/index.js"></script>
+
+    <script src="app/organization/details.js"></script>
+    <script src="app/organization/edit.js"></script>
+    <script src="app/organization/index.js"></script>
+
+    <script src="app/organizationType/edit.js"></script>
+    <script src="app/organizationType/index.js"></script>
+
+    <script src="app/participant/details.js"></script>
+    <script src="app/participant/edit.js"></script>
+    <script src="app/participant/email.js"></script>
+    <script src="app/participant/index.js"></script>
+    <script src="app/participant/sms.js"></script>
+
+    <script src="app/project/details.js"></script>
+    <script src="app/project/edit.js"></script>
+    <script src="app/project/index.js"></script>
+
+    <script src="app/province/edit.js"></script>
+    <script src="app/province/index.js"></script>
+
+    <script src="app/question/details.js"></script>
+    <script src="app/question/edit.js"></script>
+    <script src="app/question/index.js"></script>
+
+    <script src="app/reports/report.js"></script>
+
+    <script src="app/resourcePerson/details.js"></script>
+    <script src="app/resourcePerson/edit.js"></script>
+    <script src="app/resourcePerson/index.js"></script>
+
+    <script src="app/resourcePersonTraining/details.js"></script>
+    <script src="app/resourcePersonTraining/edit.js"></script>
+    <script src="app/resourcePersonTraining/index.js"></script>
+
+    <script src="app/respondent/details.js"></script>
+    <script src="app/respondent/edit.js"></script>
+    <script src="app/respondent/index.js"></script>
+
+    <script src="app/survey/details.js"></script>
+    <script src="app/survey/edit.js"></script>
+    <script src="app/survey/index.js"></script>
+    <script src="app/survey/response.js"></script>
+
+    <script src="app/thematicArea/edit.js"></script>
+    <script src="app/thematicArea/index.js"></script>
+
+    <script src="app/training/attendance.js"></script>
+    <script src="app/training/calendar.js"></script>
+    <script src="app/training/details.js"></script>
+    <script src="app/training/edit.js"></script>
+    <script src="app/training/index.js"></script>
+    <script src="app/training/map.js"></script>
+    <script src="app/training/schedule.js"></script>
+
+    <script src="app/trainingActivity/details.js"></script>
+    <script src="app/trainingActivity/edit.js"></script>
+    <script src="app/trainingActivity/index.js"></script>
+    <script src="app/trainingActivity/login.js"></script>
+    <script src="app/trainingActivity/map.js"></script>
+
+    <script src="app/trainingCost/details.js"></script>
+    <script src="app/trainingCost/edit.js"></script>
+    <script src="app/trainingCost/index.js"></script>
+
+    <script src="app/training/evaluation.js"></script>
+
+    <script src="app/trainingSession/details.js"></script>
+    <script src="app/trainingSession/edit.js"></script>
+    <script src="app/trainingSession/index.js"></script>
+
+    <script src="app/reportsDashboard/dashboard.js"></script>
+    <script src="app/reportsDashboard/training.js"></script>
+    <script src="app/reportsDashboard/participant.js"></script>
+    <script src="app/reportsDashboard/drm.js"></script>
+    <script src="app/reportsDashboard/dca.js"></script>
+    <script src="app/reportsDashboard/resource.js"></script>
+    <script src="app/reportsDashboard/smsemail.js"></script>
+    <script src="app/reportsDashboard/tna.js"></script>
+
+    <!-- #endregion -->
+    <!-- #region app Services -->
+    <script src="app/services/checklist-model.js"></script>
+    <script src="app/services/datacontext.js"></script>
+    <script src="app/services/directives.js"></script>
+    <script src="app/services/notify.js"></script>
+    <script src="app/services/entityManagerFactory.js"></script>
+    <script src="app/services/fileUpload.js"></script>
+    <script src="app/services/helper.js"></script>
+    <script src="app/services/model.js"></script>
+    <script src="app/services/model.validation.js"></script>
+    <script src="app/services/routeMediator.js"></script>
+
+    <!-- #region Repositories -->
+    <script src="app/services/repositories.js"></script>
+    <script src="app/services/repository.academicqualification.js"></script>
+    <script src="app/services/repository.abstract.js"></script>
+    <script src="app/services/repository.activity.js"></script>
+    <script src="app/services/repository.activityCost.js"></script>
+    <script src="app/services/repository.activitytype.js"></script>
+    <script src="app/services/repository.approvedactivity.js"></script>
+    <script src="app/services/repository.album.js"></script>
+    <script src="app/services/repository.area.js"></script>
+    <script src="app/services/repository.broadertrainingarea.js"></script>
+    <script src="app/services/repository.city.js"></script>
+    <script src="app/services/repository.disabilitytype.js"></script>
+    <script src="app/services/repository.district.js"></script>
+    <script src="app/services/repository.document.js"></script>
+    <script src="app/services/repository.documentCategory.js"></script>
+    <script src="app/services/repository.enum.js"></script>
+    <script src="app/services/repository.funding.js"></script>
+
+    <script src="app/services/repository.group.js"></script>
+    <script src="app/services/repository.gallery.js"></script>
+
+    <script src="app/services/repository.mediafile.js"></script>
+    <script src="app/services/repository.messagelog.js"></script>
+
+    <script src="app/services/repository.organization.js"></script>
+    <script src="app/services/repository.organizationtype.js"></script>
+
+    <script src="app/services/repository.participant.js"></script>
+    <script src="app/services/repository.participantdisabilitytype.js"></script>
+    <script src="app/services/repository.potentialresourceperson.js"></script>
+    <script src="app/services/repository.project.js"></script>
+    <script src="app/services/repository.province.js"></script>
+
+    <script src="app/services/repository.question.js"></script>
+    <script src="app/services/repository.resourceperson.js"></script>
+    <script src="app/services/repository.resourcepersonarea.js"></script>
+    <script src="app/services/repository.resourcepersondisabilitytype.js"></script>
+    <script src="app/services/repository.resourcepersontraining.js"></script>
+
+    <script src="app/services/repository.respondent.js"></script>
+    <script src="app/services/repository.respondentdisabilitytype.js"></script>
+    <script src="app/services/repository.survey.js"></script>
+    <script src="app/services/repository.surveyquestion.js"></script>
+    <script src="app/services/repository.surveyquestionresponse.js"></script>
+
+    <script src="app/services/repository.thematicarea.js"></script>
+    <script src="app/services/repository.training.js"></script>
+    <script src="app/services/repository.trainingactivity.js"></script>
+    <script src="app/services/repository.trainingcost.js"></script>
+    <script src="app/services/repository.trainingevaluation.js"></script>
+    <script src="app/services/repository.trainingorganization.js"></script>
+    <script src="app/services/repository.trainingsession.js"></script>
+    <script src="app/services/repository.trainingsessionparticipant.js"></script>
+
+
+    <!-- #endregion -->
+    <!-- #endregion -->
+
+</body>
+</html>
